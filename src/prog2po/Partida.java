@@ -11,6 +11,8 @@ import java.util.*;
 /**
  *
  * @author Llote
+ * 
+ * Prueba
  */
 public class Partida {
     
