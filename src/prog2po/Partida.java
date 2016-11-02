@@ -12,7 +12,7 @@ import java.util.*;
  *
  * @author Llote
  * 
- * Prueba
+ * otra prueba bobo
  */
 public class Partida {
     
