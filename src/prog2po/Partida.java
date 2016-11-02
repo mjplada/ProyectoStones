@@ -12,7 +12,8 @@ import java.util.*;
  *
  * @author Llote
  * 
- * otra prueba bobo
+ * otra prueba bobofdfg
+ * 
  */
 public class Partida {
     
