@@ -6,16 +6,31 @@
 package prog2SO;
 
 import java.util.*;
+import java.io.*;
 
 
 
 public class Prog2PO {
     
     public static void main(String[] args) {
+        
         Juego j = new Juego();
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("DatosGuardados"));
+            j = (Juego)in.readObject();
+        } catch (Exception e) {
+            
+        }
+        
+        
         //MenuInicio(j);
         VentanaPartida v = new VentanaPartida();
         v.setVisible(true);
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DatosGuardados"));
+            out.writeObject(j);
+        } catch (Exception e) {
+        }
         
         
     }

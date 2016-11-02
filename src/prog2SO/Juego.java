@@ -6,12 +6,13 @@
 package prog2SO;
 
 import java.util.*;
+import java.io.Serializable;
 
 /**
  *
  * @author mjpla
  */
-public class Juego {
+public class Juego implements Serializable{
     private Partida partidaActual;
     private ArrayList<Jugador> listJugadores = new ArrayList<>();
     boolean esGenerico;//determina si el tablero sera generco o random
