@@ -24,7 +24,7 @@ public class Prog2PO {
         
         
         //MenuInicio(j);
-        VentanaPartida v = new VentanaPartida();
+        VentPartida v = new VentPartida();
         v.setVisible(true);
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DatosGuardados"));
