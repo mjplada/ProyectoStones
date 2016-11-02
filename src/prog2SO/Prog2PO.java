@@ -13,7 +13,9 @@ public class Prog2PO {
     
     public static void main(String[] args) {
         Juego j = new Juego();
-        MenuInicio(j);
+        //MenuInicio(j);
+        VentanaPartida v = new VentanaPartida();
+        v.setVisible(true);
         
         
     }

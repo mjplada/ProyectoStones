@@ -20,6 +20,7 @@ public class VentanaPartida extends javax.swing.JFrame {
     
     public VentanaPartida() {
         initComponents();
+        this.setLayout(null);
         // crear botones y agregarlos al panel
         panelJuego.setLayout(new GridLayout(7, 7));
         botones = new JButton[7][7];
