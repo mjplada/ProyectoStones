@@ -1,1 +1,22 @@
 Notas y Pendientes
+
+Notas:
+-Preguntar a Kereki donde iniciamos el programa, si en el mismo main o podemos incicar en la ventana de inicio.
+-El el cambio de turno, deshabilitar la grilla de fichas del jugador pasivo.
+-Cuando selecciona dos pierdas, se muestra una ventana con la confirmacion del patron, y los colores para seleccionar.
+
+
+
+
+
+
+
+
+
+Pendientes:
+-Metodo que recibe el nombre de un archivo y guarda los jugadores dentro del mismo. [Marce]
+-Agregar navegabilidad entre Fram´s
+-Agregar tipo de movimiento
+-Adaptar ventana de juego al juego anteriormente creado
+-Agregar a la ventana de la partida, fichas de jugadores, piedras, etc.
+-Agregar proceso de cambio de foto para las fichas
