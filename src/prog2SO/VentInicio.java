@@ -47,6 +47,7 @@ public class VentInicio extends javax.swing.JFrame {
         btnSalir.setText("Salir");
 
         btnArchivosJugadores.setText("Cargar Archivo de Jugadores");
+        btnArchivosJugadores.setName(""); // NOI18N
 
         javax.swing.GroupLayout panelPrincipialLayout = new javax.swing.GroupLayout(panelPrincipial);
         panelPrincipial.setLayout(panelPrincipialLayout);
@@ -81,7 +82,7 @@ public class VentInicio extends javax.swing.JFrame {
         );
 
         getContentPane().add(panelPrincipial);
-        panelPrincipial.setBounds(10, 20, 380, 246);
+        panelPrincipial.setBounds(10, 20, 404, 256);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents

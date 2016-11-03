@@ -27,25 +27,26 @@ public class VentJugador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        btnRegistrar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        txtAlias = new javax.swing.JTextField();
+        spinEdad = new javax.swing.JSpinner();
+        panelRegistrar = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setToolTipText("");
-        jTextField1.setName("txtNombre"); // NOI18N
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(150, 110, 164, 22);
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNombre.setToolTipText("");
+        txtNombre.setName("txtNombre"); // NOI18N
+        getContentPane().add(txtNombre);
+        txtNombre.setBounds(150, 110, 164, 22);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel1.setText("Regitro Jugador");
@@ -65,26 +66,40 @@ public class VentJugador extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(100, 220, 33, 16);
 
-        jButton1.setText("Registrar");
-        jButton1.setToolTipText("");
-        jButton1.setName("btnRegistrar"); // NOI18N
-        getContentPane().add(jButton1);
-        jButton1.setBounds(90, 290, 90, 40);
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setToolTipText("");
+        btnRegistrar.setName("btnRegistrar"); // NOI18N
+        getContentPane().add(btnRegistrar);
+        btnRegistrar.setBounds(90, 290, 90, 40);
 
-        jButton2.setText("Cancelar");
-        jButton2.setName("btnCancelar"); // NOI18N
-        getContentPane().add(jButton2);
-        jButton2.setBounds(240, 290, 90, 40);
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setName("btnCancelar"); // NOI18N
+        getContentPane().add(btnCancelar);
+        btnCancelar.setBounds(240, 290, 90, 40);
 
-        jTextField2.setName("txtAlias"); // NOI18N
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(150, 160, 160, 22);
+        txtAlias.setName("txtAlias"); // NOI18N
+        getContentPane().add(txtAlias);
+        txtAlias.setBounds(150, 160, 160, 22);
 
-        jSpinner1.setName("spinEdad"); // NOI18N
-        getContentPane().add(jSpinner1);
-        jSpinner1.setBounds(150, 210, 50, 22);
+        spinEdad.setName("spinEdad"); // NOI18N
+        getContentPane().add(spinEdad);
+        spinEdad.setBounds(150, 210, 50, 22);
 
-        setBounds(0, 0, 436, 411);
+        javax.swing.GroupLayout panelRegistrarLayout = new javax.swing.GroupLayout(panelRegistrar);
+        panelRegistrar.setLayout(panelRegistrarLayout);
+        panelRegistrarLayout.setHorizontalGroup(
+            panelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+        );
+        panelRegistrarLayout.setVerticalGroup(
+            panelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 340, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panelRegistrar);
+        panelRegistrar.setBounds(10, 10, 360, 340);
+
+        setBounds(0, 0, 404, 411);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -123,14 +138,15 @@ public class VentJugador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel panelRegistrar;
+    private javax.swing.JSpinner spinEdad;
+    private javax.swing.JTextField txtAlias;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
