@@ -27,7 +27,7 @@ public class VentTipoTablero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelTipoTablero = new javax.swing.JPanel();
         btnPorDefecto = new javax.swing.JButton();
         btnRandom = new javax.swing.JButton();
 
@@ -40,20 +40,20 @@ public class VentTipoTablero extends javax.swing.JFrame {
         btnRandom.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnRandom.setText("Tablero Random");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelTipoTableroLayout = new javax.swing.GroupLayout(panelTipoTablero);
+        panelTipoTablero.setLayout(panelTipoTableroLayout);
+        panelTipoTableroLayout.setHorizontalGroup(
+            panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTipoTableroLayout.createSequentialGroup()
                 .addGap(121, 121, 121)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnPorDefecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRandom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelTipoTableroLayout.setVerticalGroup(
+            panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTipoTableroLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(btnPorDefecto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -61,8 +61,8 @@ public class VentTipoTablero extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 31, 446, 154);
+        getContentPane().add(panelTipoTablero);
+        panelTipoTablero.setBounds(10, 31, 446, 154);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -105,6 +105,6 @@ public class VentTipoTablero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPorDefecto;
     private javax.swing.JButton btnRandom;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelTipoTablero;
     // End of variables declaration//GEN-END:variables
 }
