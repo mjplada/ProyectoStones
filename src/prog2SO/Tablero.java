@@ -245,7 +245,7 @@ public class Tablero {
                 nuevo = iPatron.replaceFirst("PDS", "SEPARADAS"); 
                 break;
             }
-        }
+        }  
         
         return nuevo;
     }
@@ -442,8 +442,6 @@ public class Tablero {
                         
             }
         }
-            
-
         return s;
     }
     

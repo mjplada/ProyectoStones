@@ -28,7 +28,6 @@ public class Partida {
      private String elGanador;
      
     
-     
     public void setTablero(Tablero iTablero){
         this.miTablero = iTablero;
     } 

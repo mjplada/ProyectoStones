@@ -7,7 +7,7 @@ Notas:
 
 
 Preguntas:
--Preguntar a Kereki donde iniciamos el programa, si en el mismo main o podemos incicar en la ventana de inicio.
+
 -Cuando abrimos una ventana, debemos inicializar la misma o solo la mostramos y ocultamos al cerrar?.
 -En la ventana de "inicio" se deben tener los atributos de todas las otras ventanas?.
 -Cuando navegamos, debemos pasar la clase "Juego" de una ventana a la otra?.
