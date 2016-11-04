@@ -1,9 +1,16 @@
 Notas y Pendientes
 
 Notas:
--Preguntar a Kereki donde iniciamos el programa, si en el mismo main o podemos incicar en la ventana de inicio.
+
 -El el cambio de turno, deshabilitar la grilla de fichas del jugador pasivo.
 -Cuando selecciona dos pierdas, se muestra una ventana con la confirmacion del patron, y los colores para seleccionar.
+
+
+Preguntas:
+-Preguntar a Kereki donde iniciamos el programa, si en el mismo main o podemos incicar en la ventana de inicio.
+-Cuando abrimos una ventana, debemos inicializar la misma o solo la mostramos y ocultamos al cerrar?.
+-En la ventana de "inicio" se deben tener los atributos de todas las otras ventanas?.
+-Cuando navegamos, debemos pasar la clase "Juego" de una ventana a la otra?.
 
 
 
