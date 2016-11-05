@@ -273,6 +273,26 @@ public class Partida {
 
                        break;
                    }
+                   case "SF":{
+                       //nuevo movimiento sacar ficha
+                       if (mov.length==2){
+                            int[] coord = this.coordenadas(mov[1]);
+                            char[][] fRetiradas = this.getTablero().movSacarFicha(coord[0],coord[1]);
+                            if (fRetiradas[0][0]!=' '){
+                                //si se ejecutó el movimiento, coloco las fichas a los jugadores
+                               ArrayList<Character> fichasJugActivo = this.getFichasCorrespondientes(true);
+                               ArrayList<Character> fichasJugPasivo = this.getFichasCorrespondientes(false);
+                               for (int i = 1; i < fRetiradas[0].length; i++) {
+                                    fichasJugPasivo.add(fRetiradas[0][i]);
+                               }
+                               for (int i = 1; i < fRetiradas[1].length; i++) {
+                                    fichasJugActivo.add(fRetiradas[1][i]);
+                               }
+                                ret=true;
+                            }
+                       }
+                       break;
+                   }
            
         }
         } catch (Exception e) {

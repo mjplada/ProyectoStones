@@ -85,6 +85,41 @@ public class Tablero {
         return retorno;       
     }
     
+    public char[][] movSacarFicha (int iFila, int iColu){
+        // Nuevo movimiento SF - sacar ficha
+        //si no se puede realizar la jugada, deuelve retorno[0][0]=' '
+        /*si se puede realizar la jugada juardo en la fila 0, las fichas del jugador pasivo
+        y en la fila 1, las fichas del jugador ativo
+        */
+        char[][] retorno = new char[2][6];
+        char[][] miTabla = this.getTabla();
+        if (!(((miTabla[iFila][iColu]=='#')||(miTabla[iFila][iColu]==' ')||(miTabla[iFila][iColu]!='\u0000')))&&((validarPosicion(iColu-1) && validarPosicion(iFila+1)))){
+            retorno[0][0] = miTabla[iFila][iColu];//la ficha seleccionada va para el jugador pasivo
+            miTabla[iFila][iColu]=' ';
+            int cont =1;//contador para columnas, arranco en 1 por que la pos 0 fue usada para la ficha inicial
+            //recorro fila y saco fichas para el jugador pasivo
+            for (int i=0; i<miTabla.length;i++){
+                if (miTabla[iFila][i]!=' ' && miTabla[iFila][i]!='#' && miTabla[iFila][i]!='\u0000'){
+                    retorno[0][cont] = miTabla[iFila][i];
+                    cont++;
+                }
+            }
+            cont=0;
+            //recorro columna y saco fichas para el jugador activo
+            for (int i=0; i<miTabla[0].length;i++){
+                if (miTabla[i][iColu] != ' ' && miTabla[i][iColu] != '#' && miTabla[i][iColu]!='\u0000'){
+                    retorno[1][cont] = miTabla[i][iColu];
+                    cont++;
+                }
+            }
+        }else {
+            retorno[0][0]=' ';
+        }
+       
+        
+        return retorno;
+    }
+    
     public boolean usarPatron(String iTipoMov, int iFila1, int iColu1, int iFila2, int iColu2){
         /*
         Este metodo recibe un tipo de movimiento, fila y columna de la primera piedra 
