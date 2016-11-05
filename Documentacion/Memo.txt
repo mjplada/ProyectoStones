@@ -16,6 +16,8 @@ Preguntas:
 
 cambios:
 se agrego busqueda en google en la ventana partida
+Manteniendo la misma lógica agregué el nuevo movimiento: función movSacarFicha en la clase tablero
+también ejecute el movimiento en la clase partida, agregé caso SF de Ejecutar Movimiento
 
 
 
