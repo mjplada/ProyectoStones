@@ -14,7 +14,8 @@ Preguntas:
 
 
 
-
+cambios:
+se agrego busqueda en google en la ventana partida
 
 
 

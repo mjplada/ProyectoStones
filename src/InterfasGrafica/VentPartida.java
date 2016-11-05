@@ -6,6 +6,8 @@
 package InterfasGrafica;
 import java.awt.event.*;
 import java.awt.*;
+import java.io.IOException;
+import java.net.*;
 import javax.swing.*;
 import prog2SO.Juego;
 /**
@@ -45,6 +47,8 @@ public class VentPartida extends javax.swing.JFrame {
     private void initComponents() {
 
         panelJuego = new javax.swing.JPanel();
+        btnBuscarGoogle = new javax.swing.JButton();
+        txtBuscarGoogle = new javax.swing.JTextField();
 
         setSize(new java.awt.Dimension(600, 400));
 
@@ -61,13 +65,29 @@ public class VentPartida extends javax.swing.JFrame {
             .addGap(0, 225, Short.MAX_VALUE)
         );
 
+        btnBuscarGoogle.setText("Buscar en Google");
+        btnBuscarGoogle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarGoogleActionPerformed(evt);
+            }
+        });
+
+        txtBuscarGoogle.setToolTipText("Buscar imagen en google");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnBuscarGoogle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -75,11 +95,25 @@ public class VentPartida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(79, 79, 79)
                 .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscarGoogle)
+                    .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarGoogleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarGoogleActionPerformed
+        // TODO add your handling code here:
+        String url = "https://www.google.com.uy/?gws_rd=ssl#q="+this.txtBuscarGoogle.getText().replace(' ','+');
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (URISyntaxException ex) {
+        }catch(IOException e){
+        }
+    }//GEN-LAST:event_btnBuscarGoogleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +171,8 @@ public class VentPartida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarGoogle;
     private javax.swing.JPanel panelJuego;
+    private javax.swing.JTextField txtBuscarGoogle;
     // End of variables declaration//GEN-END:variables
 }
