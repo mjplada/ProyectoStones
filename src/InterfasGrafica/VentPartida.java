@@ -6,9 +6,11 @@
 package InterfasGrafica;
 import java.awt.event.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.*;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import prog2SO.Juego;
 /**
  *
@@ -20,6 +22,7 @@ public class VentPartida extends javax.swing.JFrame {
      * Creates new form VentPartida
      */
     private JButton[][] botones;
+    private File fichero;
     
     public VentPartida(Juego iJuego) {
         initComponents();
@@ -49,6 +52,7 @@ public class VentPartida extends javax.swing.JFrame {
         panelJuego = new javax.swing.JPanel();
         btnBuscarGoogle = new javax.swing.JButton();
         txtBuscarGoogle = new javax.swing.JTextField();
+        btnCargarImg = new javax.swing.JButton();
 
         setSize(new java.awt.Dimension(600, 400));
 
@@ -74,6 +78,13 @@ public class VentPartida extends javax.swing.JFrame {
 
         txtBuscarGoogle.setToolTipText("Buscar imagen en google");
 
+        btnCargarImg.setText("Cargar Imagen de piedra");
+        btnCargarImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarImgActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,8 +98,10 @@ public class VentPartida extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(btnBuscarGoogle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                        .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnCargarImg)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +111,8 @@ public class VentPartida extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarGoogle)
-                    .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCargarImg))
                 .addGap(21, 21, 21))
         );
 
@@ -114,6 +128,26 @@ public class VentPartida extends javax.swing.JFrame {
         }catch(IOException e){
         }
     }//GEN-LAST:event_btnBuscarGoogleActionPerformed
+
+    private void btnCargarImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarImgActionPerformed
+        int resultado;
+        VentCargarImagen ventana = new VentCargarImagen();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
+        ventana.jfcCargarImagen.setFileFilter(filtro);
+        resultado= ventana.jfcCargarImagen.showOpenDialog(null);
+
+        if (JFileChooser.APPROVE_OPTION == resultado){
+            fichero = ventana.jfcCargarImagen.getSelectedFile();
+            try{
+                ImageIcon icon = new ImageIcon(fichero.toString());
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(botones[1][1].getWidth(),botones[1][1].getHeight(),Image.SCALE_DEFAULT));
+               //recorrer botones fuscar piedra y cambiar icono
+                botones[1][1].setIcon( icono );
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);    
+            }
+        }
+    }//GEN-LAST:event_btnCargarImgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +206,7 @@ public class VentPartida extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarGoogle;
+    private javax.swing.JButton btnCargarImg;
     private javax.swing.JPanel panelJuego;
     private javax.swing.JTextField txtBuscarGoogle;
     // End of variables declaration//GEN-END:variables

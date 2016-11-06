@@ -15,9 +15,10 @@ Preguntas:
 
 
 cambios:
-se agrego busqueda en google en la ventana partida
-Manteniendo la misma lógica agregué el nuevo movimiento: función movSacarFicha en la clase tablero
-también ejecute el movimiento en la clase partida, agregé caso SF de Ejecutar Movimiento
+-se agrego busqueda en google en la ventana partida
+-Manteniendo la misma lógica agregué el nuevo movimiento: función movSacarFicha en la clase tablero
+-también ejecute el movimiento en la clase partida, agregé caso SF de Ejecutar Movimiento
+-En ventPartida se agrego el boton Cargar imagen de piedra, y el método para cargar la imagen.-falta recorrer buscar las piedras y cambiar icono
 
 
 
@@ -26,7 +27,6 @@ también ejecute el movimiento en la clase partida, agregé caso SF de Ejecutar 
 Pendientes:
 -Metodo que recibe el nombre de un archivo y guarda los jugadores dentro del mismo. [Marce]
 -Agregar navegabilidad entre Fram´s
--Agregar tipo de movimiento
 -Adaptar ventana de juego al juego anteriormente creado
 -Agregar a la ventana de la partida, fichas de jugadores, piedras, etc.
--Agregar proceso de cambio de foto para las fichas
+-Modificar la acción del boton Cargar imagenes de piedra para que busque las piedras y cambie el icono.
