@@ -85,7 +85,7 @@ public class Tablero {
         return retorno;       
     }
     
-    public char[][] movSacarFicha (int iFila, int iColu){
+public char[][] movSacarFicha (int iFila, int iColu){
         // Nuevo movimiento SF - sacar ficha
         //si no se puede realizar la jugada, deuelve retorno[0][0]=' '
         /*si se puede realizar la jugada juardo en la fila 0, las fichas del jugador pasivo
@@ -93,7 +93,7 @@ public class Tablero {
         */
         char[][] retorno = new char[2][6];
         char[][] miTabla = this.getTabla();
-        if (!(((miTabla[iFila][iColu]=='#')||(miTabla[iFila][iColu]==' ')||(miTabla[iFila][iColu]!='\u0000')))&&((validarPosicion(iColu-1) && validarPosicion(iFila+1)))){
+        if (!(((miTabla[iFila][iColu]=='#')||(miTabla[iFila][iColu]==' ')||(miTabla[iFila][iColu]=='\u0000')))&&((validarPosicion(iColu) && validarPosicion(iFila)))){
             retorno[0][0] = miTabla[iFila][iColu];//la ficha seleccionada va para el jugador pasivo
             miTabla[iFila][iColu]=' ';
             int cont =1;//contador para columnas, arranco en 1 por que la pos 0 fue usada para la ficha inicial
@@ -101,6 +101,7 @@ public class Tablero {
             for (int i=0; i<miTabla.length;i++){
                 if (miTabla[iFila][i]!=' ' && miTabla[iFila][i]!='#' && miTabla[iFila][i]!='\u0000'){
                     retorno[0][cont] = miTabla[iFila][i];
+                    miTabla[iFila][i]=' ';
                     cont++;
                 }
             }
@@ -109,6 +110,7 @@ public class Tablero {
             for (int i=0; i<miTabla[0].length;i++){
                 if (miTabla[i][iColu] != ' ' && miTabla[i][iColu] != '#' && miTabla[i][iColu]!='\u0000'){
                     retorno[1][cont] = miTabla[i][iColu];
+                    miTabla[i][iColu]=' ';
                     cont++;
                 }
             }

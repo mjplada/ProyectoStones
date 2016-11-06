@@ -282,10 +282,10 @@ public class Partida {
                                 //si se ejecutó el movimiento, coloco las fichas a los jugadores
                                ArrayList<Character> fichasJugActivo = this.getFichasCorrespondientes(true);
                                ArrayList<Character> fichasJugPasivo = this.getFichasCorrespondientes(false);
-                               for (int i = 1; i < fRetiradas[0].length; i++) {
+                               for (int i = 0; i < fRetiradas[0].length; i++) {
                                     fichasJugPasivo.add(fRetiradas[0][i]);
                                }
-                               for (int i = 1; i < fRetiradas[1].length; i++) {
+                               for (int i = 0; i < fRetiradas[1].length; i++) {
                                     fichasJugActivo.add(fRetiradas[1][i]);
                                }
                                 ret=true;
