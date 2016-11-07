@@ -82,6 +82,24 @@ public class Juego implements Serializable{
         return ret;
     }
     
+    public void cargarArchivoJugadores(String sArchivo){
+        try {
+                ArchivoLectura archLec = new ArchivoLectura(sArchivo);
+                while(archLec.hayMasLineas()){
+
+                    String[] datos = archLec.linea().split("#");
+                    if(this.unicoAlias(datos[3])){
+                        Jugador j = new Jugador();
+                        j.setAlias(datos[3]);
+                        j.setEdad(Integer.valueOf(datos[2]));
+                        j.setNombre(datos[1]);
+                    }                        
+
+                }
+        } catch (Exception e) {
+        }
+
+    }
     
     
 }
