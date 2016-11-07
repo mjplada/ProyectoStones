@@ -9,7 +9,10 @@ Notas:
 Preguntas:
 
 -Cuando abrimos una ventana, debemos inicializar la misma o solo la mostramos y ocultamos al cerrar?.
+
 -En la ventana de "inicio" se deben tener los atributos de todas las otras ventanas?.
++Si, en la ventana de inicio inicializamos las otras ventanas.
+
 -Cuando navegamos, debemos pasar la clase "Juego" de una ventana a la otra?.
 
 
