@@ -8,7 +8,9 @@ package main;
 import InterfasGrafica.VentInicio;
 //import java.util.*;
 import java.io.*;
+import java.util.Iterator;
 import prog2SO.Juego;
+import prog2SO.Jugador;
 //import prog2SO.Jugador;
 //import prog2SO.Partida;
 
@@ -25,7 +27,10 @@ public class Prog2PO {
         } catch (Exception e) {
          
         }
-        
+        j.cargarTest();
+        Jugador j1 = j.getJugadores().get(1);
+        Jugador j2 = j.getJugadores().get(2);
+        j.iniciarPartida(j1, j2, true);
         VentInicio inicio =  new VentInicio(j);   
          inicio.setVisible(true);
         //MenuInicio(j);

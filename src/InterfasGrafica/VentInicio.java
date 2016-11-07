@@ -12,6 +12,7 @@ import prog2SO.Juego;
  * @author mjpla
  */
 public class VentInicio extends javax.swing.JFrame {
+    private Juego elJuego;
     private VentJugador  vJugador;
     private VentPartida vPartida;
     private VentRanking vRanking;
@@ -24,6 +25,7 @@ public class VentInicio extends javax.swing.JFrame {
     public VentInicio(Juego iJuego) {
         
         initComponents();
+        this.elJuego = iJuego;
         vJugador = new VentJugador();
         vRanking = new VentRanking();
         vTipoTablero = new VentTipoTablero(iJuego);

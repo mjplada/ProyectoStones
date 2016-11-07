@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package InterfasGrafica;
+
 import java.awt.event.*;
 import java.awt.*;
 import java.io.File;
@@ -12,6 +13,7 @@ import java.net.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import prog2SO.Juego;
+
 /**
  *
  * @author mjpla
@@ -26,49 +28,69 @@ public class VentPartida extends javax.swing.JFrame {
     private JButton[][] fichasJ2;
     private JButton[] piedras;
     private File fichero;
-    
+    private Juego elJuego;
+
     public VentPartida(Juego iJuego) {
         initComponents();
+        this.elJuego = iJuego;
         this.setLayout(null);
         // crear botones y agregarlos al panel
         panelJuego.setLayout(new GridLayout(7, 7));
         botones = new JButton[7][7];
         for (int i = 1; i <= 6; i++) {
-        for (int j = 1; j <= 6; j++) {
-        JButton jButton = new JButton();
-        jButton.addActionListener(new ListenerBoton(i, j));
-        panelJuego.add(jButton);
-        botones[i][j] = jButton;
+            for (int j = 1; j <= 6; j++) {
+                JButton jButton = new JButton();
+                jButton.addActionListener(new ListenerBoton(i, j));
+                panelJuego.add(jButton);
+                botones[i][j] = jButton;
+            }
         }
-        }
+        //Probando cosas
         
-        this.panelFichasJ1.setLayout(new GridLayout(4,10));
-        this.panelFichasJ2.setLayout(new GridLayout(4,10));
+        this.actualizarTablero();
+        
+        
+        //Fin de prueba de cosas
+        this.panelFichasJ1.setLayout(new GridLayout(4, 10));
+        this.panelFichasJ2.setLayout(new GridLayout(4, 10));
         fichasJ1 = new JButton[4][10];
         fichasJ2 = new JButton[4][10];
-        for ( int i = 0; i < 4; i++) {
-        for ( int j = 0; j < 10; j++) {
-        JButton jButton = new JButton();
-        JButton jButton2 = new JButton();
-        jButton.addActionListener(new ListenerBotonFicha(i, j,true));
-        jButton2.addActionListener(new ListenerBotonFicha(i, j,false));
-        this.panelFichasJ1.add(jButton);
-        this.panelFichasJ2.add(jButton2);
-        fichasJ1[i][j] = jButton;
-        fichasJ2[i][j]=jButton2;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 10; j++) {
+                JButton jButton = new JButton();
+                JButton jButton2 = new JButton();
+                jButton.addActionListener(new ListenerBotonFicha(i, j, true));
+                jButton2.addActionListener(new ListenerBotonFicha(i, j, false));
+                this.panelFichasJ1.add(jButton);
+                this.panelFichasJ2.add(jButton2);
+                fichasJ1[i][j] = jButton;
+                fichasJ2[i][j] = jButton2;
+            }
+
         }
-        
-        }
-        
-        this.panelPiedras.setLayout(new GridLayout(1,10));
+
+        this.panelPiedras.setLayout(new GridLayout(1, 10));
         piedras = new JButton[10];
-        for (int i=0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             JButton jButton = new JButton();
             jButton.addActionListener(new ListenerBotonPiedra(i));
             this.panelPiedras.add(jButton);
-            piedras[i]=jButton;
+            piedras[i] = jButton;
         }
-        
+
+    }
+    private void actualizarTablero(){
+        char[][] tablero = this.elJuego.getPartida().getTablero().getTabla();
+        try {
+            for (int i = 1; i <= 6; i++) {
+                for (int j = 1; j <= 6; j++) {
+                    botones[i][j].setText(String.valueOf(tablero[i-1][j-1]));
+                    
+                }
+                
+            }
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -252,30 +274,30 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnBuscarGoogleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarGoogleActionPerformed
         // TODO add your handling code here:
-        String url = "https://www.google.com.uy/?gws_rd=ssl#q="+this.txtBuscarGoogle.getText().replace(' ','+');
+        String url = "https://www.google.com.uy/?gws_rd=ssl#q=" + this.txtBuscarGoogle.getText().replace(' ', '+');
         try {
             Desktop.getDesktop().browse(new URI(url));
         } catch (URISyntaxException ex) {
-        }catch(IOException e){
+        } catch (IOException e) {
         }
     }//GEN-LAST:event_btnBuscarGoogleActionPerformed
 
     private void btnCargarImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarImgActionPerformed
         int resultado;
         VentCargarImagen ventana = new VentCargarImagen();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG", "jpg", "png");
         ventana.jfcCargarImagen.setFileFilter(filtro);
-        resultado= ventana.jfcCargarImagen.showOpenDialog(null);
+        resultado = ventana.jfcCargarImagen.showOpenDialog(null);
 
-        if (JFileChooser.APPROVE_OPTION == resultado){
+        if (JFileChooser.APPROVE_OPTION == resultado) {
             fichero = ventana.jfcCargarImagen.getSelectedFile();
-            try{
+            try {
                 ImageIcon icon = new ImageIcon(fichero.toString());
-                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(botones[1][1].getWidth(),botones[1][1].getHeight(),Image.SCALE_DEFAULT));
-               //recorrer botones fuscar piedra y cambiar icono
-                botones[1][1].setIcon( icono );
-            }catch(Exception ex){
-                JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);    
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(botones[1][1].getWidth(), botones[1][1].getHeight(), Image.SCALE_DEFAULT));
+                //recorrer botones fuscar piedra y cambiar icono
+                botones[1][1].setIcon(icono);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error abriendo la imagen " + ex);
             }
         }
     }//GEN-LAST:event_btnCargarImgActionPerformed
@@ -315,56 +337,64 @@ public class VentPartida extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
-    
     private class ListenerBoton implements ActionListener {
-    private int x;
-    private int y;
-    public ListenerBoton(int i, int j) {
-    // en el constructor se almacena la fila y columna que se presionó
-    x = i;
-    y = j;
+
+        private int x;
+        private int y;
+
+        public ListenerBoton(int i, int j) {
+            // en el constructor se almacena la fila y columna que se presionó
+            x = i;
+            y = j;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            // cuando se presiona un botón, se ejecutará este método
+            clickBoton(x, y);
+        }
     }
-    public void actionPerformed(ActionEvent e) {
-    // cuando se presiona un botón, se ejecutará este método
-    clickBoton(x, y);
-    }
-    }
+
     private void clickBoton(int fila, int columna) {
-    // Método a completar!.
-    // En fila y columna se reciben las coordenas donde presionó el usuario, relativas al comienzo de la grilla
-    // fila 1 y columna 1 corresponden a la posición de arriba a la izquierda.
-    // Debe indicarse cómo responder al click de ese botón.
+        // Método a completar!.
+        // En fila y columna se reciben las coordenas donde presionó el usuario, relativas al comienzo de la grilla
+        // fila 1 y columna 1 corresponden a la posición de arriba a la izquierda.
+        // Debe indicarse cómo responder al click de ese botón.
     }
-    
+
     private class ListenerBotonPiedra implements ActionListener {
-    private int x;
-    public ListenerBotonPiedra(int i) {
-    // en el constructor se almacena el indice que se presionó
-    x = i;
+
+        private int x;
+
+        public ListenerBotonPiedra(int i) {
+            // en el constructor se almacena el indice que se presionó
+            x = i;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            // cuando se presiona un botón, se ejecutará este método
+
+        }
     }
-    public void actionPerformed(ActionEvent e) {
-    // cuando se presiona un botón, se ejecutará este método
-    
-    }
-    }
-    
+
     private class ListenerBotonFicha implements ActionListener {
-    private int x;
-    private int y;
-    private boolean esElJugador1;
-    public ListenerBotonFicha(int i, int j, boolean esJugador1) {
-    // en el constructor se almacena el indice que se presionó
-    x = i;
-    y= j;
-    esElJugador1 = esJugador1;
+
+        private int x;
+        private int y;
+        private boolean esElJugador1;
+
+        public ListenerBotonFicha(int i, int j, boolean esJugador1) {
+            // en el constructor se almacena el indice que se presionó
+            x = i;
+            y = j;
+            esElJugador1 = esJugador1;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            // cuando se presiona un botón, se ejecutará este método
+
+        }
     }
-    public void actionPerformed(ActionEvent e) {
-    // cuando se presiona un botón, se ejecutará este método
-    
-    }
-    }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarGoogle;
