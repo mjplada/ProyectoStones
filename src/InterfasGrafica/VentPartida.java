@@ -22,6 +22,9 @@ public class VentPartida extends javax.swing.JFrame {
      * Creates new form VentPartida
      */
     private JButton[][] botones;
+    private JButton[][] fichasJ1;
+    private JButton[][] fichasJ2;
+    private JButton[] piedras;
     private File fichero;
     
     public VentPartida(Juego iJuego) {
@@ -37,7 +40,35 @@ public class VentPartida extends javax.swing.JFrame {
         panelJuego.add(jButton);
         botones[i][j] = jButton;
         }
-}
+        }
+        
+        this.panelFichasJ1.setLayout(new GridLayout(4,10));
+        this.panelFichasJ2.setLayout(new GridLayout(4,10));
+        fichasJ1 = new JButton[4][10];
+        fichasJ2 = new JButton[4][10];
+        for ( int i = 0; i < 4; i++) {
+        for ( int j = 0; j < 10; j++) {
+        JButton jButton = new JButton();
+        JButton jButton2 = new JButton();
+        jButton.addActionListener(new ListenerBotonFicha(i, j,true));
+        jButton2.addActionListener(new ListenerBotonFicha(i, j,false));
+        this.panelFichasJ1.add(jButton);
+        this.panelFichasJ2.add(jButton2);
+        fichasJ1[i][j] = jButton;
+        fichasJ2[i][j]=jButton2;
+        }
+        
+        }
+        
+        this.panelPiedras.setLayout(new GridLayout(1,10));
+        piedras = new JButton[10];
+        for (int i=0;i<10;i++){
+            JButton jButton = new JButton();
+            jButton.addActionListener(new ListenerBotonPiedra(i));
+            this.panelPiedras.add(jButton);
+            piedras[i]=jButton;
+        }
+        
     }
 
     /**
@@ -50,9 +81,17 @@ public class VentPartida extends javax.swing.JFrame {
     private void initComponents() {
 
         panelJuego = new javax.swing.JPanel();
+        panelImagenes = new javax.swing.JPanel();
         btnBuscarGoogle = new javax.swing.JButton();
         txtBuscarGoogle = new javax.swing.JTextField();
         btnCargarImg = new javax.swing.JButton();
+        lblTurno = new javax.swing.JLabel();
+        panelFichasJ1 = new javax.swing.JPanel();
+        panelFichasJ2 = new javax.swing.JPanel();
+        lblJugador1 = new javax.swing.JLabel();
+        lblJugador2 = new javax.swing.JLabel();
+        lblPiedras = new javax.swing.JLabel();
+        panelPiedras = new javax.swing.JPanel();
 
         setSize(new java.awt.Dimension(600, 400));
 
@@ -62,11 +101,11 @@ public class VentPartida extends javax.swing.JFrame {
         panelJuego.setLayout(panelJuegoLayout);
         panelJuegoLayout.setHorizontalGroup(
             panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGap(0, 314, Short.MAX_VALUE)
         );
         panelJuegoLayout.setVerticalGroup(
             panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 225, Short.MAX_VALUE)
+            .addGap(0, 314, Short.MAX_VALUE)
         );
 
         btnBuscarGoogle.setText("Buscar en Google");
@@ -85,35 +124,127 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout panelImagenesLayout = new javax.swing.GroupLayout(panelImagenes);
+        panelImagenes.setLayout(panelImagenesLayout);
+        panelImagenesLayout.setHorizontalGroup(
+            panelImagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelImagenesLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(btnBuscarGoogle)
+                .addGap(18, 18, 18)
+                .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(btnCargarImg)
+                .addGap(45, 45, 45))
+        );
+        panelImagenesLayout.setVerticalGroup(
+            panelImagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImagenesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelImagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscarGoogle)
+                    .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCargarImg))
+                .addContainerGap())
+        );
+
+        lblTurno.setText("lblTurno");
+
+        javax.swing.GroupLayout panelFichasJ1Layout = new javax.swing.GroupLayout(panelFichasJ1);
+        panelFichasJ1.setLayout(panelFichasJ1Layout);
+        panelFichasJ1Layout.setHorizontalGroup(
+            panelFichasJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelFichasJ1Layout.setVerticalGroup(
+            panelFichasJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelFichasJ2Layout = new javax.swing.GroupLayout(panelFichasJ2);
+        panelFichasJ2.setLayout(panelFichasJ2Layout);
+        panelFichasJ2Layout.setHorizontalGroup(
+            panelFichasJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelFichasJ2Layout.setVerticalGroup(
+            panelFichasJ2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        lblJugador1.setText("lblJugador1");
+
+        lblJugador2.setText("lblJugador2");
+
+        lblPiedras.setText("lblPiedras");
+
+        javax.swing.GroupLayout panelPiedrasLayout = new javax.swing.GroupLayout(panelPiedras);
+        panelPiedras.setLayout(panelPiedrasLayout);
+        panelPiedrasLayout.setHorizontalGroup(
+            panelPiedrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 393, Short.MAX_VALUE)
+        );
+        panelPiedrasLayout.setVerticalGroup(
+            panelPiedrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 25, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTurno))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(btnBuscarGoogle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnCargarImg)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblJugador2)
+                            .addComponent(lblPiedras)
+                            .addComponent(lblJugador1))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelPiedras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelFichasJ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelFichasJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscarGoogle)
-                    .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCargarImg))
-                .addGap(21, 21, 21))
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTurno)
+                        .addGap(311, 311, 311))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelFichasJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelFichasJ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblJugador1)
+                        .addGap(88, 88, 88)
+                        .addComponent(lblJugador2)
+                        .addGap(84, 84, 84)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelPiedras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 47, Short.MAX_VALUE)
+                        .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPiedras)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -184,6 +315,8 @@ public class VentPartida extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+
+    
     private class ListenerBoton implements ActionListener {
     private int x;
     private int y;
@@ -203,11 +336,48 @@ public class VentPartida extends javax.swing.JFrame {
     // fila 1 y columna 1 corresponden a la posición de arriba a la izquierda.
     // Debe indicarse cómo responder al click de ese botón.
     }
+    
+    private class ListenerBotonPiedra implements ActionListener {
+    private int x;
+    public ListenerBotonPiedra(int i) {
+    // en el constructor se almacena el indice que se presionó
+    x = i;
+    }
+    public void actionPerformed(ActionEvent e) {
+    // cuando se presiona un botón, se ejecutará este método
+    
+    }
+    }
+    
+    private class ListenerBotonFicha implements ActionListener {
+    private int x;
+    private int y;
+    private boolean esElJugador1;
+    public ListenerBotonFicha(int i, int j, boolean esJugador1) {
+    // en el constructor se almacena el indice que se presionó
+    x = i;
+    y= j;
+    esElJugador1 = esJugador1;
+    }
+    public void actionPerformed(ActionEvent e) {
+    // cuando se presiona un botón, se ejecutará este método
+    
+    }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarGoogle;
     private javax.swing.JButton btnCargarImg;
+    private javax.swing.JLabel lblJugador1;
+    private javax.swing.JLabel lblJugador2;
+    private javax.swing.JLabel lblPiedras;
+    private javax.swing.JLabel lblTurno;
+    private javax.swing.JPanel panelFichasJ1;
+    private javax.swing.JPanel panelFichasJ2;
+    private javax.swing.JPanel panelImagenes;
     private javax.swing.JPanel panelJuego;
+    private javax.swing.JPanel panelPiedras;
     private javax.swing.JTextField txtBuscarGoogle;
     // End of variables declaration//GEN-END:variables
 }

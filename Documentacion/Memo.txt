@@ -29,4 +29,4 @@ Pendientes:
 -Agregar navegabilidad entre Fram´s
 -Adaptar ventana de juego al juego anteriormente creado
 -Agregar a la ventana de la partida, fichas de jugadores, piedras, etc.
--Modificar la acción del boton Cargar imagenes de piedra para que busque las piedras y cambie el icono.
+-Modificar la acción del boton "Cargar imagenes de piedra" para que busque las piedras y cambie el icono.
