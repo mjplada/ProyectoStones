@@ -74,10 +74,12 @@ public class Juego implements Serializable{
     public boolean unicoAlias(String iAlias){
         //devuelve false su existe el alias
         boolean ret=true ;
+        Jugador j  = new Jugador();
+        j.setAlias(iAlias);
             Iterator<Jugador> iter = this.getJugadores().iterator();
             while( (iter.hasNext()) && ret){
                 Jugador aux = iter.next();
-                ret=!aux.getAlias().toUpperCase().equals(iAlias.toUpperCase());
+                ret=!aux.equals(j);
             }
         return ret;
     }
@@ -88,12 +90,25 @@ public class Juego implements Serializable{
                 while(archLec.hayMasLineas()){
 
                     String[] datos = archLec.linea().split("#");
+                    Jugador j = new Jugador();
+                    j.setAlias(datos[3]);
                     if(this.unicoAlias(datos[3])){
-                        Jugador j = new Jugador();
-                        j.setAlias(datos[3]);
+                        
                         j.setEdad(Integer.valueOf(datos[2]));
                         j.setNombre(datos[1]);
-                    }                        
+                        this.getJugadores().add(j);
+                    } else{
+                        
+                        Iterator<Jugador> iter = this.getJugadores().iterator();
+                        while( (iter.hasNext())){
+                        Jugador aux = iter.next();
+                        if (aux.equals(j)) {
+                             aux.setEdad(Integer.parseInt(datos[2]));
+                             aux.setNombre(datos[1]);
+                        }
+                    }
+                        
+                    }
 
                 }
         } catch (Exception e) {

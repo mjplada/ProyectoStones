@@ -14,6 +14,7 @@ Preguntas:
 +Si, en la ventana de inicio inicializamos las otras ventanas.
 
 -Cuando navegamos, debemos pasar la clase "Juego" de una ventana a la otra?.
+-Cambiamos la representacion de las fichas y las pierdas? o solo cambiamos la imagen de la piedra en la ventana.
 
 
 
@@ -28,7 +29,6 @@ cambios:
 
 
 Pendientes:
--Metodo que recibe el nombre de un archivo y guarda los jugadores dentro del mismo. [Marce]
 -Agregar navegabilidad entre Fram´s
 -Adaptar ventana de juego al juego anteriormente creado
 -Agregar a la ventana de la partida, fichas de jugadores, piedras, etc.

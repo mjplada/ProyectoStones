@@ -80,7 +80,7 @@ public class Jugador implements Comparable<Jugador> {
     
      @Override
     public boolean equals(Object obj){
-        return this.getAlias().equals(((Jugador)obj).getAlias());
+        return this.getAlias().toUpperCase().equals(((Jugador)obj).getAlias().toUpperCase());
     }
     
     public int getPerdidas(){
