@@ -6,7 +6,7 @@
 package InterfasGrafica;
 
 import java.awt.Dimension;
-import prog2SO.Juego;
+import Dominio.Juego;
 
 /**
  *

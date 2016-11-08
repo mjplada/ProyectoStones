@@ -7,12 +7,11 @@ package InterfasGrafica;
 
 import java.awt.event.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import prog2SO.Juego;
+import Dominio.Juego;
 
 /**
  *

@@ -5,17 +5,22 @@
  */
 package InterfasGrafica;
 
+import Dominio.Juego;
+
 /**
  *
  * @author mjpla
  */
 public class VentRanking extends javax.swing.JFrame {
+    
+    private Juego elJuego;
 
     /**
      * Creates new form VentRanking
      */
-    public VentRanking() {
+    public VentRanking(Juego unJuego) {
         initComponents();
+        this.elJuego = unJuego;
     }
 
     /**

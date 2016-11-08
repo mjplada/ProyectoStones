@@ -5,17 +5,21 @@
  */
 package InterfasGrafica;
 
+import Dominio.Juego;
+
 /**
  *
  * @author Llote
  */
 public class VentJugador extends javax.swing.JFrame {
 
+    private Juego elJuego;
     /**
      * Creates new form VentJugador
      */
-    public VentJugador() {
+    public VentJugador(Juego unJuego) {
         initComponents();
+        this.elJuego = unJuego;
     }
 
     /**

@@ -5,7 +5,7 @@
  */
 package InterfasGrafica;
 
-import prog2SO.Juego;
+import Dominio.Juego;
 
 /**
  *
@@ -13,10 +13,7 @@ import prog2SO.Juego;
  */
 public class VentInicio extends javax.swing.JFrame {
     private Juego elJuego;
-    private VentJugador  vJugador;
-    private VentPartida vPartida;
-    private VentRanking vRanking;
-    private VentTipoTablero vTipoTablero;
+
     
     /**
      * Creates new form VentInicio
@@ -26,9 +23,6 @@ public class VentInicio extends javax.swing.JFrame {
         
         initComponents();
         this.elJuego = iJuego;
-        vJugador = new VentJugador();
-        vRanking = new VentRanking();
-        vTipoTablero = new VentTipoTablero(iJuego);
         
     }
 
@@ -130,17 +124,20 @@ public class VentInicio extends javax.swing.JFrame {
 
     private void btnRegJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegJugadorActionPerformed
         // TODO add your handling code here:
+        VentJugador vJugador = new VentJugador(elJuego);
        vJugador.setVisible(true);
     }//GEN-LAST:event_btnRegJugadorActionPerformed
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
+        VentTipoTablero vTipoTablero = new VentTipoTablero(elJuego);
         vTipoTablero.setVisible(true);
        // vPartida.setVisible(true);
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        VentRanking vRanking = new VentRanking(elJuego);
         vRanking.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -9,8 +9,8 @@ import InterfasGrafica.VentInicio;
 //import java.util.*;
 import java.io.*;
 import java.util.Iterator;
-import prog2SO.Juego;
-import prog2SO.Jugador;
+import Dominio.Juego;
+import Dominio.Jugador;
 //import prog2SO.Jugador;
 //import prog2SO.Partida;
 
