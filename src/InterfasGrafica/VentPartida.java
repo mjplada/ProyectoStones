@@ -359,6 +359,12 @@ public class VentPartida extends javax.swing.JFrame {
         // En fila y columna se reciben las coordenas donde presionó el usuario, relativas al comienzo de la grilla
         // fila 1 y columna 1 corresponden a la posición de arriba a la izquierda.
         // Debe indicarse cómo responder al click de ese botón.
+        if (this.botones[fila][columna].getBackground()==Color.lightGray) {
+             this.botones[fila][columna].setBackground(null);
+        } else {
+            this.botones[fila][columna].setBackground(Color.lightGray);
+        }
+        
     }
 
     private class ListenerBotonPiedra implements ActionListener {
