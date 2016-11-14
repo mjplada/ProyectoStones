@@ -56,7 +56,7 @@ public class VentJugador extends javax.swing.JFrame {
         txtNombre.setToolTipText("");
         txtNombre.setName("txtNombre"); // NOI18N
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(150, 110, 164, 20);
+        txtNombre.setBounds(70, 110, 164, 20);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel1.setText("Regitro Jugador");
@@ -66,15 +66,15 @@ public class VentJugador extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(80, 120, 60, 14);
+        jLabel2.setBounds(20, 110, 60, 14);
 
         jLabel3.setText("Alias:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(100, 170, 26, 14);
+        jLabel3.setBounds(20, 150, 26, 14);
 
         jLabel4.setText("Edad:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(100, 220, 28, 14);
+        jLabel4.setBounds(20, 190, 28, 14);
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.setToolTipText("");
@@ -85,7 +85,7 @@ public class VentJugador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegistrar);
-        btnRegistrar.setBounds(90, 300, 90, 40);
+        btnRegistrar.setBounds(80, 250, 90, 40);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setName("btnCancelar"); // NOI18N
@@ -95,21 +95,21 @@ public class VentJugador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCancelar);
-        btnCancelar.setBounds(240, 300, 90, 40);
+        btnCancelar.setBounds(230, 250, 90, 40);
 
         txtAlias.setName("txtAlias"); // NOI18N
         getContentPane().add(txtAlias);
-        txtAlias.setBounds(150, 160, 160, 20);
+        txtAlias.setBounds(70, 150, 160, 20);
         getContentPane().add(txtEdad);
-        txtEdad.setBounds(150, 220, 60, 20);
+        txtEdad.setBounds(70, 190, 60, 20);
         getContentPane().add(lblAviso);
         lblAviso.setBounds(30, 260, 360, 16);
         getContentPane().add(lbl_errNombre);
-        lbl_errNombre.setBounds(320, 110, 0, 20);
+        lbl_errNombre.setBounds(240, 110, 160, 20);
         getContentPane().add(lbl_errAlias);
-        lbl_errAlias.setBounds(320, 160, 0, 20);
+        lbl_errAlias.setBounds(240, 150, 160, 20);
         getContentPane().add(lbl_errEdad);
-        lbl_errEdad.setBounds(220, 220, 0, 0);
+        lbl_errEdad.setBounds(140, 190, 240, 20);
 
         setBounds(0, 0, 422, 411);
     }// </editor-fold>//GEN-END:initComponents
