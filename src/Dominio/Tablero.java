@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package Dominio;
+import java.awt.Image;
 import java.util.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -425,18 +428,19 @@ public char[][] movSacarFicha (int iFila, int iColu){
     @Override
     public String toString(){
         String ret = "";
-        char[][] eltablero = this.dibujaTabla();
-        for (int i =0; i<eltablero.length;i++){
-            for(int j=0; j<eltablero[i].length;j++){
-                ret = ret + this.setColores(eltablero[i][j]);
-            }
-            ret = ret + "\n";
-        }
+//        char[][] eltablero = this.dibujaTabla();
+//        for (int i =0; i<eltablero.length;i++){
+//            for(int j=0; j<eltablero[i].length;j++){
+//                ret = ret + this.setColores(eltablero[i][j]);
+//            }
+//            ret = ret + "\n";
+//        }
         return ret;
     }
     
-    public String setColores(char iChar){
-        String s="";
+    public Icon setColores(char iChar){
+        ImageIcon icon = new ImageIcon("vacio.png");
+        Icon icono = new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
 //    public static final String ANSI_RESET = "\u001B[0m";
 //    public static final String ANSI_RED = "\u001B[31m";
 //    public static final String ANSI_GREEN = "\u001B[32m";
@@ -444,31 +448,41 @@ public char[][] movSacarFicha (int iFila, int iColu){
 //    public static final String ANSI_BLUE = "\u001B[34m";
 //    public static final String ANSI_CYAN = "\u001B[36m";
 //    public static final String ANSI_WHITE = "\u001B[37m";
-        if ((iChar=='-')||(iChar=='+')||(iChar=='|')){
-            s="\u001B[37m"+iChar;
-        }else{
-            if (((iChar=='1')||(iChar=='2')||(iChar=='3'))||(iChar=='4')||(iChar=='5')||(iChar=='6')||(iChar=='A')||(iChar=='B')||(iChar=='C')||(iChar=='D')||(iChar=='E')||(iChar=='F')){
-                s="\u001B[33m"+iChar;
-            }else{
+//        if ((iChar=='-')||(iChar=='+')||(iChar=='|')){
+//            s="\u001B[37m"+iChar;
+//        }else{
+//            if (((iChar=='1')||(iChar=='2')||(iChar=='3'))||(iChar=='4')||(iChar=='5')||(iChar=='6')||(iChar=='A')||(iChar=='B')||(iChar=='C')||(iChar=='D')||(iChar=='E')||(iChar=='F')){
+//                s="\u001B[33m"+iChar;
+//            }else{
                 if(iChar=='a'){
-                    s="\u001B[34m"+'\u0398';
+                    icon = new ImageIcon("azul.png");
+                    icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+                   
                 }else{
                     if(iChar=='c'){
-                    s="\u001B[36m"+'\u0398';
+                      icon = new ImageIcon("celeste.png");
+                      icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                    s="\u001B[36m"+'\u0398';
                     }else{
                         if(iChar=='v'){
-                        s="\u001B[32m"+'\u0398';
+                            icon = new ImageIcon("verde.png");
+                            icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                        s="\u001B[32m"+'\u0398';
                         }else{
                             if(iChar=='r'){
-                            s="\u001B[31m"+'\u0398';
+                                 icon = new ImageIcon("rojo.png");
+                                icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                            s="\u001B[31m"+'\u0398';
                             }else {
                                 if(iChar=='#'){
-                                s="\033[30m"+iChar;
-                                }else{
-                                    if(iChar==' '){
-                                        s=""+iChar;
-                                    }
-                                }
+                                     icon = new ImageIcon("piedra.png");
+                                     icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                                s="\033[30m"+iChar;
+                                }//else{
+//                                    if(iChar==' '){
+//                                        s=""+iChar;
+//                                    }
+//                                }
                                     
                             }
                             
@@ -477,9 +491,9 @@ public char[][] movSacarFicha (int iFila, int iColu){
                     }
                 }
                         
-            }
-        }
-        return s;
+//            }
+//        }
+        return icono;
     }
     
     

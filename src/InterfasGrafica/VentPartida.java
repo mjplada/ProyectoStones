@@ -10,6 +10,7 @@ import java.awt.*;
 import java.io.*;
 import java.net.*;
 import javax.swing.*;
+import java.util.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import Dominio.Juego;
 
@@ -44,12 +45,6 @@ public class VentPartida extends javax.swing.JFrame {
                 botones[i][j] = jButton;
             }
         }
-        //Probando cosas
-        
-        this.actualizarTablero();
-        
-        
-        //Fin de prueba de cosas
         this.panelFichasJ1.setLayout(new GridLayout(4, 10));
         this.panelFichasJ2.setLayout(new GridLayout(4, 10));
         fichasJ1 = new JButton[4][10];
@@ -76,22 +71,44 @@ public class VentPartida extends javax.swing.JFrame {
             this.panelPiedras.add(jButton);
             piedras[i] = jButton;
         }
+        //Probando cosas
+        
+        this.actualizarTablero();
+        
+        
+        //Fin de prueba de cosas
 
     }
     private void actualizarTablero(){
         char[][] tablero = this.elJuego.getPartida().getTablero().getTabla();
+        ArrayList<Character> auxFichasJ1 = this.elJuego.getPartida().getJ1Fichas();
+        ArrayList<Character> auxFichasJ2 = this.elJuego.getPartida().getJ2Fichas();
+        int auxPiedras = this.elJuego.getPartida().getPiedrasNegras();
         try {
+            //tablero
             for (int i = 1; i <= 6; i++) {
                 for (int j = 1; j <= 6; j++) {
-                    botones[i][j].setText(String.valueOf(tablero[i-1][j-1]));
-                    
+                    botones[i][j].setName(String.valueOf(tablero[i-1][j-1]));
+                    botones[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tablero[i-1][j-1]));
                 }
-                
             }
+           //piedras
+            ImageIcon icon = new ImageIcon("piedra.png");
+            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(20,20, Image.SCALE_DEFAULT));
+            for (int i =0;i<auxPiedras;i++){
+               this.piedras[i].setIcon(icono);
+           }
+         
+            
         } catch (Exception e) {
+            System.out.println(e.toString());
         }
+        
+        
+        
     }
-
+   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -193,21 +210,21 @@ public class VentPartida extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        lblJugador1.setText("lblJugador1");
+        lblJugador1.setText("Jugador1");
 
-        lblJugador2.setText("lblJugador2");
+        lblJugador2.setText("Jugador2");
 
-        lblPiedras.setText("lblPiedras");
+        lblPiedras.setText("Piedras");
 
         javax.swing.GroupLayout panelPiedrasLayout = new javax.swing.GroupLayout(panelPiedras);
         panelPiedras.setLayout(panelPiedrasLayout);
         panelPiedrasLayout.setHorizontalGroup(
             panelPiedrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGap(0, 407, Short.MAX_VALUE)
         );
         panelPiedrasLayout.setVerticalGroup(
             panelPiedrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
+            .addGap(0, 35, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,9 +247,9 @@ public class VentPartida extends javax.swing.JFrame {
                             .addComponent(lblJugador1))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelPiedras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panelFichasJ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelFichasJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(panelFichasJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelPiedras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
@@ -259,13 +276,18 @@ public class VentPartida extends javax.swing.JFrame {
                         .addGap(84, 84, 84)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(panelPiedras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 47, Short.MAX_VALUE)
-                        .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPiedras)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 72, Short.MAX_VALUE)
+                                .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPiedras)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
 
         pack();
@@ -295,10 +317,16 @@ public class VentPartida extends javax.swing.JFrame {
                 Icon icono = new ImageIcon(icon.getImage().getScaledInstance(botones[1][1].getWidth(), botones[1][1].getHeight(), Image.SCALE_DEFAULT));
                 //recorrer botones fuscar piedra y cambiar icono
                 botones[1][1].setIcon(icono);
+                int auxPiedras = this.elJuego.getPartida().getPiedrasNegras();
+                for (int i =0;i<auxPiedras;i++){
+                     this.piedras[i].setIcon(icono);
+                }
+                
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error abriendo la imagen " + ex);
             }
         }
+        
     }//GEN-LAST:event_btnCargarImgActionPerformed
 
     /**
@@ -364,21 +392,32 @@ public class VentPartida extends javax.swing.JFrame {
             this.botones[fila][columna].setBackground(Color.lightGray);
         }
         
+        
     }
 
     private class ListenerBotonPiedra implements ActionListener {
 
-        private int x;
+        private int indice;
+        private float coordX;
+        private float coordY;
 
         public ListenerBotonPiedra(int i) {
             // en el constructor se almacena el indice que se presionó
-            x = i;
+            indice = i;
+           
         }
-
+        
         public void actionPerformed(ActionEvent e) {
-            // cuando se presiona un botón, se ejecutará este método
-
+            // cuando se presiona un botón, se ejecutará este método    
+          
         }
+        
+        private void clickBoton() {
+        // Método a completar!.
+        // En fila y columna se reciben las coordenas donde presionó el usuario, relativas al comienzo de la grilla
+        // fila 1 y columna 1 corresponden a la posición de arriba a la izquierda.
+        // Debe indicarse cómo responder al click de ese botón.
+         }
     }
 
     private class ListenerBotonFicha implements ActionListener {
@@ -392,6 +431,7 @@ public class VentPartida extends javax.swing.JFrame {
             x = i;
             y = j;
             esElJugador1 = esJugador1;
+            
         }
 
         public void actionPerformed(ActionEvent e) {

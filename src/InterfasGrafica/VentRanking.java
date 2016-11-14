@@ -6,6 +6,9 @@
 package InterfasGrafica;
 
 import Dominio.Juego;
+import Dominio.Jugador;
+import java.util.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +24,7 @@ public class VentRanking extends javax.swing.JFrame {
     public VentRanking(Juego unJuego) {
         initComponents();
         this.elJuego = unJuego;
+        ranking();
     }
 
     /**
@@ -33,19 +37,12 @@ public class VentRanking extends javax.swing.JFrame {
     private void initComponents() {
 
         panelRanking = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listJugadores = new javax.swing.JList<>();
         btnCerrar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaRanking = new javax.swing.JTable();
 
         setTitle("Ranking de Jugadres");
         getContentPane().setLayout(null);
-
-        listJugadores.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(listJugadores);
 
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -54,36 +51,81 @@ public class VentRanking extends javax.swing.JFrame {
             }
         });
 
+        tablaRanking.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Alias", "Edad", "Ganadas", "Perdidas"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaRanking.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaRanking);
+
         javax.swing.GroupLayout panelRankingLayout = new javax.swing.GroupLayout(panelRanking);
         panelRanking.setLayout(panelRankingLayout);
         panelRankingLayout.setHorizontalGroup(
             panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRankingLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
             .addGroup(panelRankingLayout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(btnCerrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRankingLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRankingLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         panelRankingLayout.setVerticalGroup(
             panelRankingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRankingLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(btnCerrar))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRankingLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelRanking);
-        panelRanking.setBounds(10, 19, 380, 260);
+        panelRanking.setBounds(10, 19, 560, 380);
 
-        setBounds(0, 0, 416, 339);
+        setBounds(0, 0, 619, 462);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ranking(){
+       ArrayList<Jugador> aux = this.elJuego.getRanking();
+        Iterator<Jugador> iter = aux.iterator();
+        DefaultTableModel modelo=(DefaultTableModel) this.tablaRanking.getModel();
+        while (iter.hasNext()){
+            Jugador unJugador = iter.next();
+            Object [] fila=new Object[5];
+            fila[0]=unJugador.getNombre();
+            fila[1]=unJugador.getAlias();
+            fila[2]=unJugador.getEdad();
+            fila[3]=unJugador.getGanadas();
+            fila[4]=unJugador.getPerdidas();
+            modelo.addRow(fila);
+        }
+        this.tablaRanking.setModel(modelo);
+    }
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
 //    /**
@@ -124,7 +166,7 @@ public class VentRanking extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listJugadores;
     private javax.swing.JPanel panelRanking;
+    private javax.swing.JTable tablaRanking;
     // End of variables declaration//GEN-END:variables
 }

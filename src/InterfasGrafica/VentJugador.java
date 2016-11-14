@@ -6,6 +6,8 @@
 package InterfasGrafica;
 
 import Dominio.Juego;
+import Dominio.Jugador;
+import java.util.Iterator;
 
 /**
  *
@@ -39,9 +41,10 @@ public class VentJugador extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         txtAlias = new javax.swing.JTextField();
-        spinEdad = new javax.swing.JSpinner();
-        panelRegistrar = new javax.swing.JPanel();
+        txtEdad = new javax.swing.JTextField();
+        lblAviso = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -72,8 +75,13 @@ public class VentJugador extends javax.swing.JFrame {
         btnRegistrar.setText("Registrar");
         btnRegistrar.setToolTipText("");
         btnRegistrar.setName("btnRegistrar"); // NOI18N
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRegistrar);
-        btnRegistrar.setBounds(90, 290, 90, 40);
+        btnRegistrar.setBounds(90, 300, 90, 40);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setName("btnCancelar"); // NOI18N
@@ -83,38 +91,56 @@ public class VentJugador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCancelar);
-        btnCancelar.setBounds(240, 290, 90, 40);
+        btnCancelar.setBounds(240, 300, 90, 40);
 
         txtAlias.setName("txtAlias"); // NOI18N
         getContentPane().add(txtAlias);
         txtAlias.setBounds(150, 160, 160, 22);
-
-        spinEdad.setName("spinEdad"); // NOI18N
-        getContentPane().add(spinEdad);
-        spinEdad.setBounds(150, 210, 50, 22);
-
-        javax.swing.GroupLayout panelRegistrarLayout = new javax.swing.GroupLayout(panelRegistrar);
-        panelRegistrar.setLayout(panelRegistrarLayout);
-        panelRegistrarLayout.setHorizontalGroup(
-            panelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        panelRegistrarLayout.setVerticalGroup(
-            panelRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelRegistrar);
-        panelRegistrar.setBounds(10, 10, 360, 340);
+        getContentPane().add(txtEdad);
+        txtEdad.setBounds(150, 220, 60, 22);
+        getContentPane().add(lblAviso);
+        lblAviso.setBounds(30, 260, 360, 16);
 
         setBounds(0, 0, 422, 411);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        this.dispose();
+       
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+        if (!this.txtNombre.getText().equals("") && !this.txtAlias.getText().equals("") && !this.txtEdad.getText().equals("")){
+            String nombre = this.txtNombre.getText();
+            String alias = this.txtAlias.getText();
+            int edad = Integer.parseInt(this.txtEdad.getText());
+             Jugador unJugador = new Jugador(nombre,alias,edad);
+            if (this.elJuego.unicoAlias(alias)){
+                this.elJuego.setJugador(unJugador);
+            }else{
+                Iterator<Jugador> iter = this.elJuego.getJugadores().iterator();
+                while( (iter.hasNext())){
+                    Jugador aux = iter.next();
+                    if (aux.equals(unJugador)) {
+                        aux.setEdad(edad);
+                        aux.setNombre(nombre);
+                    }
+                }
+            }
+            this.lblAviso.setText("Jugador: "+this.txtAlias.getText()+" .Ingresado correctamente.");
+            this.limpiarCampos();
+        }else{
+             this.lblAviso.setText("Los campos de Nombre, Alias o Edad no deben estar vacíos.");
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void limpiarCampos(){
+        this.txtAlias.setText("");
+        this.txtNombre.setText("");
+        this.txtEdad.setText("");
+    }
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -157,9 +183,9 @@ public class VentJugador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel panelRegistrar;
-    private javax.swing.JSpinner spinEdad;
+    private javax.swing.JLabel lblAviso;
     private javax.swing.JTextField txtAlias;
+    private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

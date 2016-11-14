@@ -6,6 +6,7 @@
 package InterfasGrafica;
 
 import Dominio.Juego;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -130,9 +131,12 @@ public class VentInicio extends javax.swing.JFrame {
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
-        VentTipoTablero vTipoTablero = new VentTipoTablero(elJuego);
-        vTipoTablero.setVisible(true);
-       // vPartida.setVisible(true);
+        if (!this.elJuego.getJugadores().isEmpty()){
+            VentTipoTablero vTipoTablero = new VentTipoTablero(elJuego);
+            vTipoTablero.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay jugadores infresados para comenzar una partida.", "" + "Ingreso de datos", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnJugarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

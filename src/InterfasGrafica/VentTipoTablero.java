@@ -7,6 +7,12 @@ package InterfasGrafica;
 
 import java.awt.Dimension;
 import Dominio.Juego;
+import Dominio.Jugador;
+import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,15 +22,51 @@ import Dominio.Juego;
 public class VentTipoTablero extends javax.swing.JFrame {
     private VentPartida vPartida;
     private Juego miJuego;
+    private int cantJugadores;
+    private Jugador jugador1;
+    private Jugador jugador2;
+    
     /**
      * Creates new form VentTipoTablero
      */
     public VentTipoTablero(Juego iJuego) {
         
         initComponents();
-        this.setSize(new Dimension(300,300));
+        this.setSize(new Dimension(600,600));
         miJuego=iJuego;
-        vPartida = new VentPartida(iJuego);
+        cargoTabla();
+        cantJugadores=0;
+        this.tablaJugadores.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent event) {
+                int fila =tablaJugadores.getSelectedRow(); 
+                String alias ="";
+                if ( fila > -1) {
+                    if (JOptionPane.showConfirmDialog(null, "¿Seleciona este Jugador?")==0){
+                         alias = tablaJugadores.getValueAt(fila,0).toString();
+                         ArrayList<Jugador> aux = miJuego.getJugadores();
+                         Iterator<Jugador> iter = aux.iterator();
+                         DefaultTableModel modelo = (DefaultTableModel)tablaJugadores.getModel();
+                         while (iter.hasNext()){
+                             Jugador unJugador= iter.next();
+                             if (unJugador.getAlias().equals(alias)){
+                                 if (cantJugadores==0){
+                                     jugador1=unJugador;
+                                     cantJugadores++;
+                                     modelo.removeRow(fila); 
+                                     lblAviso.setText("Jugador1 : "+alias+". Selleccione al jugador 2");
+                                 }else{
+                                     jugador2=unJugador;
+                                     lblAviso.setText("Ya se seleccionaron los dos jugdores. Elija el tablero para comenzar la partida");
+                                     tablaJugadores.enable(false);
+                                 }
+                             }
+                         }
+                    }
+                }
+            }
+}       );
+       
         
     }
 
@@ -40,6 +82,9 @@ public class VentTipoTablero extends javax.swing.JFrame {
         panelTipoTablero = new javax.swing.JPanel();
         btnPorDefecto = new javax.swing.JButton();
         btnRandom = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaJugadores = new javax.swing.JTable();
+        lblAviso = new javax.swing.JLabel();
 
         setTitle("Seleccionar Tablero");
         setResizable(false);
@@ -62,46 +107,129 @@ public class VentTipoTablero extends javax.swing.JFrame {
             }
         });
 
+        tablaJugadores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Alias", "Edad", "Partidas Ganadas"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaJugadores.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tablaJugadores.setColumnSelectionAllowed(true);
+        tablaJugadores.getTableHeader().setReorderingAllowed(false);
+        tablaJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaJugadoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaJugadores);
+        tablaJugadores.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        lblAviso.setText("Seleccione un jugdor de la lista ");
+
         javax.swing.GroupLayout panelTipoTableroLayout = new javax.swing.GroupLayout(panelTipoTablero);
         panelTipoTablero.setLayout(panelTipoTableroLayout);
         panelTipoTableroLayout.setHorizontalGroup(
             panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTipoTableroLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRandom, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPorDefecto))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelTipoTableroLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelTipoTableroLayout.createSequentialGroup()
+                                .addComponent(btnRandom)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPorDefecto))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelTipoTableroLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(lblAviso)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTipoTableroLayout.setVerticalGroup(
             panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTipoTableroLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnPorDefecto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(btnRandom, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(52, 52, 52)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAviso)
+                .addGap(108, 108, 108)
+                .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPorDefecto)
+                    .addComponent(btnRandom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         getContentPane().add(panelTipoTablero);
-        panelTipoTablero.setBounds(20, 8, 290, 240);
+        panelTipoTablero.setBounds(10, 10, 680, 380);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cargoTabla(){
+
+        ArrayList<Jugador> aux = this.miJuego.getJugadores();
+        Iterator<Jugador> iter = aux.iterator();
+        DefaultTableModel modelo=(DefaultTableModel) this.tablaJugadores.getModel();
+        while (iter.hasNext()){
+            Jugador unJugador = iter.next();
+            Object [] fila=new Object[3];
+            fila[0]=unJugador.getAlias();
+            fila[1]=unJugador.getEdad();
+            fila[2]=unJugador.getGanadas();
+            modelo.addRow(fila);
+        }
+        this.tablaJugadores.setModel(modelo);
+    }   
+    
+    
     private void btnPorDefectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorDefectoActionPerformed
         // TODO add your handling code here:
-       this.miJuego.setEsGenerico(true);
-       this.vPartida.setVisible(true);
-       this.setVisible(false);
+       if(this.jugador2!=null){
+            this.miJuego.setEsGenerico(true);
+            miJuego.iniciarPartida(jugador1,jugador2,miJuego.getEsGenerico());
+            vPartida = new VentPartida(miJuego);
+            this.vPartida.setVisible(true);
+            this.dispose();
+       }else{
+           this.lblAviso.setText("Debe seleccionar jugadores");
+       }
     }//GEN-LAST:event_btnPorDefectoActionPerformed
 
+    
     private void btnRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRandomActionPerformed
         // TODO add your handling code here:
-         this.miJuego.setEsGenerico(false);
-         this.vPartida.setVisible(true);
-         this.setVisible(false);
+        if(this.jugador2!=null){
+            this.miJuego.setEsGenerico(false);
+            miJuego.iniciarPartida(jugador1,jugador2,miJuego.getEsGenerico());
+            vPartida = new VentPartida(miJuego);
+            this.vPartida.setVisible(true);
+            this.dispose();
+        }else{
+           this.lblAviso.setText("Debe seleccionar jugadores");
+       }
     }//GEN-LAST:event_btnRandomActionPerformed
+
+    private void tablaJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJugadoresMouseClicked
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_tablaJugadoresMouseClicked
 
     /**
      * @param args the command line arguments
@@ -141,6 +269,9 @@ public class VentTipoTablero extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPorDefecto;
     private javax.swing.JButton btnRandom;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAviso;
     private javax.swing.JPanel panelTipoTablero;
+    private javax.swing.JTable tablaJugadores;
     // End of variables declaration//GEN-END:variables
 }
