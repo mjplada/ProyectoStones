@@ -57,6 +57,7 @@ public class VentTipoTablero extends javax.swing.JFrame {
                                      lblAviso.setText("Jugador1 : "+alias+". Selleccione al jugador 2");
                                  }else{
                                      jugador2=unJugador;
+                                      modelo.removeRow(fila);
                                      lblAviso.setText("Ya se seleccionaron los dos jugdores. Elija el tablero para comenzar la partida");
                                      tablaJugadores.enable(false);
                                  }
