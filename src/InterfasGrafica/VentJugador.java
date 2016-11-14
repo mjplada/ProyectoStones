@@ -7,6 +7,7 @@ package InterfasGrafica;
 
 import Dominio.Juego;
 import Dominio.Jugador;
+import java.awt.Color;
 import java.util.Iterator;
 
 /**
@@ -43,6 +44,9 @@ public class VentJugador extends javax.swing.JFrame {
         txtAlias = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
         lblAviso = new javax.swing.JLabel();
+        lbl_errNombre = new javax.swing.JLabel();
+        lbl_errAlias = new javax.swing.JLabel();
+        lbl_errEdad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -52,7 +56,7 @@ public class VentJugador extends javax.swing.JFrame {
         txtNombre.setToolTipText("");
         txtNombre.setName("txtNombre"); // NOI18N
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(150, 110, 164, 22);
+        txtNombre.setBounds(150, 110, 164, 20);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel1.setText("Regitro Jugador");
@@ -62,15 +66,15 @@ public class VentJugador extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(80, 120, 60, 16);
+        jLabel2.setBounds(80, 120, 60, 14);
 
         jLabel3.setText("Alias:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(100, 170, 32, 16);
+        jLabel3.setBounds(100, 170, 26, 14);
 
         jLabel4.setText("Edad:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(100, 220, 33, 16);
+        jLabel4.setBounds(100, 220, 28, 14);
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.setToolTipText("");
@@ -95,11 +99,17 @@ public class VentJugador extends javax.swing.JFrame {
 
         txtAlias.setName("txtAlias"); // NOI18N
         getContentPane().add(txtAlias);
-        txtAlias.setBounds(150, 160, 160, 22);
+        txtAlias.setBounds(150, 160, 160, 20);
         getContentPane().add(txtEdad);
-        txtEdad.setBounds(150, 220, 60, 22);
+        txtEdad.setBounds(150, 220, 60, 20);
         getContentPane().add(lblAviso);
         lblAviso.setBounds(30, 260, 360, 16);
+        getContentPane().add(lbl_errNombre);
+        lbl_errNombre.setBounds(320, 110, 0, 20);
+        getContentPane().add(lbl_errAlias);
+        lbl_errAlias.setBounds(320, 160, 0, 20);
+        getContentPane().add(lbl_errEdad);
+        lbl_errEdad.setBounds(220, 220, 0, 0);
 
         setBounds(0, 0, 422, 411);
     }// </editor-fold>//GEN-END:initComponents
@@ -112,7 +122,7 @@ public class VentJugador extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        if (!this.txtNombre.getText().equals("") && !this.txtAlias.getText().equals("") && !this.txtEdad.getText().equals("")){
+        if (validarCampos()){
             String nombre = this.txtNombre.getText();
             String alias = this.txtAlias.getText();
             int edad = Integer.parseInt(this.txtEdad.getText());
@@ -131,11 +141,25 @@ public class VentJugador extends javax.swing.JFrame {
             }
             this.lblAviso.setText("Jugador: "+this.txtAlias.getText()+" .Ingresado correctamente.");
             this.limpiarCampos();
-        }else{
-             this.lblAviso.setText("Los campos de Nombre, Alias o Edad no deben estar vacíos.");
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    private boolean validarCampos(){
+        boolean ret = true;
+        if (this.txtNombre.getText().equals("")) {
+            ret = false;
+            lbl_errNombre.setText("Debe ingresar un nombre.");
+        }
+        if (this.txtAlias.getText().equals("")){
+            ret = false;
+            lbl_errAlias.setText("Debe ingresar un alias.");
+        }
+        if (this.txtEdad.getText().equals("")){
+            ret = false;
+            lbl_errEdad.setText("Debe ingresar una edad.");
+        }
+        return ret;
+    }
     private void limpiarCampos(){
         this.txtAlias.setText("");
         this.txtNombre.setText("");
@@ -184,6 +208,9 @@ public class VentJugador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblAviso;
+    private javax.swing.JLabel lbl_errAlias;
+    private javax.swing.JLabel lbl_errEdad;
+    private javax.swing.JLabel lbl_errNombre;
     private javax.swing.JTextField txtAlias;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;
