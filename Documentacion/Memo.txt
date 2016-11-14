@@ -4,6 +4,7 @@ Notas:
 
 -El el cambio de turno, deshabilitar la grilla de fichas del jugador pasivo.
 -Cuando selecciona dos pierdas, se muestra una ventana con la confirmacion del patron, y los colores para seleccionar.
+-Utilizar observer con pag de ranking y partida (tablero)
 
 
 Preguntas:

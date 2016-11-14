@@ -353,6 +353,8 @@ public class Partida {
             this.getJugador2().setGanadas(this.getJugador2().getGanadas()+1);
             this.setelGanador(this.getJugador2().getAlias());
         }
+        this.getJugador1().setJugadas(this.getJugador1().getJugadas()+1);
+        this.getJugador2().setJugadas(this.getJugador2().getJugadas()+1);
         this.setFinalizada(true);
         
         
