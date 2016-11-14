@@ -103,7 +103,7 @@ public class VentJugador extends javax.swing.JFrame {
         getContentPane().add(txtEdad);
         txtEdad.setBounds(70, 190, 60, 20);
         getContentPane().add(lblAviso);
-        lblAviso.setBounds(30, 260, 360, 16);
+        lblAviso.setBounds(20, 220, 360, 16);
         getContentPane().add(lbl_errNombre);
         lbl_errNombre.setBounds(240, 110, 160, 20);
         getContentPane().add(lbl_errAlias);

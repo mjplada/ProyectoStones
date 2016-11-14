@@ -118,7 +118,7 @@ public class VentInicio extends javax.swing.JFrame {
         );
 
         getContentPane().add(panelPrincipial);
-        panelPrincipial.setBounds(0, 20, 404, 256);
+        panelPrincipial.setBounds(0, 20, 380, 246);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
