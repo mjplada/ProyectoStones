@@ -29,7 +29,16 @@
               <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
               <Component id="panelJuego" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblTurno" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblTurno" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPH" max="32767" attributes="0"/>
+                  <Component id="btnPV" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnPDS" alignment="0" pref="168" max="32767" attributes="0"/>
+                  <Component id="btnPDJ" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnPDD" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnPDC" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnDescartar" alignment="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -60,13 +69,24 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="lblTurno" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnPH" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnPV" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnPDS" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnPDJ" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnPDD" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnPDC" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnDescartar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="panelJuego" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="panelJuego" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panelFichasJ1" min="-2" max="-2" attributes="0"/>
@@ -90,7 +110,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="0" pref="72" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="77" max="32767" attributes="0"/>
                               <Component id="panelImagenes" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -243,5 +263,47 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="javax.swing.JButton" name="btnPH">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Poner Horizontal"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPV">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Poner Vertical"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPDS">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Patr&#xf3;n dos separadas"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPDJ">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Patr&#xf3;n dos juntas"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPDD">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Patr&#xf3;n dos diagonal"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPDC">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Patr&#xf3;n dos caballo"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDescartar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descartar ficha"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

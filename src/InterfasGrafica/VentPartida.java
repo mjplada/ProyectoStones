@@ -29,6 +29,10 @@ public class VentPartida extends javax.swing.JFrame {
     private JButton[] piedras;
     private File fichero;
     private Juego elJuego;
+    private boolean esPiedra;
+    private int selFila;
+    private int selCol;
+
 
     public VentPartida(Juego iJuego) {
         initComponents();
@@ -130,6 +134,13 @@ public class VentPartida extends javax.swing.JFrame {
         lblJugador2 = new javax.swing.JLabel();
         lblPiedras = new javax.swing.JLabel();
         panelPiedras = new javax.swing.JPanel();
+        btnPH = new javax.swing.JButton();
+        btnPV = new javax.swing.JButton();
+        btnPDS = new javax.swing.JButton();
+        btnPDJ = new javax.swing.JButton();
+        btnPDD = new javax.swing.JButton();
+        btnPDC = new javax.swing.JButton();
+        btnDescartar = new javax.swing.JButton();
 
         setSize(new java.awt.Dimension(600, 400));
 
@@ -227,6 +238,27 @@ public class VentPartida extends javax.swing.JFrame {
             .addGap(0, 35, Short.MAX_VALUE)
         );
 
+        btnPH.setText("Poner Horizontal");
+        btnPH.setEnabled(false);
+
+        btnPV.setText("Poner Vertical");
+        btnPV.setEnabled(false);
+
+        btnPDS.setText("Patrón dos separadas");
+        btnPDS.setEnabled(false);
+
+        btnPDJ.setText("Patrón dos juntas");
+        btnPDJ.setEnabled(false);
+
+        btnPDD.setText("Patrón dos diagonal");
+        btnPDD.setEnabled(false);
+
+        btnPDC.setText("Patrón dos caballo");
+        btnPDC.setEnabled(false);
+
+        btnDescartar.setText("Descartar ficha");
+        btnDescartar.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -235,7 +267,15 @@ public class VentPartida extends javax.swing.JFrame {
                 .addGap(141, 141, 141)
                 .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTurno))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTurno)
+                    .addComponent(btnPH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPDS, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(btnPDJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPDD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPDC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDescartar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,10 +299,22 @@ public class VentPartida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTurno)
-                        .addGap(311, 311, 311))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPH)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPV)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPDS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPDJ)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPDD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPDC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDescartar))
+                    .addComponent(panelJuego, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelFichasJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +334,7 @@ public class VentPartida extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 72, Short.MAX_VALUE)
+                                .addGap(0, 77, Short.MAX_VALUE)
                                 .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblPiedras)
@@ -386,12 +438,44 @@ public class VentPartida extends javax.swing.JFrame {
         // En fila y columna se reciben las coordenas donde presionó el usuario, relativas al comienzo de la grilla
         // fila 1 y columna 1 corresponden a la posición de arriba a la izquierda.
         // Debe indicarse cómo responder al click de ese botón.
-        if (this.botones[fila][columna].getBackground()==Color.lightGray) {
-             this.botones[fila][columna].setBackground(null);
-        } else {
-            this.botones[fila][columna].setBackground(Color.lightGray);
+
+        String tipo = botones[fila][columna].getName();
+        if(tipo.equals("#")){
+            if (!esPiedra) {
+                Pintar(this.selFila, this.selCol);
+                Pintar(fila, columna);
+                this.selFila = fila;
+                this.selCol = columna;
+                this.esPiedra = true;
+            }else{
+                btnPDC.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDC", this.selFila, this.selCol, fila, columna));
+                btnPDD.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDD", this.selFila, this.selCol, fila, columna));
+                btnPDJ.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDJ", this.selFila, this.selCol, fila, columna));
+                btnPDS.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDS", this.selFila, this.selCol, fila, columna));
+            }
+        }else{
+            Pintar(this.selFila, this.selCol);
+            Pintar(fila, columna);
+            this.selFila = fila;
+            this.selCol = columna;
+            this.esPiedra = false;
         }
+
         
+        
+        
+    }
+    
+    private void Pintar(int fila, int columna){
+        try{
+            if (this.botones[fila][columna].getBackground()==Color.lightGray) {
+                this.botones[fila][columna].setBackground(null);
+           } else {
+               this.botones[fila][columna].setBackground(Color.lightGray);
+           }
+        }catch (Exception ex) {
+            
+        }
         
     }
 
@@ -419,6 +503,13 @@ public class VentPartida extends javax.swing.JFrame {
         // Debe indicarse cómo responder al click de ese botón.
          }
     }
+    private void DespintarTablero(){
+        for (int i = 1; i <= 6; i++) {
+                for (int j = 1; j <= 6; j++) {
+                    botones[i][j].setBackground(null);
+                }
+        }
+    }
 
     private class ListenerBotonFicha implements ActionListener {
 
@@ -444,6 +535,13 @@ public class VentPartida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarGoogle;
     private javax.swing.JButton btnCargarImg;
+    private javax.swing.JButton btnDescartar;
+    private javax.swing.JButton btnPDC;
+    private javax.swing.JButton btnPDD;
+    private javax.swing.JButton btnPDJ;
+    private javax.swing.JButton btnPDS;
+    private javax.swing.JButton btnPH;
+    private javax.swing.JButton btnPV;
     private javax.swing.JLabel lblJugador1;
     private javax.swing.JLabel lblJugador2;
     private javax.swing.JLabel lblPiedras;
