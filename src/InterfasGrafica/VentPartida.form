@@ -268,12 +268,18 @@
         <Property name="text" type="java.lang.String" value="Poner Horizontal"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPHActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPV">
       <Properties>
         <Property name="text" type="java.lang.String" value="Poner Vertical"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPVActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPDS">
       <Properties>

@@ -240,9 +240,19 @@ public class VentPartida extends javax.swing.JFrame {
 
         btnPH.setText("Poner Horizontal");
         btnPH.setEnabled(false);
+        btnPH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPHActionPerformed(evt);
+            }
+        });
 
         btnPV.setText("Poner Vertical");
         btnPV.setEnabled(false);
+        btnPV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPVActionPerformed(evt);
+            }
+        });
 
         btnPDS.setText("Patrón dos separadas");
         btnPDS.setEnabled(false);
@@ -381,6 +391,18 @@ public class VentPartida extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCargarImgActionPerformed
 
+    private void btnPHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPHActionPerformed
+        // TODO add your handling code here:
+        this.elJuego.getPartida().ejecutarMovimiento("PH "+ this.selFila+this.selCol);
+        actualizarTablero();
+    }//GEN-LAST:event_btnPHActionPerformed
+
+    private void btnPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPVActionPerformed
+        // TODO add your handling code here:
+        this.elJuego.getPartida().ejecutarMovimiento("PV "+ this.selFila+this.selCol);
+        actualizarTablero();
+    }//GEN-LAST:event_btnPVActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -438,10 +460,10 @@ public class VentPartida extends javax.swing.JFrame {
         // En fila y columna se reciben las coordenas donde presionó el usuario, relativas al comienzo de la grilla
         // fila 1 y columna 1 corresponden a la posición de arriba a la izquierda.
         // Debe indicarse cómo responder al click de ese botón.
-
+        OcultarComandos();
         String tipo = botones[fila][columna].getName();
         if(tipo.equals("#")){
-            if (!esPiedra) {
+            if (!this.esPiedra) {
                 Pintar(this.selFila, this.selCol);
                 Pintar(fila, columna);
                 this.selFila = fila;
@@ -453,17 +475,27 @@ public class VentPartida extends javax.swing.JFrame {
                 btnPDJ.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDJ", this.selFila, this.selCol, fila, columna));
                 btnPDS.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDS", this.selFila, this.selCol, fila, columna));
             }
-        }else{
+        }else if (!tipo.equals(" ")) {
             Pintar(this.selFila, this.selCol);
             Pintar(fila, columna);
             this.selFila = fila;
             this.selCol = columna;
             this.esPiedra = false;
+            btnPH.setEnabled(true);
+            btnPV.setEnabled(true);
         }
 
         
         
         
+    }
+    private void OcultarComandos(){
+        btnPH.setEnabled(false);
+        btnPV.setEnabled(false);
+        btnPDC.setEnabled(false);
+        btnPDD.setEnabled(false);
+        btnPDJ.setEnabled(false);
+        btnPDS.setEnabled(false);
     }
     
     private void Pintar(int fila, int columna){
