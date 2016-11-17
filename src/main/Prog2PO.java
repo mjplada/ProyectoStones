@@ -26,7 +26,7 @@ public class Prog2PO {
         } catch (Exception e) {
          
         }
-        j.cargarTest();
+        //j.cargarTest();
 //        Jugador j1 = j.getJugadores().get(1);
 //        Jugador j2 = j.getJugadores().get(2);
 //        j.iniciarPartida(j1, j2, true);

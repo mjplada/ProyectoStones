@@ -5,11 +5,13 @@
  */
 package Dominio;
 
+import java.io.*;
+
 /**
  *
  * @author Llote
  */
-public class Jugador implements Comparable<Jugador> {
+public class Jugador implements Comparable<Jugador> , Serializable{
     private String nombre;
     private String alias;
     private int edad;

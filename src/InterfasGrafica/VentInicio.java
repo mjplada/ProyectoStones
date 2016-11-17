@@ -43,7 +43,7 @@ public class VentInicio extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnArchivosJugadores = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("VentanaInicio"); // NOI18N
         setSize(new java.awt.Dimension(300, 300));
         getContentPane().setLayout(null);
