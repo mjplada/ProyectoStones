@@ -43,9 +43,14 @@ public class VentInicio extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnArchivosJugadores = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("VentanaInicio"); // NOI18N
         setSize(new java.awt.Dimension(300, 300));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         btnRegJugador.setText("Registro de Jugador");
@@ -155,6 +160,11 @@ public class VentInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.elJuego.Guardar();
+    }//GEN-LAST:event_formWindowClosing
 
 //    /**
 //     * @param args the command line arguments

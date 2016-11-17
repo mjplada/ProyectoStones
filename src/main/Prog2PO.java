@@ -33,11 +33,11 @@ public class Prog2PO {
         VentInicio inicio =  new VentInicio(j);   
          inicio.setVisible(true);
         //MenuInicio(j);
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DatosGuardados"));
-            out.writeObject(j);
-        } catch (Exception e) {
-        }
+//        try {
+//            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DatosGuardados"));
+//            out.writeObject(j);
+//        } catch (Exception e) {
+//        }
  
     }
 //   public static void MenuInicio(Juego iJ){        
