@@ -407,42 +407,42 @@ public class Partida {
         
     }
     
-    private int traductorDeCoordenadas (String s){
-        //devuleve -1 si la letra ingresada no corresponde a una coordenada
-        int ret;
-        switch(s){
-            case "A":{
-                ret=0;
-                break;
-            }
-            case"B":{
-                ret=1;
-                break;
-            }
-            case "C":{
-                ret=2;
-                break;
-            }
-            case "D":{
-                ret=3;
-                break;
-            }
-            case "E":{
-                ret=4;
-                break;
-            }
-            case "F":{
-                ret=5;
-                break;
-            }
-            default :{
-                ret = -1;
-                break;
-            }
-        }
-        
-        return ret;
-    }
+//    private int traductorDeCoordenadas (String s){
+//        //devuleve -1 si la letra ingresada no corresponde a una coordenada
+//        int ret;
+//        switch(s){
+//            case "A":{
+//                ret=0;
+//                break;
+//            }
+//            case"B":{
+//                ret=1;
+//                break;
+//            }
+//            case "C":{
+//                ret=2;
+//                break;
+//            }
+//            case "D":{
+//                ret=3;
+//                break;
+//            }
+//            case "E":{
+//                ret=4;
+//                break;
+//            }
+//            case "F":{
+//                ret=5;
+//                break;
+//            }
+//            default :{
+//                ret = -1;
+//                break;
+//            }
+//        }
+//        
+//        return ret;
+//    }
      public ArrayList<Character> getFichasCorrespondientes (boolean esElTurno){
        ArrayList<Character> ret;
        if (esElTurno){

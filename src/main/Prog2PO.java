@@ -29,7 +29,6 @@ public class Prog2PO {
         }  catch (IOException e){
             j = new Juego();
         } catch (ClassNotFoundException ex) {
-            
             j = new Juego();
         }
         j.cargarTest();

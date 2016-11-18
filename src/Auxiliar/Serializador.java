@@ -26,18 +26,15 @@ public class Serializador {
         
         return aux;
     }
-    public static void Guardar(Object obj, String sRuta){
+    public static void Guardar(Object obj, String sRuta) throws IOException{
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(sRuta));
             out.writeObject(obj);
         } catch (IOException e) {
-            
+            throw e;
         }
     }
 
-    public static void Guardar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
         
 }

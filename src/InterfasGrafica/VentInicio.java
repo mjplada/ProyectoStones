@@ -7,6 +7,7 @@ package InterfasGrafica;
 
 import Auxiliar.Serializador;
 import Dominio.Juego;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -165,7 +166,12 @@ public class VentInicio extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         //this.elJuego.Guardar();
-        Serializador.Guardar(this.elJuego, "DatosGuardados");
+        try {
+            Serializador.Guardar(this.elJuego, "DatosGuardados");
+        } catch (IOException e) {
+            //Que hacemos
+        }
+        
     }//GEN-LAST:event_formWindowClosing
 
 //    /**

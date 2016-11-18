@@ -84,6 +84,7 @@ public class VentPartida extends javax.swing.JFrame {
 
     }
     private void actualizarTablero(){
+        int cant;
         char[][] tablero = this.elJuego.getPartida().getTablero().getTabla();
         ArrayList<Character> auxFichasJ1 = this.elJuego.getPartida().getJ1Fichas();
         ArrayList<Character> auxFichasJ2 = this.elJuego.getPartida().getJ2Fichas();
@@ -128,6 +129,23 @@ public class VentPartida extends javax.swing.JFrame {
                     }
                 }
             }
+//            Iterator<Character> I1 = auxFichasJ1.iterator();
+//            cant = 0;
+//            while(I1.hasNext()){                
+//                char aux = I1.next();
+//                switch (aux){
+//                    case 'a':{
+//                        this.fichasJ1[1][cant].setName(String.valueOf(aux));
+//                        this.fichasJ1[1][cant].setIcon(this.elJuego.getPartida().getTablero().setColores(aux));
+//                        break;
+//                    }
+//                }
+//                cant++;
+//                    
+//                
+//            }
+                   
+            
          
             
         } catch (Exception e) {
@@ -393,7 +411,7 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnCargarImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarImgActionPerformed
         int resultado;
-        VentCargarImagen ventana = new VentCargarImagen();
+        VentBrowser ventana = new VentBrowser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG", "jpg", "png");
         ventana.jfcCargarImagen.setFileFilter(filtro);
         resultado = ventana.jfcCargarImagen.showOpenDialog(null);
