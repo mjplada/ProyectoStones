@@ -5,11 +5,14 @@
  */
 package main;
 
+
 import InterfasGrafica.VentInicio;
 //import java.util.*;
-import java.io.*;
 import Dominio.Juego;
-import Auxiliar.*;
+import Auxiliar.Serializador;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import Dominio.Jugador;
 //import prog2SO.Jugador;
 //import prog2SO.Partida;
@@ -18,14 +21,16 @@ import Auxiliar.*;
 
 public class Prog2PO {
     
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args)  {
         
-        Juego j = new Juego();
+        Juego j;
         try {
+            j = (Juego)Serializador.Leer("DatosGuardados");
+        }  catch (IOException e){
+            j = new Juego();
+        } catch (ClassNotFoundException ex) {
             
-            j = Serializador.
-        } catch (IOException e) {
-            
+            j = new Juego();
         }
         j.cargarTest();
         VentInicio inicio =  new VentInicio(j);   

@@ -107,6 +107,27 @@ public class VentPartida extends javax.swing.JFrame {
                 }
                
            }
+            //Fichas de los jugadores
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 10; j++) {
+                    //Jugador 1
+                    if (j<auxFichasJ1.size()) {
+                        this.fichasJ1[i][j].setName(String.valueOf(auxFichasJ2.get(j)));
+                        this.fichasJ1[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(auxFichasJ2.get(j)));
+                    } else {
+                        this.fichasJ1[i][j].setName(null);
+                        this.fichasJ1[i][j].setIcon(null);
+                    }
+                    //Jugador 2
+                    if (j<auxFichasJ2.size()) {
+                        this.fichasJ2[i][j].setName(String.valueOf(auxFichasJ1.get(j)));
+                        this.fichasJ2[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(auxFichasJ1.get(j)));
+                    } else {
+                        this.fichasJ2[i][j].setName(null);
+                        this.fichasJ2[i][j].setIcon(null);
+                    }
+                }
+            }
          
             
         } catch (Exception e) {

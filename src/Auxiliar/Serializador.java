@@ -13,23 +13,30 @@ import java.io.*;
  * @author mjpla
  */
 public class Serializador {
-    public Object Leer(String sRuta) throws ClassNotFoundException{
+    public static Object Leer(String sRuta) throws ClassNotFoundException, IOException{
         Object aux = new Object();
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(sRuta));
             aux = in.readObject();
-        } catch (IOException e) {
-            
+        } catch (ClassNotFoundException e) {
+            throw e;
+        } catch (IOException d){
+            throw d;
         }
+        
         return aux;
     }
-    public void Guardar(Object obj, String sRuta){
+    public static void Guardar(Object obj, String sRuta){
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(sRuta));
             out.writeObject(obj);
         } catch (IOException e) {
             
         }
+    }
+
+    public static void Guardar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
         
