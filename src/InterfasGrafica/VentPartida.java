@@ -99,8 +99,13 @@ public class VentPartida extends javax.swing.JFrame {
            //piedras
             ImageIcon icon = new ImageIcon("piedra.png");
             Icon icono = new ImageIcon(icon.getImage().getScaledInstance(20,20, Image.SCALE_DEFAULT));
-            for (int i =0;i<auxPiedras;i++){
-               this.piedras[i].setIcon(icono);
+            for (int i =0;i<9;i++){
+                if (i < auxPiedras) {
+                    this.piedras[i].setIcon(icono);
+                } else {
+                    this.piedras[i].setIcon(null);
+                }
+               
            }
          
             

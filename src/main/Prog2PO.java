@@ -9,7 +9,7 @@ import InterfasGrafica.VentInicio;
 //import java.util.*;
 import java.io.*;
 import Dominio.Juego;
-import Dominio.Jugador;
+//import Dominio.Jugador;
 //import prog2SO.Jugador;
 //import prog2SO.Partida;
 
@@ -17,14 +17,14 @@ import Dominio.Jugador;
 
 public class Prog2PO {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         
         Juego j = new Juego();
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("DatosGuardados"));
             j = (Juego)in.readObject();
-        } catch (Exception e) {
-         
+        } catch (IOException e) {
+            
         }
         j.cargarTest();
 //        Jugador j1 = j.getJugadores().get(1);
