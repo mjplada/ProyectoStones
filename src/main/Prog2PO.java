@@ -11,8 +11,6 @@ import InterfasGrafica.VentInicio;
 import Dominio.Juego;
 import Auxiliar.Serializador;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 //import Dominio.Jugador;
 //import prog2SO.Jugador;
 //import prog2SO.Partida;
@@ -31,16 +29,10 @@ public class Prog2PO {
         } catch (ClassNotFoundException ex) {
             j = new Juego();
         }
-        j.cargarTest();
+        
         VentInicio inicio =  new VentInicio(j);   
-         inicio.setVisible(true);
-        //MenuInicio(j);
-//        try {
-//            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DatosGuardados"));
-//            out.writeObject(j);
-//        } catch (Exception e) {
-//        }
- 
+        inicio.setVisible(true);
+        
     }
     
     
