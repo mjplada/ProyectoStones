@@ -9,6 +9,7 @@ import InterfasGrafica.VentInicio;
 //import java.util.*;
 import java.io.*;
 import Dominio.Juego;
+import Auxiliar.*;
 //import Dominio.Jugador;
 //import prog2SO.Jugador;
 //import prog2SO.Partida;
@@ -21,15 +22,12 @@ public class Prog2PO {
         
         Juego j = new Juego();
         try {
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream("DatosGuardados"));
-            j = (Juego)in.readObject();
+            
+            j = Serializador.
         } catch (IOException e) {
             
         }
         j.cargarTest();
-//        Jugador j1 = j.getJugadores().get(1);
-//        Jugador j2 = j.getJugadores().get(2);
-//        j.iniciarPartida(j1, j2, true);
         VentInicio inicio =  new VentInicio(j);   
          inicio.setVisible(true);
         //MenuInicio(j);
@@ -40,6 +38,22 @@ public class Prog2PO {
 //        }
  
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 //   public static void MenuInicio(Juego iJ){        
 //        String s;
 //        boolean bSalida=false;

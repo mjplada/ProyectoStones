@@ -5,6 +5,7 @@
  */
 package Dominio;
 
+import Auxiliar.ArchivoLectura;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -118,13 +119,7 @@ public class Juego implements Serializable{
         }
 
     }
-    public void Guardar(){
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DatosGuardados"));
-            out.writeObject(this);
-        } catch (IOException e) {
-        }
-    }
+    
     
     
 }
