@@ -394,7 +394,7 @@ public class Partida {
         // si alguna de las coordenada no son correctas. 
         //devuelve -1 en la pos 0.
         int [] ret=new int[2];
-        int fila =traductorDeCoordenadas(s.substring(0,1));
+        int fila =Integer.parseInt(s.substring(0,1))-1;
         int col =Integer.parseInt(s.substring(1,2))-1;
         if (fila!=-1 && (col>=0 && col <=5)){
             ret[0]= fila;

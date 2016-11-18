@@ -393,8 +393,12 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnPHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPHActionPerformed
         // TODO add your handling code here:
-        this.elJuego.getPartida().ejecutarMovimiento("PH "+ this.selFila+this.selCol);
-        actualizarTablero();
+        String aux = "PH "+ this.selFila+this.selCol;
+        if (this.elJuego.getPartida().ejecutarMovimiento(aux)) {
+            actualizarTablero();
+        }
+        
+        
     }//GEN-LAST:event_btnPHActionPerformed
 
     private void btnPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPVActionPerformed
