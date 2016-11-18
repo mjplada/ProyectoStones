@@ -32,7 +32,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="lblTurno" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPH" max="32767" attributes="0"/>
-                  <Component id="btnPV" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnPD" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnPDS" alignment="0" pref="168" max="32767" attributes="0"/>
                   <Component id="btnPDJ" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnPDD" alignment="0" max="32767" attributes="0"/>
@@ -72,7 +72,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnPH" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPV" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnPD" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnPDS" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -272,13 +272,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPHActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnPV">
+    <Component class="javax.swing.JButton" name="btnPD">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Poner Vertical"/>
+        <Property name="text" type="java.lang.String" value="Poner Diagonal"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPVActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPDActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPDS">

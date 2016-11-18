@@ -135,7 +135,7 @@ public class VentPartida extends javax.swing.JFrame {
         lblPiedras = new javax.swing.JLabel();
         panelPiedras = new javax.swing.JPanel();
         btnPH = new javax.swing.JButton();
-        btnPV = new javax.swing.JButton();
+        btnPD = new javax.swing.JButton();
         btnPDS = new javax.swing.JButton();
         btnPDJ = new javax.swing.JButton();
         btnPDD = new javax.swing.JButton();
@@ -246,11 +246,11 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
-        btnPV.setText("Poner Vertical");
-        btnPV.setEnabled(false);
-        btnPV.addActionListener(new java.awt.event.ActionListener() {
+        btnPD.setText("Poner Diagonal");
+        btnPD.setEnabled(false);
+        btnPD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPVActionPerformed(evt);
+                btnPDActionPerformed(evt);
             }
         });
 
@@ -280,7 +280,7 @@ public class VentPartida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblTurno)
                     .addComponent(btnPH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPDS, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                     .addComponent(btnPDJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPDD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -312,7 +312,7 @@ public class VentPartida extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPV)
+                        .addComponent(btnPD)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPDS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -392,20 +392,22 @@ public class VentPartida extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarImgActionPerformed
 
     private void btnPHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPHActionPerformed
-        // TODO add your handling code here:
-        String aux = "PH "+ this.selFila+this.selCol;
-        if (this.elJuego.getPartida().ejecutarMovimiento(aux)) {
+        // TODO add your handling code here
+        if (this.elJuego.getPartida().ejecutarMovimiento("PH "+ this.selFila+this.selCol)) {
             actualizarTablero();
         }
         
         
     }//GEN-LAST:event_btnPHActionPerformed
 
-    private void btnPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPVActionPerformed
+    private void btnPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDActionPerformed
         // TODO add your handling code here:
-        this.elJuego.getPartida().ejecutarMovimiento("PV "+ this.selFila+this.selCol);
-        actualizarTablero();
-    }//GEN-LAST:event_btnPVActionPerformed
+        if (this.elJuego.getPartida().ejecutarMovimiento("PD "+ this.selFila+this.selCol)) {
+            actualizarTablero();
+        }
+        
+        
+    }//GEN-LAST:event_btnPDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -474,10 +476,10 @@ public class VentPartida extends javax.swing.JFrame {
                 this.selCol = columna;
                 this.esPiedra = true;
             }else{
-                btnPDC.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDC", this.selFila, this.selCol, fila, columna));
-                btnPDD.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDD", this.selFila, this.selCol, fila, columna));
-                btnPDJ.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDJ", this.selFila, this.selCol, fila, columna));
-                btnPDS.setEnabled(this.elJuego.getPartida().getTablero().usarPatron("PDS", this.selFila, this.selCol, fila, columna));
+                btnPDC.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDC", this.selFila, this.selCol, fila, columna));
+                btnPDD.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDD", this.selFila, this.selCol, fila, columna));
+                btnPDJ.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDJ", this.selFila, this.selCol, fila, columna));
+                btnPDS.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDS", this.selFila, this.selCol, fila, columna));
             }
         }else if (!tipo.equals(" ")) {
             Pintar(this.selFila, this.selCol);
@@ -486,7 +488,7 @@ public class VentPartida extends javax.swing.JFrame {
             this.selCol = columna;
             this.esPiedra = false;
             btnPH.setEnabled(true);
-            btnPV.setEnabled(true);
+            btnPD.setEnabled(true);
         }
 
         
@@ -495,7 +497,7 @@ public class VentPartida extends javax.swing.JFrame {
     }
     private void OcultarComandos(){
         btnPH.setEnabled(false);
-        btnPV.setEnabled(false);
+        btnPD.setEnabled(false);
         btnPDC.setEnabled(false);
         btnPDD.setEnabled(false);
         btnPDJ.setEnabled(false);
@@ -572,12 +574,12 @@ public class VentPartida extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarGoogle;
     private javax.swing.JButton btnCargarImg;
     private javax.swing.JButton btnDescartar;
+    private javax.swing.JButton btnPD;
     private javax.swing.JButton btnPDC;
     private javax.swing.JButton btnPDD;
     private javax.swing.JButton btnPDJ;
     private javax.swing.JButton btnPDS;
     private javax.swing.JButton btnPH;
-    private javax.swing.JButton btnPV;
     private javax.swing.JLabel lblJugador1;
     private javax.swing.JLabel lblJugador2;
     private javax.swing.JLabel lblPiedras;
