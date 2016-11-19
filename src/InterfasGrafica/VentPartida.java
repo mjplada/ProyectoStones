@@ -96,6 +96,17 @@ public class VentPartida extends javax.swing.JFrame {
         ArrayList<Character> auxFichasJ2 = this.elJuego.getPartida().getJ2Fichas();
         int auxPiedras = this.elJuego.getPartida().getPiedrasNegras();
         try {
+            this.lblTurno.setText("Turno de "+ this.elJuego.getPartida().getTurno());
+            
+            btnPD.setEnabled(false);
+            btnPDC.setEnabled(false);
+            btnPDD.setEnabled(false);
+            btnPDS.setEnabled(false);
+            btnPDJ.setEnabled(false);
+            btnPH.setEnabled(false);
+            btnSF.setEnabled(false);
+            btnDescartar.setEnabled(false);
+            Pintar(selFila,selCol);
             //tablero
             for (int i = 1; i <= 6; i++) {
                 for (int j = 1; j <= 6; j++) {
