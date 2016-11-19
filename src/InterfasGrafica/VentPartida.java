@@ -179,7 +179,7 @@ public class VentPartida extends javax.swing.JFrame {
                         botones[i][j].setName(String.valueOf(tablero[i-1][j-1]));
                         botones[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tablero[i-1][j-1]));
                     } else {
-                        botones[i][j].setName(null);
+                        botones[i][j].setName(" ");
                         botones[i][j].setIcon(null);
                     }
                     
@@ -225,7 +225,7 @@ public class VentPartida extends javax.swing.JFrame {
                         this.fichasJ1[i][j].setName(String.valueOf(tipo));
                         this.fichasJ1[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tipo));
                     } else {
-                        this.fichasJ1[i][j].setName(null);
+                        this.fichasJ1[i][j].setName(" ");
                         this.fichasJ1[i][j].setIcon(null);
                     }
                     //Jugador 2
@@ -233,7 +233,7 @@ public class VentPartida extends javax.swing.JFrame {
                         this.fichasJ2[i][j].setName(String.valueOf(tipo));
                         this.fichasJ2[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tipo));
                     } else {
-                        this.fichasJ2[i][j].setName(null);
+                        this.fichasJ2[i][j].setName(" ");
                         this.fichasJ2[i][j].setIcon(null);
                     }
                 }
@@ -633,12 +633,9 @@ public class VentPartida extends javax.swing.JFrame {
                 //recorrer botones fuscar piedra y cambiar icono
                 for (int i=1;i<=6;i++){
                     for(int j=1;j<=6;j++){
-                        if (botones[i][j].getName()!=null){
                            if(botones[i][j].getName().equals("#")){
                             botones[i][j].setIcon(icono);
                             } 
-                        }
-                        
                     }
                 }
                 int auxPiedras = this.elJuego.getPartida().getPiedrasNegras();
