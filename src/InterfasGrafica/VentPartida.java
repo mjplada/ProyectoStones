@@ -37,6 +37,7 @@ public class VentPartida extends javax.swing.JFrame {
         initComponents();
         this.elJuego = iJuego;
         this.setLayout(null);
+        
         // crear botones y agregarlos al panel
         panelJuego.setLayout(new GridLayout(7, 7));
         botones = new JButton[7][7];
@@ -349,6 +350,11 @@ public class VentPartida extends javax.swing.JFrame {
 
         btnPDJ.setText("Patrón dos juntas");
         btnPDJ.setEnabled(false);
+        btnPDJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPDJActionPerformed(evt);
+            }
+        });
 
         btnPDD.setText("Patrón dos diagonal");
         btnPDD.setEnabled(false);
@@ -486,6 +492,15 @@ public class VentPartida extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnPDActionPerformed
+
+    private void btnPDJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDJActionPerformed
+        // TODO add your handling code here:
+        // usar colorDeMov de la clase partida
+        //habilitar botones para seleccionar color según los colores que devuelva colorDeMov
+        //al hacer click en ese botón, ejecutar el movimiento según las piedras seleccionadas
+        //recorrer botones del tablero y segun las pintadas obtener las coordenadas
+        
+    }//GEN-LAST:event_btnPDJActionPerformed
 
     /**
      * @param args the command line arguments

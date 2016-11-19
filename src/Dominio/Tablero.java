@@ -191,8 +191,6 @@ public char[][] movSacarFicha (int iFila, int iColu){
                             }
                             ret.add(linea);
                         }
-                        
-                        
                     }
                 }
             }

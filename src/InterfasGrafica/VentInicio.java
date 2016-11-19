@@ -7,7 +7,6 @@ package InterfasGrafica;
 
 import Auxiliar.Serializador;
 import Dominio.Juego;
-import com.sun.media.jfxmedia.logging.Logger;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
