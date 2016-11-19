@@ -34,6 +34,7 @@ public class VentPartida extends javax.swing.JFrame {
     private int selCol;
     private String movimiento;
     private String coloresDeMov;
+    
     //movimiento del jugador "codMov fil1col1 fil2col2 color1color2
 
 
@@ -41,6 +42,8 @@ public class VentPartida extends javax.swing.JFrame {
         initComponents();
         this.elJuego = iJuego;
         this.setLayout(null);
+        this.setLocationRelativeTo(null);
+        setResizable(false);
         
         // crear botones y agregarlos al panel
         //////////////////////////////////////
@@ -71,15 +74,23 @@ public class VentPartida extends javax.swing.JFrame {
                     JButton jButton = new JButton();
                     panelJuego.add(jButton);
                     botones[i][j] = jButton;
-                    botones[i][j].setText(""+j);
-                    botones[i][j].setBackground(Color.orange);
+                    ImageIcon icon = new ImageIcon("Imagenes\\"+j+".png");
+                    Icon icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+                    botones[i][j].setIcon(icono);
+                   
+                    
+                   
                 }else{
                     if (j==0 && i>0){
                         JButton jButton = new JButton();
                         panelJuego.add(jButton);
                         botones[i][j] = jButton;
-                        botones[i][j].setText(""+i);
-                        botones[i][j].setBackground(Color.magenta);
+                        ImageIcon icon = new ImageIcon("Imagenes\\Letra"+i+".png");
+                        Icon icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+                        botones[i][j].setIcon(icono);
+                        botones[i][j].setBorderPainted(true);
+                      
+                        
                     }else{
                         if ( j==0 && i==0){
                             JButton jButton = new JButton();
@@ -128,6 +139,7 @@ public class VentPartida extends javax.swing.JFrame {
         }
         this.lblJugador1.setText("Fichas de "+ this.elJuego.getPartida().getJugador1().getAlias());
         this.lblJugador2.setText("Fichas de "+ this.elJuego.getPartida().getJugador2().getAlias());
+        
        //Probando cosas
         
         this.actualizarTablero();
@@ -175,11 +187,10 @@ public class VentPartida extends javax.swing.JFrame {
                 }
             }
            //piedras
-            ImageIcon icon = new ImageIcon("piedra.png");
-            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(20,20, Image.SCALE_DEFAULT));
+           Icon iconoPiedras = new ImageIcon(this.elJuego.getPartida().getTablero().getIconoPiedra().getImage().getScaledInstance(20,20, Image.SCALE_DEFAULT));
             for (int i =0;i<10;i++){
                 if (i < auxPiedras) {
-                    this.piedras[i].setIcon(icono);
+                    this.piedras[i].setIcon(iconoPiedras);
                 } else {
                     this.piedras[i].setIcon(null);
                 }
@@ -322,6 +333,7 @@ public class VentPartida extends javax.swing.JFrame {
             .addGap(0, 314, Short.MAX_VALUE)
         );
 
+        btnBuscarGoogle.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnBuscarGoogle.setText("Buscar en Google");
         btnBuscarGoogle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,6 +343,7 @@ public class VentPartida extends javax.swing.JFrame {
 
         txtBuscarGoogle.setToolTipText("Buscar imagen en google");
 
+        btnCargarImg.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnCargarImg.setText("Cargar Imagen de piedra");
         btnCargarImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,14 +360,14 @@ public class VentPartida extends javax.swing.JFrame {
                 .addComponent(btnBuscarGoogle)
                 .addGap(18, 18, 18)
                 .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCargarImg)
-                .addGap(45, 45, 45))
+                .addGap(24, 24, 24))
         );
         panelImagenesLayout.setVerticalGroup(
             panelImagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImagenesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(panelImagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarGoogle)
                     .addComponent(txtBuscarGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -362,7 +375,8 @@ public class VentPartida extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        lblTurno.setForeground(new java.awt.Color(0, 204, 102));
+        lblTurno.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        lblTurno.setForeground(new java.awt.Color(255, 153, 102));
         lblTurno.setText("lblTurno");
 
         javax.swing.GroupLayout panelFichasJ1Layout = new javax.swing.GroupLayout(panelFichasJ1);
@@ -387,12 +401,15 @@ public class VentPartida extends javax.swing.JFrame {
             .addGap(0, 111, Short.MAX_VALUE)
         );
 
+        lblJugador1.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
         lblJugador1.setForeground(new java.awt.Color(51, 102, 255));
         lblJugador1.setText("Jugador1");
 
+        lblJugador2.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
         lblJugador2.setForeground(new java.awt.Color(255, 0, 51));
         lblJugador2.setText("Jugador2");
 
+        lblPiedras.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
         lblPiedras.setText("Piedras");
 
         javax.swing.GroupLayout panelPiedrasLayout = new javax.swing.GroupLayout(panelPiedras);
@@ -406,6 +423,7 @@ public class VentPartida extends javax.swing.JFrame {
             .addGap(0, 35, Short.MAX_VALUE)
         );
 
+        btnPH.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnPH.setText("Poner Horizontal");
         btnPH.setEnabled(false);
         btnPH.addActionListener(new java.awt.event.ActionListener() {
@@ -414,6 +432,7 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
+        btnPD.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnPD.setText("Poner Diagonal");
         btnPD.setEnabled(false);
         btnPD.addActionListener(new java.awt.event.ActionListener() {
@@ -422,6 +441,7 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
+        btnPDS.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnPDS.setText("Patrón dos separadas");
         btnPDS.setEnabled(false);
         btnPDS.addActionListener(new java.awt.event.ActionListener() {
@@ -430,6 +450,7 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
+        btnPDJ.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnPDJ.setText("Patrón dos juntas");
         btnPDJ.setEnabled(false);
         btnPDJ.addActionListener(new java.awt.event.ActionListener() {
@@ -438,6 +459,7 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
+        btnPDD.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnPDD.setText("Patrón dos diagonal");
         btnPDD.setEnabled(false);
         btnPDD.addActionListener(new java.awt.event.ActionListener() {
@@ -446,6 +468,7 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
+        btnPDC.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnPDC.setText("Patrón dos caballo");
         btnPDC.setEnabled(false);
         btnPDC.addActionListener(new java.awt.event.ActionListener() {
@@ -454,9 +477,11 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
+        btnDescartar.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnDescartar.setText("Descartar ficha");
         btnDescartar.setEnabled(false);
 
+        btnSF.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnSF.setText("Sacar Ficha");
         btnSF.setEnabled(false);
         btnSF.addActionListener(new java.awt.event.ActionListener() {
@@ -476,9 +501,11 @@ public class VentPartida extends javax.swing.JFrame {
             .addGap(0, 41, Short.MAX_VALUE)
         );
 
+        lblColores.setFont(new java.awt.Font("Verdana", 3, 13)); // NOI18N
         lblColores.setForeground(new java.awt.Color(255, 0, 0));
         lblColores.setText("Clic sobre el color del movimiento");
 
+        lblAvisos.setFont(new java.awt.Font("Verdana", 3, 13)); // NOI18N
         lblAvisos.setForeground(new java.awt.Color(255, 51, 51));
         lblAvisos.setText("lblAvisos");
 
@@ -496,23 +523,20 @@ public class VentPartida extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(61, 61, 61)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(btnPH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnPD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnPDS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnPDJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnPDD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnPDC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnDescartar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnSF, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                                            .addComponent(panelColores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(47, 47, 47)
-                                        .addComponent(lblColores)))
-                                .addGap(26, 26, 26))
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnPH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnPD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnPDS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnPDJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnPDD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnPDC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnDescartar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnSF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(panelColores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblColores))
+                                .addGap(37, 37, 37))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
@@ -522,15 +546,14 @@ public class VentPartida extends javax.swing.JFrame {
                                             .addComponent(panelPiedras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(panelFichasJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(panelFichasJ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(lblJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(40, 40, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAvisos)
-                    .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(lblJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(lblAvisos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGap(77, 77, 77)
+                                                .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,7 +595,7 @@ public class VentPartida extends javax.swing.JFrame {
                 .addComponent(lblJugador2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelFichasJ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
                 .addComponent(lblPiedras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelPiedras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -604,10 +627,20 @@ public class VentPartida extends javax.swing.JFrame {
 
         if (JFileChooser.APPROVE_OPTION == resultado) {
             fichero = ventana.jfcCargarArchivos.getSelectedFile();
-                ImageIcon icon = new ImageIcon(fichero.toString());
-                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(botones[1][1].getWidth(), botones[1][1].getHeight(), Image.SCALE_DEFAULT));
+                this.elJuego.getPartida().getTablero().setIconoPiedra(new ImageIcon(fichero.toString()));
+                ImageIcon icon = this.elJuego.getPartida().getTablero().getIconoPiedra();
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT));
                 //recorrer botones fuscar piedra y cambiar icono
-                botones[1][1].setIcon(icono);
+                for (int i=1;i<=6;i++){
+                    for(int j=1;j<=6;j++){
+                        if (botones[i][j].getName()!=null){
+                           if(botones[i][j].getName().equals("#")){
+                            botones[i][j].setIcon(icono);
+                            } 
+                        }
+                        
+                    }
+                }
                 int auxPiedras = this.elJuego.getPartida().getPiedrasNegras();
                 for (int i =0;i<auxPiedras;i++){
                      this.piedras[i].setIcon(icono);
@@ -637,11 +670,6 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnPDJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDJActionPerformed
         // TODO add your handling code here:
-        // usar colorDeMov de la clase partida
-        //habilitar botones para seleccionar color según los colores que devuelva colorDeMov
-        //al hacer click en ese botón, ejecutar el movimiento según las piedras seleccionadas
-        //recorrer botones del tablero y segun las pintadas obtener las coordenadas
-       //PDJ no necesita seleccionar color
         String codMov = "PDJ";
         if(this.elJuego.getPartida().colorDeMov(codMov).equals("acrv")){
             codMov+=" "+this.getCoordenadasDelTablero();
@@ -665,9 +693,8 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnPDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDDActionPerformed
         // TODO add your handling code here:
-        panelColores.setVisible(true);
-        lblColores.setText("Clic sobre colores para el movimiento:");
-        lblColores.setVisible(true);
+        lblColores.setText("Clic en color con 3 o más fichas");
+        this.patronesSimilares("PDD");
     }//GEN-LAST:event_btnPDDActionPerformed
 
     private void btnPDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDCActionPerformed
@@ -830,7 +857,7 @@ public class VentPartida extends javax.swing.JFrame {
              //recorro colores aptos
             for (int j =0; j < 3; j++){
                 //recorro los botones de colores
-                if (btnColores[j].getName().equals(colores.charAt(i))){
+                if (btnColores[j].getName().equals(String.valueOf(colores.charAt(i)))){
                     btnColores[j].setVisible(true);
                 }
             }
@@ -846,7 +873,7 @@ public class VentPartida extends javax.swing.JFrame {
      }
      
      private void patronesSimilares(String codMov){
-         //para pds y pdc
+         //para pds, pdc,pdd
          String coloresDisponibles = this.elJuego.getPartida().colorDeMov(codMov);
          if (!coloresDisponibles.equals("")){
             this.habilitarColores(coloresDisponibles);
@@ -935,6 +962,7 @@ public class VentPartida extends javax.swing.JFrame {
                 }else{
                    lblAvisos.setText("No se pudo ejecutar el movimiento");
                    lblAvisos.setVisible(true);
+                   coloresDeMov="";
                }
            }else{
                //caso PDD
@@ -946,11 +974,28 @@ public class VentPartida extends javax.swing.JFrame {
                     }else{
                         lblAvisos.setText("No se pudo ejecutar el movimiento");
                         lblAvisos.setVisible(true);
+                        coloresDeMov="";
                     }
                 }else{
                    //solicito el proximo color y deshabilito el boton que recién seleccionó
-                   lblColores.setText("Necesita un color más");
-                   btnColores[posBtn].setVisible(false);
+                   //chequeo si el primer color seleccionado tiene 3 o más fichas disponibles
+                   ArrayList<Character> fichasAux = elJuego.getPartida().getFichasCorrespondientes(true);
+                   int cont=0;
+                   for (int i=0; i<fichasAux.size() && cont <3;i++){
+                       if (btnColores[posBtn].getName().equals(String.valueOf(fichasAux.get(i)))){
+                           cont++;
+                       }
+                   }
+                   if(cont>3){
+                       lblColores.setText("Necesita un color más");
+                       btnColores[posBtn].setVisible(false);
+                   }else{
+                       
+                      lblColores.setText("Seleccione color con mas de 3 fichas");
+                      coloresDeMov="";
+                      JOptionPane.showMessageDialog(null, "Debe seleccionar primero un color con más de 3 fichas.\nVuelva a seleccionar un color");
+                   }
+                   
                }
             }
               

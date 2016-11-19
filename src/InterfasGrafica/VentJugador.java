@@ -22,6 +22,8 @@ public class VentJugador extends javax.swing.JFrame {
      */
     public VentJugador(Juego unJuego) {
         initComponents();
+         this.setLocationRelativeTo(null);
+         setResizable(false);
         this.elJuego = unJuego;
     }
 
@@ -56,7 +58,7 @@ public class VentJugador extends javax.swing.JFrame {
         txtNombre.setToolTipText("");
         txtNombre.setName("txtNombre"); // NOI18N
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(70, 110, 164, 20);
+        txtNombre.setBounds(70, 110, 164, 22);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel1.setText("Regitro Jugador");
@@ -66,15 +68,15 @@ public class VentJugador extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 110, 60, 14);
+        jLabel2.setBounds(10, 110, 60, 16);
 
         jLabel3.setText("Alias:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 150, 26, 14);
+        jLabel3.setBounds(20, 150, 50, 16);
 
         jLabel4.setText("Edad:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 190, 28, 14);
+        jLabel4.setBounds(20, 190, 50, 16);
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.setToolTipText("");
@@ -99,9 +101,9 @@ public class VentJugador extends javax.swing.JFrame {
 
         txtAlias.setName("txtAlias"); // NOI18N
         getContentPane().add(txtAlias);
-        txtAlias.setBounds(70, 150, 160, 20);
+        txtAlias.setBounds(70, 150, 160, 22);
         getContentPane().add(txtEdad);
-        txtEdad.setBounds(70, 190, 60, 20);
+        txtEdad.setBounds(70, 190, 60, 22);
         getContentPane().add(lblAviso);
         lblAviso.setBounds(20, 220, 360, 16);
         getContentPane().add(lbl_errNombre);

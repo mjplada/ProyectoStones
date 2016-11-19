@@ -28,6 +28,8 @@ public class VentInicio extends javax.swing.JFrame {
     public VentInicio(Juego iJuego) {
         
         initComponents();
+        this.setLocationRelativeTo(null);
+        setResizable(false);
         this.elJuego = iJuego;
         
     }

@@ -24,6 +24,8 @@ cambios:
 -Manteniendo la misma lógica agregué el nuevo movimiento: función movSacarFicha en la clase tablero
 -también ejecute el movimiento en la clase partida, agregé caso SF de Ejecutar Movimiento
 -En ventPartida se agrego el boton Cargar imagen de piedra, y el método para cargar la imagen.-falta recorrer buscar las piedras y cambiar icono
+-  color de Mov - Se modifico para que devuelva todos los colores
+   aptos para un movimiento dado revisar Ayuda capas se rompió
 
 
 

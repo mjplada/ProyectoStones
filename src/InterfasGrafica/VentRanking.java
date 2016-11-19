@@ -23,6 +23,8 @@ public class VentRanking extends javax.swing.JFrame {
      */
     public VentRanking(Juego unJuego) {
         initComponents();
+         this.setLocationRelativeTo(null);
+         setResizable(false);
         this.elJuego = unJuego;
         ranking();
     }

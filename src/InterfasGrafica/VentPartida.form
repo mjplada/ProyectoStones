@@ -36,27 +36,22 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="panelJuego" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="btnPH" max="32767" attributes="0"/>
-                                          <Component id="btnPD" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnPDS" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnPDJ" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnPDD" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnPDC" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnDescartar" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="btnSF" alignment="0" pref="168" max="32767" attributes="0"/>
-                                          <Component id="panelColores" max="32767" attributes="0"/>
-                                      </Group>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnPH" max="32767" attributes="0"/>
+                                      <Component id="btnPD" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnPDS" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnPDJ" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnPDD" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnPDC" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnDescartar" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnSF" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="panelColores" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                      <Component id="lblColores" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblColores" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="panelImagenes" min="-2" max="-2" attributes="0"/>
@@ -68,23 +63,22 @@
                                           <Component id="panelFichasJ1" alignment="0" max="32767" attributes="0"/>
                                           <Component id="panelFichasJ2" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="lblJugador2" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="lblJugador1" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="lblJugador2" alignment="0" min="-2" pref="364" max="-2" attributes="0"/>
+                                      <Component id="lblJugador1" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="lblAvisos" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                              <Component id="lblTurno" min="-2" pref="249" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="74" pref="40" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblAvisos" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblTurno" min="-2" pref="168" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="74" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -131,7 +125,7 @@
               <Component id="lblJugador2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelFichasJ2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="lblPiedras" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelPiedras" min="-2" max="-2" attributes="0"/>
@@ -171,16 +165,16 @@
                   <Component id="btnBuscarGoogle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtBuscarGoogle" min="-2" pref="220" max="-2" attributes="0"/>
-                  <EmptySpace pref="51" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnCargarImg" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnBuscarGoogle" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtBuscarGoogle" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -194,6 +188,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnBuscarGoogle">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="14" style="3"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Buscar en Google"/>
           </Properties>
           <Events>
@@ -207,6 +204,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCargarImg">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Verdana" size="14" style="3"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cargar Imagen de piedra"/>
           </Properties>
           <Events>
@@ -217,8 +217,11 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lblTurno">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="cc" red="0" type="rgb"/>
+          <Color blue="66" green="99" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="lblTurno"/>
       </Properties>
@@ -255,6 +258,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lblJugador1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="18" style="3"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
@@ -263,6 +269,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblJugador2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="18" style="3"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="0" red="ff" type="rgb"/>
         </Property>
@@ -271,6 +280,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPiedras">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="18" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Piedras"/>
       </Properties>
     </Component>
@@ -291,6 +303,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnPH">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Poner Horizontal"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -300,6 +315,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPD">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Poner Diagonal"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -309,6 +327,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPDS">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patr&#xf3;n dos separadas"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -318,6 +339,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPDJ">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patr&#xf3;n dos juntas"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -327,6 +351,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPDD">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patr&#xf3;n dos diagonal"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -336,6 +363,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPDC">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Patr&#xf3;n dos caballo"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -345,12 +375,18 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDescartar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Descartar ficha"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSF">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sacar Ficha"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -375,6 +411,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lblColores">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="13" style="3"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
@@ -383,6 +422,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblAvisos">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="13" style="3"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
         </Property>

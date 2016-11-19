@@ -16,6 +16,8 @@ import javax.swing.ImageIcon;
 public class Tablero {
     
     private char[][] tabla;
+    private ImageIcon iconoPiedra = new ImageIcon("Imagenes\\piedra.png");
+    
     
     public char[][] getTabla(){
         return this.tabla;
@@ -23,6 +25,14 @@ public class Tablero {
     public void setTabla(char[][] iTabla){
         this.tabla = iTabla;
     }
+    
+    public void setIconoPiedra(ImageIcon unIconoPiedra){
+        this.iconoPiedra=unIconoPiedra;
+    }
+    public ImageIcon getIconoPiedra(){
+        return this.iconoPiedra;
+    }
+    
     public Tablero(){
         this.setTabla(this.generarTabla(true));
     }
@@ -32,6 +42,7 @@ public class Tablero {
           this.setTabla(this.generarTabla(esGenerico));
         
     }
+    
     
     
     public char[] ponerPiedra(int iFila, int iColu, boolean esHorizontal){
@@ -437,28 +448,27 @@ public char[][] movSacarFicha (int iFila, int iColu){
     }
     
     public Icon setColores(char iChar){
-        ImageIcon icon = new ImageIcon("vacio.png");
+        ImageIcon icon = new ImageIcon("Imagenes\\vacio.png");
         Icon icono = new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                 if(iChar=='a'){
-                    icon = new ImageIcon("azul.png");
+                    icon = new ImageIcon("Imagenes\\azul.png");
                     icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                    
                 }else{
                     if(iChar=='c'){
-                      icon = new ImageIcon("celeste.png");
+                      icon = new ImageIcon("Imagenes\\celeste.png");
                       icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                     }else{
                         if(iChar=='v'){
-                            icon = new ImageIcon("verde.png");
+                            icon = new ImageIcon("Imagenes\\verde.png");
                             icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                         }else{
                             if(iChar=='r'){
-                                 icon = new ImageIcon("rojo.png");
+                                 icon = new ImageIcon("Imagenes\\rojo.png");
                                 icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                             }else {
                                 if(iChar=='#'){
-                                     icon = new ImageIcon("piedra.png");
-                                     icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+                                     icono= new ImageIcon(this.getIconoPiedra().getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
 
                                 }
      

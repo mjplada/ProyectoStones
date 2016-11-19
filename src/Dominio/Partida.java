@@ -493,12 +493,20 @@ public class Partida {
    }
    
    public String colorDeMov (String iMov){
+       /*Se modifico para que devuelva todos los colores
+   aptos para un movimiento dado
+   */
        String ret="";
        String colores ="acvr";
          switch(iMov){
            case "PDS": {
                 //patron 2 separadas
-               for (int i=0;(i<colores.length())&&(ret.equals(""));i++){
+//               for (int i=0;(i<colores.length())&&(ret.equals(""));i++){
+//                    if ((this.fichasXColor(colores.charAt(i),3))){
+//                        ret=ret+colores.charAt(i);
+//                    }
+//                }
+                for (int i=0;i<colores.length();i++){
                     if ((this.fichasXColor(colores.charAt(i),3))){
                         ret=ret+colores.charAt(i);
                     }
@@ -514,21 +522,39 @@ public class Partida {
             }
             case "PDD": {
                 //patron dos diagonal
-                 for (int i=0;(i<colores.length())&&(ret.equals(""));i++){
+                String con3="";
+                String con2="";
+                for (int i=0;i<colores.length();i++){
+                    char usado=' ';
                     if (this.fichasXColor(colores.charAt(i),3)){
-                        char colorUsado=colores.charAt(i);
-                        for (int h =0;(h<colores.length())&&(ret.equals(""));h++){
-                            if ((this.fichasXColor(colores.charAt(h),2))&&(colores.charAt(h)!=colorUsado)){
-                                ret=ret+colorUsado+colores.charAt(h);
-                            }
-                        }
+                        con3+=colores.charAt(i);
+                        usado = colores.charAt(i);
                     }
-                }   
+                    if ((this.fichasXColor(colores.charAt(i),2)) && usado!=' '){
+                        con2+=colores.charAt(i);
+                    }
+                }
+                ret = con3+con2;
+//                 for (int i=0;(i<colores.length())&&(ret.equals(""));i++){
+//                     if (this.fichasXColor(colores.charAt(i),3)){
+//                        char colorUsado=colores.charAt(i);
+//                        for (int h =0;(h<colores.length())&&(ret.equals(""));h++){
+//                            if ((this.fichasXColor(colores.charAt(h),2))&&(colores.charAt(h)!=colorUsado)){
+//                                ret=ret+colorUsado+colores.charAt(h);
+//                            }
+//                        }
+//                    }
+//                }   
                 break;
             }
             case "PDC": {
                 //patron dos caballo
-                for (int i=0;(i<colores.length())&&(ret.equals(""));i++){
+//                for (int i=0;(i<colores.length())&&(ret.equals(""));i++){
+//                    if (this.fichasXColor(colores.charAt(i),5)){
+//                        ret=ret+colores.charAt(i);
+//                    }
+//                }
+                for (int i=0;i<colores.length();i++){
                     if (this.fichasXColor(colores.charAt(i),5)){
                         ret=ret+colores.charAt(i);
                     }
