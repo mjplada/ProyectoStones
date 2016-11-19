@@ -27,7 +27,6 @@ public class VentPartida extends javax.swing.JFrame {
     private JButton[][] fichasJ1;
     private JButton[][] fichasJ2;
     private JButton[] piedras;
-    private File fichero;
     private Juego elJuego;
     private boolean esPiedra;
     private int selFila;
@@ -411,14 +410,14 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnCargarImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarImgActionPerformed
         int resultado;
+        File fichero;
         VentBrowser ventana = new VentBrowser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG", "jpg", "png");
-        ventana.jfcCargarImagen.setFileFilter(filtro);
-        resultado = ventana.jfcCargarImagen.showOpenDialog(null);
+        ventana.jfcCargarArchivos.setFileFilter(filtro);
+        resultado = ventana.jfcCargarArchivos.showOpenDialog(null);
 
         if (JFileChooser.APPROVE_OPTION == resultado) {
-            fichero = ventana.jfcCargarImagen.getSelectedFile();
-            try {
+            fichero = ventana.jfcCargarArchivos.getSelectedFile();
                 ImageIcon icon = new ImageIcon(fichero.toString());
                 Icon icono = new ImageIcon(icon.getImage().getScaledInstance(botones[1][1].getWidth(), botones[1][1].getHeight(), Image.SCALE_DEFAULT));
                 //recorrer botones fuscar piedra y cambiar icono
@@ -427,10 +426,6 @@ public class VentPartida extends javax.swing.JFrame {
                 for (int i =0;i<auxPiedras;i++){
                      this.piedras[i].setIcon(icono);
                 }
-                
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Error abriendo la imagen " + ex);
-            }
         }
         
     }//GEN-LAST:event_btnCargarImgActionPerformed

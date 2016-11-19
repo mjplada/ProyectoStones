@@ -27,13 +27,13 @@ public class VentBrowser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jfcCargarImagen = new javax.swing.JFileChooser();
+        jfcCargarArchivos = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jfcCargarImagen.addActionListener(new java.awt.event.ActionListener() {
+        jfcCargarArchivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jfcCargarImagenActionPerformed(evt);
+                jfcCargarArchivosActionPerformed(evt);
             }
         });
 
@@ -43,23 +43,23 @@ public class VentBrowser extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jfcCargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jfcCargarArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jfcCargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jfcCargarArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jfcCargarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfcCargarImagenActionPerformed
+    private void jfcCargarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfcCargarArchivosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jfcCargarImagenActionPerformed
+    }//GEN-LAST:event_jfcCargarArchivosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +97,6 @@ public class VentBrowser extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JFileChooser jfcCargarImagen;
+    public static javax.swing.JFileChooser jfcCargarArchivos;
     // End of variables declaration//GEN-END:variables
 }

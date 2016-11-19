@@ -88,36 +88,51 @@ public class Juego implements Serializable{
         return ret;
     }
     
-    public void cargarArchivoJugadores(String sArchivo){
-        try {
+    public int[] cargarArchivoJugadores(String sArchivo){
+        
+                int[]cantLeidos = new int[2];
+                //[0] correctos , [1] incorrectos
+                String nombre="";
+                int edad =0;
+                String alias ="";
                 ArchivoLectura archLec = new ArchivoLectura(sArchivo);
                 while(archLec.hayMasLineas()){
-
-                    String[] datos = archLec.linea().split("#");
-                    Jugador j = new Jugador();
-                    j.setAlias(datos[3]);
-                    if(this.unicoAlias(datos[3])){
-                        
-                        j.setEdad(Integer.valueOf(datos[2]));
-                        j.setNombre(datos[1]);
-                        this.getJugadores().add(j);
-                    } else{
-                        
-                        Iterator<Jugador> iter = this.getJugadores().iterator();
-                        while( (iter.hasNext())){
-                        Jugador aux = iter.next();
-                        if (aux.equals(j)) {
-                             aux.setEdad(Integer.parseInt(datos[2]));
-                             aux.setNombre(datos[1]);
-                        }
+                    boolean ok = true;
+                    try{
+                        String[] datos = archLec.linea().split("#");
+                        nombre = datos[0];
+                        edad = Integer.parseInt(datos[1]);
+                        alias = datos[2];
+                    }catch (NullPointerException | NumberFormatException | IndexOutOfBoundsException e) {
+                       ok=false;
                     }
+                    if (ok) {
+                        Jugador j = new Jugador();
+                        j.setAlias(alias);
+                        if(this.unicoAlias(alias)){
                         
+                            j.setEdad(edad);
+                            j.setNombre(nombre);
+                            this.getJugadores().add(j);
+                        
+                        } else{
+                        
+                            Iterator<Jugador> iter = this.getJugadores().iterator();
+                            while( (iter.hasNext())){
+                            Jugador aux = iter.next();
+                                if (aux.equals(j)) {
+                                    aux.setEdad(edad);
+                                    aux.setNombre(nombre);
+                                }
+                            }
+                        }
+                        cantLeidos[0]++;
+                    }else{
+                        cantLeidos[1]++;
                     }
 
                 }
-        } catch (Exception e) {
-        }
-
+                return cantLeidos;
     }
     
     

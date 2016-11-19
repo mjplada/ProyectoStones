@@ -7,8 +7,12 @@ package InterfasGrafica;
 
 import Auxiliar.Serializador;
 import Dominio.Juego;
+import com.sun.media.jfxmedia.logging.Logger;
+import java.io.File;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -155,6 +159,17 @@ public class VentInicio extends javax.swing.JFrame {
     private void btnArchivosJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivosJugadoresActionPerformed
         // TODO add your handling code here:
         //cargar archivo
+        int resultado;
+        File fichero;
+        VentBrowser ventana = new VentBrowser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("solo archivos de texto","txt");
+        ventana.jfcCargarArchivos.setFileFilter(filtro);
+        resultado = ventana.jfcCargarArchivos.showOpenDialog(null);
+        if (JFileChooser.APPROVE_OPTION == resultado) {
+            fichero = ventana.jfcCargarArchivos.getSelectedFile();
+            int [] cantLeidos = this.elJuego.cargarArchivoJugadores(fichero.toString());
+            JOptionPane.showMessageDialog(null, "Se cargaron "+cantLeidos[0]+" Jugadores \n Cantidad de lines con error:"+cantLeidos[1]);
+        }
         
     }//GEN-LAST:event_btnArchivosJugadoresActionPerformed
 
