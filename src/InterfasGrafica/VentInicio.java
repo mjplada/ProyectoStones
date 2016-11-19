@@ -46,7 +46,6 @@ public class VentInicio extends javax.swing.JFrame {
         btnRegJugador = new javax.swing.JButton();
         btnJugar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
         btnArchivosJugadores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,13 +79,6 @@ public class VentInicio extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-
         btnArchivosJugadores.setText("Cargar Archivo de Jugadores");
         btnArchivosJugadores.setName(""); // NOI18N
         btnArchivosJugadores.addActionListener(new java.awt.event.ActionListener() {
@@ -100,17 +92,12 @@ public class VentInicio extends javax.swing.JFrame {
         panelPrincipialLayout.setHorizontalGroup(
             panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipialLayout.createSequentialGroup()
-                .addGroup(panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPrincipialLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRegJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnArchivosJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(panelPrincipialLayout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(100, 100, 100)
+                .addGroup(panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRegJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnArchivosJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         panelPrincipialLayout.setVerticalGroup(
@@ -124,8 +111,7 @@ public class VentInicio extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(btnArchivosJugadores)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(btnSalir))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelPrincipial);
@@ -172,11 +158,6 @@ public class VentInicio extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnArchivosJugadoresActionPerformed
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -228,7 +209,6 @@ public class VentInicio extends javax.swing.JFrame {
     private javax.swing.JButton btnArchivosJugadores;
     private javax.swing.JButton btnJugar;
     private javax.swing.JButton btnRegJugador;
-    private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel panelPrincipial;
     // End of variables declaration//GEN-END:variables
