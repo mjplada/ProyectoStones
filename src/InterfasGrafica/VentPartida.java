@@ -163,6 +163,13 @@ public class VentPartida extends javax.swing.JFrame {
                     }
                 }
             }
+            if (this.elJuego.getPartida().getTurno().equals(this.elJuego.getPartida().getJugador1().getAlias())) {
+                this.panelFichasJ2.setEnabled(false);
+                this.panelFichasJ1.setEnabled(true);
+            } else {
+                this.panelFichasJ1.setEnabled(false);
+                this.panelFichasJ2.setEnabled(true);
+            }
 //            Iterator<Character> I1 = auxFichasJ1.iterator();
 //            cant = 0;
 //            while(I1.hasNext()){                
@@ -231,6 +238,7 @@ public class VentPartida extends javax.swing.JFrame {
         btnPDD = new javax.swing.JButton();
         btnPDC = new javax.swing.JButton();
         btnDescartar = new javax.swing.JButton();
+        btnSF = new javax.swing.JButton();
 
         setSize(new java.awt.Dimension(600, 400));
 
@@ -359,6 +367,14 @@ public class VentPartida extends javax.swing.JFrame {
         btnDescartar.setText("Descartar ficha");
         btnDescartar.setEnabled(false);
 
+        btnSF.setText("Sacar Ficha");
+        btnSF.setEnabled(false);
+        btnSF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -393,7 +409,8 @@ public class VentPartida extends javax.swing.JFrame {
                             .addComponent(btnPDD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPDC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnDescartar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lblTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(74, 74, 74))
         );
         layout.setVerticalGroup(
@@ -408,6 +425,8 @@ public class VentPartida extends javax.swing.JFrame {
                                 .addComponent(btnPH)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnPD)
+                                .addGap(7, 7, 7)
+                                .addComponent(btnSF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnPDS)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -486,6 +505,11 @@ public class VentPartida extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnPDActionPerformed
+
+    private void btnSFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSFActionPerformed
+        // TODO add your handling code here:
+        this.enviarMov("SF "+ this.selFila+this.selCol);
+    }//GEN-LAST:event_btnSFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -567,6 +591,7 @@ public class VentPartida extends javax.swing.JFrame {
             this.esPiedra = false;
             btnPH.setEnabled(true);
             btnPD.setEnabled(true);
+            btnSF.setEnabled(true);
         }
 
         
@@ -669,6 +694,7 @@ public class VentPartida extends javax.swing.JFrame {
     private javax.swing.JButton btnPDJ;
     private javax.swing.JButton btnPDS;
     private javax.swing.JButton btnPH;
+    private javax.swing.JButton btnSF;
     private javax.swing.JLabel lblJugador1;
     private javax.swing.JLabel lblJugador2;
     private javax.swing.JLabel lblPiedras;
