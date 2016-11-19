@@ -41,8 +41,10 @@ public class VentPartida extends javax.swing.JFrame {
         this.setLayout(null);
         
         // crear botones y agregarlos al panel
-        panelNumeros.setLayout(new GridLayout(1,7));
-        panelLetras.setLayout(new GridLayout(7,1));
+        //////////////////////////////////////
+        //agregar imagenes de letras y numeros a los labels
+        panelNumeros.setLayout(new GridLayout(1,6));
+        panelLetras.setLayout(new GridLayout(6,1));
         lblLetras = new JLabel[7][2];
         lblNumeros = new JLabel[2][7];
         for (int i= 1;i<=6;i++){
@@ -55,6 +57,7 @@ public class VentPartida extends javax.swing.JFrame {
             lblLetras[i][1]=jLabel2;
             lblLetras[i][1].setText(""+i);
         }
+        //////////////////////////////////////
         panelJuego.setLayout(new GridLayout(7, 7));
         botones = new JButton[7][7];
         for (int i = 1; i <= 6; i++) {
