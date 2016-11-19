@@ -29,7 +29,7 @@ public class Prog2PO {
         } catch (ClassNotFoundException ex) {
             j = new Juego();
         }
-        
+        j.cargarTest();
         VentInicio inicio =  new VentInicio(j);   
         inicio.setVisible(true);
         

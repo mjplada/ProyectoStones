@@ -43,10 +43,13 @@ public class VentPartida extends javax.swing.JFrame {
         botones = new JButton[7][7];
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
+                
                 JButton jButton = new JButton();
                 jButton.addActionListener(new ListenerBoton(i, j));
                 panelJuego.add(jButton);
                 botones[i][j] = jButton;
+                
+                
             }
         }
         this.panelFichasJ1.setLayout(new GridLayout(4, 10));
@@ -477,18 +480,14 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnPHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPHActionPerformed
         // TODO add your handling code here
-        if (this.elJuego.getPartida().ejecutarMovimiento("PH "+ this.selFila+this.selCol)) {
-            actualizarTablero();
-        }
+        this.enviarMov("PH "+ this.selFila+this.selCol);
         
         
     }//GEN-LAST:event_btnPHActionPerformed
 
     private void btnPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDActionPerformed
         // TODO add your handling code here:
-        if (this.elJuego.getPartida().ejecutarMovimiento("PD "+ this.selFila+this.selCol)) {
-            actualizarTablero();
-        }
+        this.enviarMov("PD "+ this.selFila+this.selCol);
         
         
     }//GEN-LAST:event_btnPDActionPerformed
@@ -577,6 +576,17 @@ public class VentPartida extends javax.swing.JFrame {
 
         
         
+        
+    }
+    private void enviarMov(String mov){
+        
+        if (!elJuego.getPartida().getFinal()) {
+            if (elJuego.getPartida().ejecutarMovimiento(mov)) {
+                actualizarTablero();
+            }
+        } else{
+            
+        }
         
     }
     private void OcultarComandos(){
