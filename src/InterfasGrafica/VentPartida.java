@@ -766,6 +766,7 @@ public class VentPartida extends javax.swing.JFrame {
                 this.selCol = columna;
                 this.esPiedra = true;
             }else{
+                
                 btnPDC.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDC", this.selFila, this.selCol, fila, columna));
                 btnPDD.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDD", this.selFila, this.selCol, fila, columna));
                 btnPDJ.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDJ", this.selFila, this.selCol, fila, columna));
@@ -852,7 +853,7 @@ public class VentPartida extends javax.swing.JFrame {
             lblColores.setVisible(true);
          for (int i=0;i<colores.length();i++){
              //recorro colores aptos
-            for (int j =0; j < 3; j++){
+            for (int j =0; j <= 3; j++){
                 //recorro los botones de colores
                 if (btnColores[j].getName().equals(String.valueOf(colores.charAt(i)))){
                     btnColores[j].setVisible(true);
@@ -861,7 +862,7 @@ public class VentPartida extends javax.swing.JFrame {
          }
      }
      private void desHabilitarColores(){
-         for (int j =0; j < 3; j++){
+         for (int j =0; j <= 3; j++){
                 //recorro los botones de colores
                 btnColores[j].setVisible(false);
           }
