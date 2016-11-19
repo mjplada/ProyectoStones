@@ -33,6 +33,7 @@ public class VentPartida extends javax.swing.JFrame {
     private int selFila;
     private int selCol;
     private String movimiento;
+    private String coloresDeMov;
     //movimiento del jugador "codMov fil1col1 fil2col2 color1color2
 
 
@@ -52,7 +53,7 @@ public class VentPartida extends javax.swing.JFrame {
             panelColores.add(unBoton);
             btnColores[i]=unBoton;
             btnColores[i].setName(""+strColores.charAt(i));
-            btnColores[i].addActionListener(new ListenerBotonColor(btnColores[i].getName()));
+            btnColores[i].addActionListener(new ListenerBotonColor(btnColores[i].getName(), i));
         }
         btnColores[0].setBackground(Color.red);
         btnColores[1].setBackground(Color.blue);
@@ -153,9 +154,9 @@ public class VentPartida extends javax.swing.JFrame {
             btnPDJ.setEnabled(false);
             btnPH.setEnabled(false);
             btnSF.setEnabled(false);
-            btnDescartar.setEnabled(false);
-            panelColores.setVisible(false);
-            lblColores.setVisible(false);
+            this.desHabilitarColores();
+            movimiento="";
+            coloresDeMov="";
             lblColores.setText("Clic sobre el color del movimiento");
             lblAvisos.setVisible(false);
             Pintar(selFila,selCol);
@@ -651,15 +652,15 @@ public class VentPartida extends javax.swing.JFrame {
                 lblAvisos.setVisible(true);
             }
         }else{
-            this.lblAvisos.setText("No tienes los colores necesarios para realizar el movimiento");
+            this.lblAvisos.setText("No tiene las fichas necesarias para realizar el movimiento");
             this.lblAvisos.setVisible(true);
         }
     }//GEN-LAST:event_btnPDJActionPerformed
 
     private void btnPDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDSActionPerformed
          // TODO add your handling code here:
-         panelColores.setVisible(true);
-         lblColores.setVisible(true);
+         this.patronesSimilares("PDS");
+         
     }//GEN-LAST:event_btnPDSActionPerformed
 
     private void btnPDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDDActionPerformed
@@ -671,8 +672,7 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnPDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDCActionPerformed
          // TODO add your handling code here:
-         panelColores.setVisible(true);
-         lblColores.setVisible(true);
+         this.patronesSimilares("PDC");
     }//GEN-LAST:event_btnPDCActionPerformed
 
     /**
@@ -818,6 +818,44 @@ public class VentPartida extends javax.swing.JFrame {
          }
          return coord;
      }
+     
+     private void habilitarColores(String colores){
+         /*habilita los botones de colores
+         aptos para un movimiento seleccionado
+         */
+         desHabilitarColores();
+            panelColores.setVisible(true);
+            lblColores.setVisible(true);
+         for (int i=0;i<colores.length();i++){
+             //recorro colores aptos
+            for (int j =0; j < 3; j++){
+                //recorro los botones de colores
+                if (btnColores[j].getName().equals(colores.charAt(i))){
+                    btnColores[j].setVisible(true);
+                }
+            }
+         }
+     }
+     private void desHabilitarColores(){
+         for (int j =0; j < 3; j++){
+                //recorro los botones de colores
+                btnColores[j].setVisible(false);
+          }
+          panelColores.setVisible(false);
+          lblColores.setVisible(false);
+     }
+     
+     private void patronesSimilares(String codMov){
+         //para pds y pdc
+         String coloresDisponibles = this.elJuego.getPartida().colorDeMov(codMov);
+         if (!coloresDisponibles.equals("")){
+            this.habilitarColores(coloresDisponibles);
+            this.movimiento= codMov+" "+this.getCoordenadasDelTablero();
+         }else{
+             lblAvisos.setText("No tiene las fichas necesarias para realizar el movimiento");
+             lblAvisos.setVisible(true);
+         }
+     }
 
     private class ListenerBotonPiedra implements ActionListener {
 
@@ -867,19 +905,57 @@ public class VentPartida extends javax.swing.JFrame {
     private class ListenerBotonColor implements ActionListener {
 
         private String color;
+        private int indice;
         
 
-        public ListenerBotonColor(String unColor) {
+        public ListenerBotonColor(String unColor, int unIndice) {
             // en el constructor se almacena el indice que se presionó
             color=unColor;
-            
+            indice = unIndice;
             
         }
 
         public void actionPerformed(ActionEvent e) {
             // cuando se presiona un botón, se ejecutará este método
-           // clickColor(color);
+           clickColor(color,indice);
         }
+        
+        private void clickColor(String color,int posBtn) {
+            
+           coloresDeMov+=color;
+           String[] aux = movimiento.split(" ");
+           //separo el movimietno para saber que movimiento quiere hacer
+           String codMovAux= aux[0];
+           if((codMovAux.equals("PDS")||codMovAux.equals("PDC"))&&coloresDeMov.length()==1){
+               //pds y pdc necesitan un solo color
+               movimiento+=" "+coloresDeMov;
+               //armo la cadena para ejecutar mov
+               if(elJuego.getPartida().ejecutarMovimiento(movimiento)){
+                   actualizarTablero();
+                }else{
+                   lblAvisos.setText("No se pudo ejecutar el movimiento");
+                   lblAvisos.setVisible(true);
+               }
+           }else{
+               //caso PDD
+               if (coloresDeMov.length()==2){
+                   movimiento+=" "+coloresDeMov;
+                   //armo la cadena para ejecutar mov
+                    if(elJuego.getPartida().ejecutarMovimiento(movimiento)){
+                        actualizarTablero();
+                    }else{
+                        lblAvisos.setText("No se pudo ejecutar el movimiento");
+                        lblAvisos.setVisible(true);
+                    }
+                }else{
+                   //solicito el proximo color y deshabilito el boton que recién seleccionó
+                   lblColores.setText("Necesita un color más");
+                   btnColores[posBtn].setVisible(false);
+               }
+            }
+              
+           
+         }
     }
 
 
