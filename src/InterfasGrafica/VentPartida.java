@@ -42,10 +42,13 @@ public class VentPartida extends javax.swing.JFrame {
         botones = new JButton[7][7];
         for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= 6; j++) {
+                
                 JButton jButton = new JButton();
                 jButton.addActionListener(new ListenerBoton(i, j));
                 panelJuego.add(jButton);
                 botones[i][j] = jButton;
+                
+                
             }
         }
         this.panelFichasJ1.setLayout(new GridLayout(4, 10));
@@ -74,7 +77,9 @@ public class VentPartida extends javax.swing.JFrame {
             this.panelPiedras.add(jButton);
             piedras[i] = jButton;
         }
-        //Probando cosas
+        this.lblJugador1.setText("Fichas de "+ this.elJuego.getPartida().getJugador1().getAlias());
+        this.lblJugador2.setText("Fichas de "+ this.elJuego.getPartida().getJugador2().getAlias());
+       //Probando cosas
         
         this.actualizarTablero();
         
@@ -83,6 +88,8 @@ public class VentPartida extends javax.swing.JFrame {
 
     }
     private void actualizarTablero(){
+        this.elJuego.getPartida().finDeTurno();
+        this.lblTurno.setText("Turno de "+ this.elJuego.getPartida().getTurno());
         int cant;
         char[][] tablero = this.elJuego.getPartida().getTablero().getTabla();
         ArrayList<Character> auxFichasJ1 = this.elJuego.getPartida().getJ1Fichas();
@@ -92,14 +99,21 @@ public class VentPartida extends javax.swing.JFrame {
             //tablero
             for (int i = 1; i <= 6; i++) {
                 for (int j = 1; j <= 6; j++) {
-                    botones[i][j].setName(String.valueOf(tablero[i-1][j-1]));
-                    botones[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tablero[i-1][j-1]));
+                    if (tablero[i-1][j-1] != ' '){
+                        botones[i][j].setName(String.valueOf(tablero[i-1][j-1]));
+                        botones[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tablero[i-1][j-1]));
+                    } else {
+                        botones[i][j].setName(null);
+                        botones[i][j].setIcon(null);
+                    }
+                    
+                    
                 }
             }
            //piedras
             ImageIcon icon = new ImageIcon("piedra.png");
             Icon icono = new ImageIcon(icon.getImage().getScaledInstance(20,20, Image.SCALE_DEFAULT));
-            for (int i =0;i<9;i++){
+            for (int i =0;i<10;i++){
                 if (i < auxPiedras) {
                     this.piedras[i].setIcon(icono);
                 } else {
@@ -109,19 +123,40 @@ public class VentPartida extends javax.swing.JFrame {
            }
             //Fichas de los jugadores
             for (int i = 0; i < 4; i++) {
+                    char tipo = ' ';
+                    switch (i){
+                        case 0:{
+                            tipo = 'a';
+                            break;
+                        }
+                        case 1:{
+                            tipo = 'r';
+                            break;
+                        }
+                        case 2:{
+                            tipo = 'c';
+                            break;
+                        }
+                        case 3:{
+                            tipo = 'v';
+                            break;
+                        }
+                    }
+                    int cantJ1 = this.cuantasFichas(auxFichasJ1, tipo);
+                    int cantJ2 = this.cuantasFichas(auxFichasJ2, tipo);
                 for (int j = 0; j < 10; j++) {
                     //Jugador 1
-                    if (j<auxFichasJ1.size()) {
-                        this.fichasJ1[i][j].setName(String.valueOf(auxFichasJ2.get(j)));
-                        this.fichasJ1[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(auxFichasJ2.get(j)));
+                    if (j<cantJ1) {
+                        this.fichasJ1[i][j].setName(String.valueOf(tipo));
+                        this.fichasJ1[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tipo));
                     } else {
                         this.fichasJ1[i][j].setName(null);
                         this.fichasJ1[i][j].setIcon(null);
                     }
                     //Jugador 2
-                    if (j<auxFichasJ2.size()) {
-                        this.fichasJ2[i][j].setName(String.valueOf(auxFichasJ1.get(j)));
-                        this.fichasJ2[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(auxFichasJ1.get(j)));
+                    if (j<cantJ2) {
+                        this.fichasJ2[i][j].setName(String.valueOf(tipo));
+                        this.fichasJ2[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tipo));
                     } else {
                         this.fichasJ2[i][j].setName(null);
                         this.fichasJ2[i][j].setIcon(null);
@@ -153,6 +188,18 @@ public class VentPartida extends javax.swing.JFrame {
         
         
         
+    }
+    
+    private int cuantasFichas(ArrayList<Character> list, char tipo){
+        int ret = 0;
+        Iterator<Character> Iter = list.iterator();
+        while(Iter.hasNext()){
+            char aux = Iter.next();
+            if (aux == tipo) {
+                ret++;
+            }
+        }
+        return ret;
     }
    
     
@@ -246,7 +293,7 @@ public class VentPartida extends javax.swing.JFrame {
         panelFichasJ1.setLayout(panelFichasJ1Layout);
         panelFichasJ1Layout.setHorizontalGroup(
             panelFichasJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 407, Short.MAX_VALUE)
         );
         panelFichasJ1Layout.setVerticalGroup(
             panelFichasJ1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,82 +364,78 @@ public class VentPartida extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTurno)
-                    .addComponent(btnPH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPDS, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                    .addComponent(btnPDJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPDD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPDC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDescartar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblJugador2)
-                            .addComponent(lblPiedras)
-                            .addComponent(lblJugador1))
-                        .addGap(32, 32, 32)
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(panelPiedras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(panelFichasJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(panelFichasJ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(lblPiedras))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelFichasJ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelFichasJ1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelPiedras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnPH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPDS, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(btnPDJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPDD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPDC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDescartar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(74, 74, 74))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTurno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPH)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPD)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPDS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPDJ)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPDD)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPDC)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDescartar))
-                    .addComponent(panelJuego, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelFichasJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelFichasJ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblJugador1)
-                        .addGap(88, 88, 88)
-                        .addComponent(lblJugador2)
-                        .addGap(84, 84, 84)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(panelPiedras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 77, Short.MAX_VALUE)
-                                .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPiedras)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPH)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPD)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPDS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPDJ)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPDD)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPDC)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDescartar))
+                            .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblJugador1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(panelFichasJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(lblJugador2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelFichasJ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblPiedras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelPiedras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -432,18 +475,14 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnPHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPHActionPerformed
         // TODO add your handling code here
-        if (this.elJuego.getPartida().ejecutarMovimiento("PH "+ this.selFila+this.selCol)) {
-            actualizarTablero();
-        }
+        this.enviarMov("PH "+ this.selFila+this.selCol);
         
         
     }//GEN-LAST:event_btnPHActionPerformed
 
     private void btnPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDActionPerformed
         // TODO add your handling code here:
-        if (this.elJuego.getPartida().ejecutarMovimiento("PD "+ this.selFila+this.selCol)) {
-            actualizarTablero();
-        }
+        this.enviarMov("PD "+ this.selFila+this.selCol);
         
         
     }//GEN-LAST:event_btnPDActionPerformed
@@ -532,6 +571,17 @@ public class VentPartida extends javax.swing.JFrame {
 
         
         
+        
+    }
+    private void enviarMov(String mov){
+        
+        if (!elJuego.getPartida().getFinal()) {
+            if (elJuego.getPartida().ejecutarMovimiento(mov)) {
+                actualizarTablero();
+            }
+        } else{
+            
+        }
         
     }
     private void OcultarComandos(){

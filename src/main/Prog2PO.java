@@ -31,14 +31,8 @@ public class Prog2PO {
         }
         //j.cargarTest();
         VentInicio inicio =  new VentInicio(j);   
-         inicio.setVisible(true);
-        //MenuInicio(j);
-//        try {
-//            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("DatosGuardados"));
-//            out.writeObject(j);
-//        } catch (Exception e) {
-//        }
- 
+        inicio.setVisible(true);
+        
     }
     
     
