@@ -30,7 +30,12 @@ cambios:
 
 
 Pendientes:
--Agregar navegabilidad entre Fram´s
--Adaptar ventana de juego al juego anteriormente creado
--Agregar a la ventana de la partida, fichas de jugadores, piedras, etc.
--Modificar la acción del boton "Cargar imagenes de piedra" para que busque las piedras y cambie el icono.
+-Agregar navegabilidad entre Fram´s [Hecho]
+-Adaptar ventana de juego al juego anteriormente creado [En proceso]
+-Agregar a la ventana de la partida, fichas de jugadores, piedras, etc. [Hecho]
+-Modificar la acción del boton "Cargar imagenes de piedra" para que busque las piedras y cambie el icono. [En proceso]
+-Mejorar el actualizarPantalla
+-Armar los botones de patrones
+-Mostrar el Jlist de ayuda
+-Controlar el evento clic de las fichas de cada jugador, para poder descartar las mismas
+-Documentar lpm
