@@ -492,7 +492,7 @@ public class Partida {
        return s;
    }
    
-   private String colorDeMov (String iMov){
+   public String colorDeMov (String iMov){
        String ret="";
        String colores ="acvr";
          switch(iMov){

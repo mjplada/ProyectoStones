@@ -32,6 +32,8 @@ public class VentPartida extends javax.swing.JFrame {
     private boolean esPiedra;
     private int selFila;
     private int selCol;
+    private String movimiento;
+    //movimiento del jugador "codMov fil1col1 fil2col2 color1color2
 
 
     public VentPartida(Juego iJuego) {
@@ -152,6 +154,10 @@ public class VentPartida extends javax.swing.JFrame {
             btnPH.setEnabled(false);
             btnSF.setEnabled(false);
             btnDescartar.setEnabled(false);
+            panelColores.setVisible(false);
+            lblColores.setVisible(false);
+            lblColores.setText("Clic sobre el color del movimiento");
+            lblAvisos.setVisible(false);
             Pintar(selFila,selCol);
             //tablero
             for (int i = 1; i <= 6; i++) {
@@ -298,6 +304,7 @@ public class VentPartida extends javax.swing.JFrame {
         btnSF = new javax.swing.JButton();
         panelColores = new javax.swing.JPanel();
         lblColores = new javax.swing.JLabel();
+        lblAvisos = new javax.swing.JLabel();
 
         setSize(new java.awt.Dimension(600, 400));
 
@@ -354,6 +361,7 @@ public class VentPartida extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        lblTurno.setForeground(new java.awt.Color(0, 204, 102));
         lblTurno.setText("lblTurno");
 
         javax.swing.GroupLayout panelFichasJ1Layout = new javax.swing.GroupLayout(panelFichasJ1);
@@ -378,8 +386,10 @@ public class VentPartida extends javax.swing.JFrame {
             .addGap(0, 111, Short.MAX_VALUE)
         );
 
+        lblJugador1.setForeground(new java.awt.Color(51, 102, 255));
         lblJugador1.setText("Jugador1");
 
+        lblJugador2.setForeground(new java.awt.Color(255, 0, 51));
         lblJugador2.setText("Jugador2");
 
         lblPiedras.setText("Piedras");
@@ -413,6 +423,11 @@ public class VentPartida extends javax.swing.JFrame {
 
         btnPDS.setText("Patrón dos separadas");
         btnPDS.setEnabled(false);
+        btnPDS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPDSActionPerformed(evt);
+            }
+        });
 
         btnPDJ.setText("Patrón dos juntas");
         btnPDJ.setEnabled(false);
@@ -424,9 +439,19 @@ public class VentPartida extends javax.swing.JFrame {
 
         btnPDD.setText("Patrón dos diagonal");
         btnPDD.setEnabled(false);
+        btnPDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPDDActionPerformed(evt);
+            }
+        });
 
         btnPDC.setText("Patrón dos caballo");
         btnPDC.setEnabled(false);
+        btnPDC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPDCActionPerformed(evt);
+            }
+        });
 
         btnDescartar.setText("Descartar ficha");
         btnDescartar.setEnabled(false);
@@ -451,7 +476,10 @@ public class VentPartida extends javax.swing.JFrame {
         );
 
         lblColores.setForeground(new java.awt.Color(255, 0, 0));
-        lblColores.setText("Colores");
+        lblColores.setText("Clic sobre el color del movimiento");
+
+        lblAvisos.setForeground(new java.awt.Color(255, 51, 51));
+        lblAvisos.setText("lblAvisos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -481,9 +509,9 @@ public class VentPartida extends javax.swing.JFrame {
                                             .addComponent(btnSF, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                                             .addComponent(panelColores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(123, 123, 123)
+                                        .addGap(47, 47, 47)
                                         .addComponent(lblColores)))
-                                .addGap(22, 22, 22))
+                                .addGap(26, 26, 26))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(panelImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
@@ -495,10 +523,12 @@ public class VentPartida extends javax.swing.JFrame {
                                             .addComponent(panelFichasJ2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addComponent(lblJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lblJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(74, 82, Short.MAX_VALUE))
+                .addGap(40, 40, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(243, 243, 243)
-                .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAvisos)
+                    .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -531,7 +561,9 @@ public class VentPartida extends javax.swing.JFrame {
                         .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblAvisos)
+                .addGap(36, 36, 36)
                 .addComponent(lblJugador1)
                 .addGap(18, 18, 18)
                 .addComponent(panelFichasJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -608,8 +640,40 @@ public class VentPartida extends javax.swing.JFrame {
         //habilitar botones para seleccionar color según los colores que devuelva colorDeMov
         //al hacer click en ese botón, ejecutar el movimiento según las piedras seleccionadas
         //recorrer botones del tablero y segun las pintadas obtener las coordenadas
-        
+       //PDJ no necesita seleccionar color
+        String codMov = "PDJ";
+        if(this.elJuego.getPartida().colorDeMov(codMov).equals("acrv")){
+            codMov+=" "+this.getCoordenadasDelTablero();
+            if (this.elJuego.getPartida().ejecutarMovimiento(codMov)){
+                this.actualizarTablero();
+            }else{
+                lblAvisos.setText("No se pudo realizar el movimiento");
+                lblAvisos.setVisible(true);
+            }
+        }else{
+            this.lblAvisos.setText("No tienes los colores necesarios para realizar el movimiento");
+            this.lblAvisos.setVisible(true);
+        }
     }//GEN-LAST:event_btnPDJActionPerformed
+
+    private void btnPDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDSActionPerformed
+         // TODO add your handling code here:
+         panelColores.setVisible(true);
+         lblColores.setVisible(true);
+    }//GEN-LAST:event_btnPDSActionPerformed
+
+    private void btnPDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDDActionPerformed
+        // TODO add your handling code here:
+        panelColores.setVisible(true);
+        lblColores.setText("Clic sobre colores para el movimiento:");
+        lblColores.setVisible(true);
+    }//GEN-LAST:event_btnPDDActionPerformed
+
+    private void btnPDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDCActionPerformed
+         // TODO add your handling code here:
+         panelColores.setVisible(true);
+         lblColores.setVisible(true);
+    }//GEN-LAST:event_btnPDCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -730,6 +794,30 @@ public class VentPartida extends javax.swing.JFrame {
         }
         
     }
+    
+     private void DespintarTablero(){
+        for (int i = 1; i <= 6; i++) {
+                for (int j = 1; j <= 6; j++) {
+                    botones[i][j].setBackground(null);
+                }
+        }
+    }
+     
+     private String getCoordenadasDelTablero(){
+         /*recorre el tablero y devuele un string con las coordenadas
+          seleccionadas en el formato correcto para realizar
+         un movimiento*/
+         String coord="";
+         for(int i=1;i<=6;i++){
+            for (int j=1;j<=6;j++){
+                if (botones[i][j].getBackground()==Color.lightGray){
+                    coord +=i+""+j+" ";
+                }
+            }
+                    
+         }
+         return coord;
+     }
 
     private class ListenerBotonPiedra implements ActionListener {
 
@@ -755,13 +843,7 @@ public class VentPartida extends javax.swing.JFrame {
         // Debe indicarse cómo responder al click de ese botón.
          }
     }
-    private void DespintarTablero(){
-        for (int i = 1; i <= 6; i++) {
-                for (int j = 1; j <= 6; j++) {
-                    botones[i][j].setBackground(null);
-                }
-        }
-    }
+   
 
     private class ListenerBotonFicha implements ActionListener {
 
@@ -812,6 +894,7 @@ public class VentPartida extends javax.swing.JFrame {
     private javax.swing.JButton btnPDS;
     private javax.swing.JButton btnPH;
     private javax.swing.JButton btnSF;
+    private javax.swing.JLabel lblAvisos;
     private javax.swing.JLabel lblColores;
     private javax.swing.JLabel lblJugador1;
     private javax.swing.JLabel lblJugador2;
