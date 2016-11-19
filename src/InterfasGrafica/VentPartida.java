@@ -27,8 +27,6 @@ public class VentPartida extends javax.swing.JFrame {
     private JButton[][] fichasJ1;
     private JButton[][] fichasJ2;
     private JButton[] btnColores;
-    private JLabel[] lblLetras;
-    private JLabel[] lblNumeros;
     private JButton[] piedras;
     private Juego elJuego;
     private boolean esPiedra;
@@ -59,36 +57,45 @@ public class VentPartida extends javax.swing.JFrame {
         btnColores[2].setBackground(Color.green);
         btnColores[3].setBackground(Color.cyan);
         
-        ///////////////////
-        //agregar imagenes de letras y numeros a los labels
-        panelNumeros.setLayout(new GridLayout(1,6));
-        panelLetras.setLayout(new GridLayout(6,1));
-        lblLetras = new JLabel[7];
-        lblNumeros = new JLabel[7];
-        for (int i= 1;i<=6;i++){
-            JLabel jLabel = new JLabel();
-            panelNumeros.add(jLabel);
-            lblNumeros[i]=jLabel;
-            lblNumeros[i].setText(""+i);
-            JLabel jLabel2 = new JLabel();
-            panelLetras.add(jLabel2);
-            lblLetras[i]=jLabel2;
-            lblLetras[i].setText(""+i);
-        }
         //////////////////////////////////////
+        //TABLERO//////
         panelJuego.setLayout(new GridLayout(7, 7));
         botones = new JButton[7][7];
-        for (int i = 1; i <= 6; i++) {
-            for (int j = 1; j <= 6; j++) {
+        for (int i = 0; i <= 6; i++) {
+            for (int j = 0; j <= 6; j++) {
                 
-                JButton jButton = new JButton();
-                jButton.addActionListener(new ListenerBoton(i, j));
-                panelJuego.add(jButton);
-                botones[i][j] = jButton;
-                
-                
+                if (i==0 && j>0){
+                    JButton jButton = new JButton();
+                    panelJuego.add(jButton);
+                    botones[i][j] = jButton;
+                    botones[i][j].setText(""+j);
+                    botones[i][j].setBackground(Color.orange);
+                }else{
+                    if (j==0 && i>0){
+                        JButton jButton = new JButton();
+                        panelJuego.add(jButton);
+                        botones[i][j] = jButton;
+                        botones[i][j].setText(""+i);
+                        botones[i][j].setBackground(Color.magenta);
+                    }else{
+                        if ( j==0 && i==0){
+                            JButton jButton = new JButton();
+                            panelJuego.add(jButton);
+                            botones[i][j] = jButton;
+                            botones[i][j].setVisible(false);
+                        }else{
+                                JButton jButton = new JButton();
+                                jButton.addActionListener(new ListenerBoton(i, j));
+                                panelJuego.add(jButton);
+                                botones[i][j] = jButton;
+                        }
+                        
+                    }
+                }
             }
         }
+        ////////
+        //FICHAS DE JUGADORES
         this.panelFichasJ1.setLayout(new GridLayout(4, 10));
         this.panelFichasJ2.setLayout(new GridLayout(4, 10));
         fichasJ1 = new JButton[4][10];
@@ -106,7 +113,8 @@ public class VentPartida extends javax.swing.JFrame {
             }
 
         }
-
+        /////////////////////////////
+        ////BOTONES DE PIEDRAS
         this.panelPiedras.setLayout(new GridLayout(1, 10));
         piedras = new JButton[10];
         for (int i = 0; i < 10; i++) {
@@ -288,8 +296,6 @@ public class VentPartida extends javax.swing.JFrame {
         btnPDC = new javax.swing.JButton();
         btnDescartar = new javax.swing.JButton();
         btnSF = new javax.swing.JButton();
-        panelLetras = new javax.swing.JPanel();
-        panelNumeros = new javax.swing.JPanel();
         panelColores = new javax.swing.JPanel();
         lblColores = new javax.swing.JLabel();
 
@@ -433,28 +439,6 @@ public class VentPartida extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelLetrasLayout = new javax.swing.GroupLayout(panelLetras);
-        panelLetras.setLayout(panelLetrasLayout);
-        panelLetrasLayout.setHorizontalGroup(
-            panelLetrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 52, Short.MAX_VALUE)
-        );
-        panelLetrasLayout.setVerticalGroup(
-            panelLetrasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout panelNumerosLayout = new javax.swing.GroupLayout(panelNumeros);
-        panelNumeros.setLayout(panelNumerosLayout);
-        panelNumerosLayout.setHorizontalGroup(
-            panelNumerosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelNumerosLayout.setVerticalGroup(
-            panelNumerosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 52, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout panelColoresLayout = new javax.swing.GroupLayout(panelColores);
         panelColores.setLayout(panelColoresLayout);
         panelColoresLayout.setHorizontalGroup(
@@ -482,11 +466,7 @@ public class VentPartida extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(panelLetras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(panelNumeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(panelJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(61, 61, 61)
@@ -526,13 +506,6 @@ public class VentPartida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(panelNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelLetras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(btnPH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -552,14 +525,17 @@ public class VentPartida extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblColores)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelColores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(panelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(lblJugador1)
                 .addGap(18, 18, 18)
                 .addComponent(panelFichasJ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblJugador2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelFichasJ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -846,8 +822,6 @@ public class VentPartida extends javax.swing.JFrame {
     private javax.swing.JPanel panelFichasJ2;
     private javax.swing.JPanel panelImagenes;
     private javax.swing.JPanel panelJuego;
-    private javax.swing.JPanel panelLetras;
-    private javax.swing.JPanel panelNumeros;
     private javax.swing.JPanel panelPiedras;
     private javax.swing.JTextField txtBuscarGoogle;
     // End of variables declaration//GEN-END:variables
