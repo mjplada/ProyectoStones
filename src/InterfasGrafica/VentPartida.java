@@ -139,18 +139,15 @@ public class VentPartida extends javax.swing.JFrame {
         }
         this.lblJugador1.setText("Fichas de "+ this.elJuego.getPartida().getJugador1().getAlias());
         this.lblJugador2.setText("Fichas de "+ this.elJuego.getPartida().getJugador2().getAlias());
-        
-       //Probando cosas
+       
         
         this.actualizarTablero();
-        
-        
-        //Fin de prueba de cosas
 
     }
     private void actualizarTablero(){
         this.elJuego.getPartida().finDeTurno();
         this.lblTurno.setText("Turno de "+ this.elJuego.getPartida().getTurno());
+        
         int cant;
         char[][] tablero = this.elJuego.getPartida().getTablero().getTabla();
         ArrayList<Character> auxFichasJ1 = this.elJuego.getPartida().getJ1Fichas();
@@ -245,24 +242,6 @@ public class VentPartida extends javax.swing.JFrame {
                 this.panelFichasJ1.setEnabled(false);
                 this.panelFichasJ2.setEnabled(true);
             }
-//            Iterator<Character> I1 = auxFichasJ1.iterator();
-//            cant = 0;
-//            while(I1.hasNext()){                
-//                char aux = I1.next();
-//                switch (aux){
-//                    case 'a':{
-//                        this.fichasJ1[1][cant].setName(String.valueOf(aux));
-//                        this.fichasJ1[1][cant].setIcon(this.elJuego.getPartida().getTablero().setColores(aux));
-//                        break;
-//                    }
-//                }
-//                cant++;
-//                    
-//                
-//            }
-                   
-            
-         
             
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -978,13 +957,7 @@ public class VentPartida extends javax.swing.JFrame {
                    //solicito el proximo color y deshabilito el boton que recién seleccionó
                    //chequeo si el primer color seleccionado tiene 3 o más fichas disponibles
                    ArrayList<Character> fichasAux = elJuego.getPartida().getFichasCorrespondientes(true);
-                   int cont=0;
-                   for (int i=0; i<fichasAux.size() && cont <3;i++){
-                       if (btnColores[posBtn].getName().equals(String.valueOf(fichasAux.get(i)))){
-                           cont++;
-                       }
-                   }
-                   if(cont>3){
+                   if (cuantasFichas(fichasAux,btnColores[posBtn].getName().charAt(0))>=3){
                        lblColores.setText("Necesita un color más");
                        btnColores[posBtn].setVisible(false);
                    }else{

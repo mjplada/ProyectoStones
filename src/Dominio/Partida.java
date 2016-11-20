@@ -530,7 +530,7 @@ public class Partida {
                         con3+=colores.charAt(i);
                         usado = colores.charAt(i);
                     }
-                    if ((this.fichasXColor(colores.charAt(i),2)) && usado!=' '){
+                    if ((this.fichasXColor(colores.charAt(i),2)) && usado==' '){
                         con2+=colores.charAt(i);
                     }
                 }
