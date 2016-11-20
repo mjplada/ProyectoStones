@@ -786,6 +786,8 @@ public class VentPartida extends javax.swing.JFrame {
         
         if (elJuego.getPartida().getFinal()) {
             //Terminar partida
+            JOptionPane.showMessageDialog(null, "Ganador " +elJuego.getPartida().getElGanador(), "" + "Fin de partida", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
         }
         
     }
