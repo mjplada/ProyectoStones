@@ -710,8 +710,11 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
         // TODO add your handling code here:
-
-        JOptionPane.showMessageDialog(null, elJuego.getPartida().mostrarAyuda().toArray(), "Ayuda" , JOptionPane.QUESTION_MESSAGE);
+        ArrayList<String> ayuda =  elJuego.getPartida().mostrarAyuda();
+        if (!ayuda.isEmpty()) {
+            JOptionPane.showMessageDialog(null,ayuda.toArray() , "Ayuda" , JOptionPane.QUESTION_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnAyudaActionPerformed
 
     private class ListenerBoton implements ActionListener {
