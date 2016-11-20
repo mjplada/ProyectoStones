@@ -293,7 +293,6 @@ public class Partida {
                        }
                        break;
                    }
-           
         }
         } catch (Exception e) {
             ret = false;
