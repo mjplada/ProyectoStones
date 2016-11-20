@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @author mjpla
  */
 public class Juego implements Serializable{
-    private Partida partidaActual;
+    private transient Partida partidaActual;
     private ArrayList<Jugador> listJugadores = new ArrayList<>();
     boolean esGenerico;//determina si el tablero sera generco o random
     

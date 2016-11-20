@@ -89,6 +89,7 @@ public class VentTipoTablero extends javax.swing.JFrame {
         tablaJugadores = new javax.swing.JTable();
         lblAviso = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seleccionar Tablero");
         setResizable(false);
         setSize(new java.awt.Dimension(400, 400));

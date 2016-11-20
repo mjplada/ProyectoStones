@@ -156,7 +156,7 @@ public class VentInicio extends javax.swing.JFrame {
         if (JFileChooser.APPROVE_OPTION == resultado) {
             fichero = ventana.jfcCargarArchivos.getSelectedFile();
             int [] cantLeidos = this.elJuego.cargarArchivoJugadores(fichero.toString());
-            JOptionPane.showMessageDialog(null, "Se cargaron "+cantLeidos[0]+" Jugadores \n Cantidad de lines con error:"+cantLeidos[1]);
+            JOptionPane.showMessageDialog(null, "Se cargaron "+cantLeidos[0]+" Jugadores \n Cantidad de lines con error: "+cantLeidos[1]);
         }
         
     }//GEN-LAST:event_btnArchivosJugadoresActionPerformed
@@ -167,7 +167,7 @@ public class VentInicio extends javax.swing.JFrame {
         try {
             Serializador.Guardar(this.elJuego, "DatosGuardados");
         } catch (IOException e) {
-            //Que hacemos
+            JOptionPane.showMessageDialog(null, e.getMessage() + "|" + e.getStackTrace(), "" + "Ingreso de datos", JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_formWindowClosing

@@ -295,8 +295,14 @@ public class VentPartida extends javax.swing.JFrame {
         lblColores = new javax.swing.JLabel();
         lblAvisos = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setSize(new java.awt.Dimension(600, 400));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         panelJuego.setName("panelJuego"); // NOI18N
 
@@ -679,6 +685,12 @@ public class VentPartida extends javax.swing.JFrame {
          movimiento = "d"+" "+this.coloresDeMov;
          this.enviarMov(movimiento);
     }//GEN-LAST:event_btnDescartarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        elJuego.getPartida().ejecutarMovimiento("X");
+        JOptionPane.showMessageDialog(null, "Ganador " +elJuego.getPartida().getElGanador(), "" + "Fin de partida", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_formWindowClosing
 
     private class ListenerBoton implements ActionListener {
 

@@ -5,6 +5,7 @@
  */
 package Dominio;
 
+
 import java.util.*;
 
 
@@ -15,7 +16,7 @@ import java.util.*;
  * otra prueba bobofdfg
  * 
  */
-public class Partida {
+public class Partida{
     
      private Tablero miTablero;
      private Jugador jugador1;
