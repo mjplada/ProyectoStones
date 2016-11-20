@@ -28,7 +28,7 @@ public class VentPartida extends javax.swing.JFrame {
     private JButton[] btnColores;
     private JButton[] piedras;
     private Juego elJuego;
-    private boolean esPiedra;
+    private int PiedrasSelec;
     private int selFila;
     private int selCol;
     private String movimiento;
@@ -634,21 +634,24 @@ public class VentPartida extends javax.swing.JFrame {
 
     private void btnPHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPHActionPerformed
         // TODO add your handling code here
-        this.enviarMov("PH "+ this.selFila+this.selCol);
+        String coor = this.getCoordenadasDelTablero();
+        this.enviarMov("PH "+ coor);
         
         
     }//GEN-LAST:event_btnPHActionPerformed
 
     private void btnPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDActionPerformed
         // TODO add your handling code here:
-        this.enviarMov("PD "+ this.selFila+this.selCol);
+        String coor = this.getCoordenadasDelTablero();
+        this.enviarMov("PD "+ coor);
         
         
     }//GEN-LAST:event_btnPDActionPerformed
 
     private void btnSFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSFActionPerformed
         // TODO add your handling code here:
-        this.enviarMov("SF "+ this.selFila+this.selCol);
+        String coor = this.getCoordenadasDelTablero();
+        this.enviarMov("SF "+ coor);
     }//GEN-LAST:event_btnSFActionPerformed
 
     private void btnPDJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDJActionPerformed
@@ -694,7 +697,7 @@ public class VentPartida extends javax.swing.JFrame {
 
     private class ListenerBoton implements ActionListener {
 
-        private int x;
+        private int x; 
         private int y;
 
         public ListenerBoton(int i, int j) {
@@ -718,28 +721,49 @@ public class VentPartida extends javax.swing.JFrame {
         OcultarComandos();
         String tipo = botones[fila][columna].getName();
         if(tipo.equals("#")){
-            if (!this.esPiedra) {
-                Pintar(this.selFila, this.selCol);
+            if (PiedrasSelec == 0) {
+                DespintarTablero();     
                 Pintar(fila, columna);
-                this.selFila = fila;
-                this.selCol = columna;
-                this.esPiedra = true;
-            }else{
-                
-                btnPDC.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDC", this.selFila, this.selCol, fila, columna));
-                btnPDD.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDD", this.selFila, this.selCol, fila, columna));
-                btnPDJ.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDJ", this.selFila, this.selCol, fila, columna));
-                btnPDS.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDS", this.selFila, this.selCol, fila, columna));
+                PiedrasSelec = 1;
+//                Pintar(this.selFila, this.selCol);
+//                Pintar(fila, columna);
+//                this.selFila = fila;
+//                this.selCol = columna;
+//                this.esPiedra = true;
+            }else if (PiedrasSelec == 1){
+                Pintar(fila, columna);
+                PiedrasSelec = 2;
+                String[] coor = getCoordenadasDelTablero().split(" ");
+                int fila1 = Integer.parseInt(coor[0].substring(0, 1));
+                int col1 = Integer.parseInt(coor[0].substring(1, 2));
+                int fila2 = Integer.parseInt(coor[1].substring(0, 1));
+                int col2 = Integer.parseInt(coor[1].substring(1, 2));
+                btnPDC.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDC", fila1, col1, fila2, col2));
+                btnPDD.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDD", fila1, col1, fila2, col2));
+                btnPDJ.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDJ", fila1, col1, fila2, col2));
+                btnPDS.setEnabled(this.elJuego.getPartida().getTablero().validarPatron("PDS", fila1, col1, fila2, col2));
+            } else{
+                DespintarTablero();     
+                Pintar(fila, columna);
+                PiedrasSelec = 1;
             }
+            //Pintar(fila, columna);
+            //this.esPiedra = true;
         }else if (!tipo.equals(" ")) {
-            Pintar(this.selFila, this.selCol);
+            DespintarTablero();
             Pintar(fila, columna);
-            this.selFila = fila;
-            this.selCol = columna;
-            this.esPiedra = false;
+            PiedrasSelec = 0;
             btnPH.setEnabled(true);
             btnPD.setEnabled(true);
             btnSF.setEnabled(true);
+//            Pintar(this.selFila, this.selCol);
+//            Pintar(fila, columna);
+//            this.selFila = fila;
+//            this.selCol = columna;
+//            this.esPiedra = false;
+//            btnPH.setEnabled(true);
+//            btnPD.setEnabled(true);
+//            btnSF.setEnabled(true);
         }
 
         
@@ -768,10 +792,12 @@ public class VentPartida extends javax.swing.JFrame {
     private void OcultarComandos(){
         btnPH.setEnabled(false);
         btnPD.setEnabled(false);
+        btnSF.setEnabled(false);
         btnPDC.setEnabled(false);
         btnPDD.setEnabled(false);
         btnPDJ.setEnabled(false);
         btnPDS.setEnabled(false);
+        btnDescartar.setEnabled(false);
     }
     
     private void Pintar(int fila, int columna){
@@ -900,6 +926,7 @@ public class VentPartida extends javax.swing.JFrame {
             clickFicha(x,y,esElJugador1);
         }
         private void clickFicha(int fila, int col, boolean esJugador1){
+            
             JButton[][] aux ;
             if (esJugador1){
               aux=fichasJ1;  
@@ -908,6 +935,8 @@ public class VentPartida extends javax.swing.JFrame {
             }   
             coloresDeMov = aux[fila][col].getName();
             if (!coloresDeMov.equals(" ")){
+                OcultarComandos();
+                DespintarTablero();
                 btnDescartar.setEnabled(true);
             }
         }
@@ -932,6 +961,7 @@ public class VentPartida extends javax.swing.JFrame {
         
         private void clickColor(String color,int posBtn) {
             
+           
            coloresDeMov+=color;
            String[] aux = movimiento.split(" ");
            //separo el movimietno para saber que movimiento quiere hacer
