@@ -284,10 +284,14 @@ public class Partida{
                                ArrayList<Character> fichasJugActivo = this.getFichasCorrespondientes(true);
                                ArrayList<Character> fichasJugPasivo = this.getFichasCorrespondientes(false);
                                for (int i = 0; i < fRetiradas[0].length; i++) {
+                                   if(fRetiradas[0][i]!='\u0000'){
                                     fichasJugPasivo.add(fRetiradas[0][i]);
+                                   }
                                }
                                for (int i = 0; i < fRetiradas[1].length; i++) {
+                                   if(fRetiradas[1][i]!='\u0000'){
                                     fichasJugActivo.add(fRetiradas[1][i]);
+                                   }
                                }
                                 ret=true;
                             }
