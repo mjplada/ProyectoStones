@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author mjpla
  */
 
-public class VentTipoTablero extends javax.swing.JFrame {
+public class VentTipoTablero extends javax.swing.JFrame  {
     private VentPartida vPartida;
     private Juego miJuego;
     private int cantJugadores;
@@ -37,6 +37,7 @@ public class VentTipoTablero extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
         miJuego=iJuego;
         cargoTabla();
+        
         cantJugadores=0;
         this.tablaJugadores.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override

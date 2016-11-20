@@ -968,13 +968,13 @@ public class VentPartida extends javax.swing.JFrame {
            String codMovAux= aux[0];
            if((codMovAux.equals("PDS")  ||  codMovAux.equals("PDC"))    &&  coloresDeMov.length()   ==  1){
                //pds y pdc necesitan un solo color
-               movimiento   +=  " " +   coloresDeMov;
+               movimiento   +=coloresDeMov;
                //armo la cadena para ejecutar mov
                enviarMov(movimiento);
            }else{
                //caso PDD
                if (coloresDeMov.length()==2){
-                   movimiento+=" "+coloresDeMov;
+                   movimiento+=coloresDeMov;
                    //armo la cadena para ejecutar mov
                    enviarMov(movimiento);
                 }else{
