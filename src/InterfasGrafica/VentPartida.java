@@ -294,6 +294,7 @@ public class VentPartida extends javax.swing.JFrame {
         panelColores = new javax.swing.JPanel();
         lblColores = new javax.swing.JLabel();
         lblAvisos = new javax.swing.JLabel();
+        btnAyuda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -496,6 +497,13 @@ public class VentPartida extends javax.swing.JFrame {
         lblAvisos.setForeground(new java.awt.Color(255, 51, 51));
         lblAvisos.setText("lblAvisos");
 
+        btnAyuda.setText("Ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -539,6 +547,8 @@ public class VentPartida extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(296, 296, 296)
                             .addComponent(lblPiedras))))
+                .addGap(18, 18, 18)
+                .addComponent(btnAyuda)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -547,9 +557,12 @@ public class VentPartida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(btnPH)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPD)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnPH)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPD))
+                            .addComponent(btnAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(7, 7, 7)
                         .addComponent(btnSF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -694,6 +707,12 @@ public class VentPartida extends javax.swing.JFrame {
         elJuego.getPartida().ejecutarMovimiento("X");
         JOptionPane.showMessageDialog(null, "Ganador " +elJuego.getPartida().getElGanador(), "" + "Fin de partida", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+        // TODO add your handling code here:
+
+        JOptionPane.showMessageDialog(null, elJuego.getPartida().mostrarAyuda().toArray(), "Ayuda" , JOptionPane.QUESTION_MESSAGE);
+    }//GEN-LAST:event_btnAyudaActionPerformed
 
     private class ListenerBoton implements ActionListener {
 
@@ -1002,6 +1021,7 @@ public class VentPartida extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnBuscarGoogle;
     private javax.swing.JButton btnCargarImg;
     private javax.swing.JButton btnDescartar;
