@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author mjpla
  */
-public class Juego implements Serializable{
+public class Juego extends Observable implements Serializable{
     private transient Partida partidaActual;
     private ArrayList<Jugador> listJugadores = new ArrayList<>();
     boolean esGenerico;//determina si el tablero sera generco o random
@@ -30,6 +30,8 @@ public class Juego implements Serializable{
     }
     public void setJugador(Jugador iJugador){
         this.listJugadores.add(iJugador);
+        this.setChanged();
+        this.notifyObservers();
     }
     public void setEsGenerico(boolean iEsGenerico){
         this.esGenerico= iEsGenerico;

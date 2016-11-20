@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mjpla
  */
-public class VentRanking extends javax.swing.JFrame {
+public class VentRanking extends javax.swing.JFrame implements Observer{
     
     private Juego elJuego;
 
@@ -26,6 +26,7 @@ public class VentRanking extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
          setResizable(false);
         this.elJuego = unJuego;
+        this.elJuego.addObserver(this);
         ranking();
     }
 
@@ -124,6 +125,10 @@ public class VentRanking extends javax.swing.JFrame {
             modelo.addRow(fila);
         }
         this.tablaRanking.setModel(modelo);
+    }
+    @Override
+    public void update(Observable o, Object arg){
+        ranking();
     }
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
