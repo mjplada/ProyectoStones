@@ -50,6 +50,7 @@ public class VentInicio extends javax.swing.JFrame {
         btnArchivosJugadores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Stones");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("VentanaInicio"); // NOI18N
         setSize(new java.awt.Dimension(300, 300));
@@ -117,7 +118,7 @@ public class VentInicio extends javax.swing.JFrame {
         );
 
         getContentPane().add(panelPrincipial);
-        panelPrincipial.setBounds(0, 20, 382, 246);
+        panelPrincipial.setBounds(0, 20, 380, 246);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
