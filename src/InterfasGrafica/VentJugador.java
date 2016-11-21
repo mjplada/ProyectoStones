@@ -130,7 +130,7 @@ public class VentJugador extends javax.swing.JFrame {
             int edad = Integer.parseInt(this.txtEdad.getText());
              Jugador unJugador = new Jugador(nombre,alias,edad);
             if (this.elJuego.unicoAlias(alias)){
-                this.elJuego.getJugadores().add(unJugador);
+                this.elJuego.setJugador(unJugador);
             }else{
                 Iterator<Jugador> iter = this.elJuego.getJugadores().iterator();
                 while( (iter.hasNext())){

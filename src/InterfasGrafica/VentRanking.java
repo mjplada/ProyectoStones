@@ -111,9 +111,11 @@ public class VentRanking extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void ranking(){
-       ArrayList<Jugador> aux = this.elJuego.getRanking();
+       
+        ArrayList<Jugador> aux = this.elJuego.getRanking();
         Iterator<Jugador> iter = aux.iterator();
         DefaultTableModel modelo=(DefaultTableModel) this.tablaRanking.getModel();
+        
         while (iter.hasNext()){
             Jugador unJugador = iter.next();
             Object [] fila=new Object[5];
