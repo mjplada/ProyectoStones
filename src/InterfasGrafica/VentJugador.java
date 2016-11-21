@@ -143,7 +143,7 @@ public class VentJugador extends javax.swing.JFrame {
             }
             this.lblAviso.setText("Jugador: "+this.txtAlias.getText()+" .Ingresado correctamente.");
             this.limpiarCampos();
-        }
+        } 
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private boolean validarCampos(){
@@ -159,6 +159,10 @@ public class VentJugador extends javax.swing.JFrame {
         if (this.txtEdad.getText().equals("")){
             ret = false;
             lbl_errEdad.setText("Debe ingresar una edad.");
+        }
+        if (Integer.parseInt(this.txtEdad.getText())< 1 ||  Integer.parseInt(this.txtEdad.getText())> 150) {
+            ret = false;
+            lbl_errEdad.setText("Debe ingresar una edad coherente");
         }
         return ret;
     }

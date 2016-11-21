@@ -24,8 +24,8 @@ public class VentRanking extends javax.swing.JFrame implements Observer{
      */
     public VentRanking(Juego unJuego) {
         initComponents();
-         this.setLocationRelativeTo(null);
-         setResizable(false);
+        this.setLocationRelativeTo(null);
+        setResizable(false);
         this.elJuego = unJuego;
         this.elJuego.addObserver(this);
         agregoObserversDeJugadores ();
