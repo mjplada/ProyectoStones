@@ -480,23 +480,6 @@ public class Partida{
        return ret;
    }
    
-   public String muestroFichas (boolean esDelTurno){
-       String s ="";
-       ArrayList<Character> fichas = this.getFichasCorrespondientes(esDelTurno);
-       Collections.sort(fichas);
-       for (int i=0;i<fichas.size();i++){
-           s+=this.getTablero().setColores(fichas.get(i));
-       }
-       return s;
-   }
-   public String muestroPiedras(){
-       String s=""+this.getPiedrasNegras()+" ";
-       for (int i=0; i<this.getPiedrasNegras();i++){
-           s+="#";
-       }
-       return s;
-   }
-   
    public String colorDeMov (String iMov){
        /*Se modifico para que devuelva todos los colores
    aptos para un movimiento dado

@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class Juego extends Observable implements Serializable{
     private transient Partida partidaActual;
     private ArrayList<Jugador> listJugadores = new ArrayList<>();
-    boolean esGenerico;//determina si el tablero sera generco o random
+    private boolean esGenerico;//determina si el tablero sera generco o random
     
     
     public Partida getPartida(){
@@ -54,25 +54,7 @@ public class Juego extends Observable implements Serializable{
     public void iniciarPartida(Jugador iJugador1, Jugador iJugador2, boolean iAleatoria){
         this.setPartida(new Partida(iJugador1,iJugador2,iAleatoria));
     }
-    
-    public void cargarTest(){
-        Jugador j1 = new Jugador("Guillermo", "Llotet", 55);
-        j1.setGanadas(15);
-        j1.setJugadas(30);
-        this.listJugadores.add(j1);
-        Jugador j2 = new Jugador("Marcelo", "Chule", 28);
-        j2.setGanadas(15);
-        j2.setJugadas(30);
-        this.listJugadores.add(j2);
-        Jugador j3 = new Jugador("Roberto", "Beto", 43);
-        j3.setGanadas(10);
-        j3.setJugadas(40);
-        this.listJugadores.add(j3);
-        Jugador j4 = new Jugador("Maria", "Mary", 23);
-        j4.setGanadas(60);
-        j4.setJugadas(100);
-        this.listJugadores.add(j4);
-    }
+   
     
     public boolean unicoAlias(String iAlias){
         //devuelve false su existe el alias

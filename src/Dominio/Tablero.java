@@ -299,42 +299,42 @@ public char[][] movSacarFicha (int iFila, int iColu){
         return nuevo;
     }
     
-    public char[][] dibujaTabla(){
-        
-        /*
-        Este metodo toma la matriz de la clase (tabla) y la "mete" dentro de otra
-        dibujada como fue solicitado en la letra
-        */
-       
-        char [][] tableroOut = {{'-','-','-','-','-','-','-','-','-','-','-','-','-','-'},
-                                {'-','|','1','|','2','|','3','|','4','|','5','|','6','|'},
-                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
-                                {'A','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
-                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
-                                {'B','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
-                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
-                                {'C','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
-                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
-                                {'D','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
-                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
-                                {'E','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
-                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
-                                {'F','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
-                                {'-','-','-','-','-','-','-','-','-','-','-','-','-','-'}};
-        char [][] aux = this.getTabla();
-        int iAux =0;
-        
-        for (int i = 3; i < tableroOut.length; i += 2) {
-        int jAux=0;
-            for (int j = 2; j < tableroOut[0].length; j += 2){
-                tableroOut[i][j]=aux[iAux][jAux];
-                jAux++;
-            }
-            iAux++;
-        }
-        
-        return tableroOut;
-    }
+//    public char[][] dibujaTabla(){
+//        
+//        /*
+//        Este metodo toma la matriz de la clase (tabla) y la "mete" dentro de otra
+//        dibujada como fue solicitado en la letra
+//        */
+//       
+//        char [][] tableroOut = {{'-','-','-','-','-','-','-','-','-','-','-','-','-','-'},
+//                                {'-','|','1','|','2','|','3','|','4','|','5','|','6','|'},
+//                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
+//                                {'A','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
+//                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
+//                                {'B','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
+//                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
+//                                {'C','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
+//                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
+//                                {'D','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
+//                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
+//                                {'E','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
+//                                {'-','+','-','+','-','+','-','+','-','+','-','+','-','+'},
+//                                {'F','|',' ','|',' ','|',' ','|',' ','|',' ','|',' ','|'},
+//                                {'-','-','-','-','-','-','-','-','-','-','-','-','-','-'}};
+//        char [][] aux = this.getTabla();
+//        int iAux =0;
+//        
+//        for (int i = 3; i < tableroOut.length; i += 2) {
+//        int jAux=0;
+//            for (int j = 2; j < tableroOut[0].length; j += 2){
+//                tableroOut[i][j]=aux[iAux][jAux];
+//                jAux++;
+//            }
+//            iAux++;
+//        }
+//        
+//        return tableroOut;
+//    }
     
     private char[][] generarTabla (boolean esGenerico){
         //genera el tablero por defecto o uno random
@@ -434,18 +434,18 @@ public char[][] movSacarFicha (int iFila, int iColu){
         
         return correcto;
     }
-    @Override
-    public String toString(){
-        String ret = "";
-//        char[][] eltablero = this.dibujaTabla();
-//        for (int i =0; i<eltablero.length;i++){
-//            for(int j=0; j<eltablero[i].length;j++){
-//                ret = ret + this.setColores(eltablero[i][j]);
-//            }
-//            ret = ret + "\n";
-//        }
-        return ret;
-    }
+//    @Override
+//    public String toString(){
+//        String ret = "";
+////        char[][] eltablero = this.dibujaTabla();
+////        for (int i =0; i<eltablero.length;i++){
+////            for(int j=0; j<eltablero[i].length;j++){
+////                ret = ret + this.setColores(eltablero[i][j]);
+////            }
+////            ret = ret + "\n";
+////        }
+//        return ret;
+//    }
     
     public Icon setColores(char iChar){
         ImageIcon icon = new ImageIcon("Imagenes\\vacio.png");
