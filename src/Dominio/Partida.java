@@ -362,6 +362,7 @@ public class Partida{
         this.setFinalizada(true);
         
         
+        
     }
     
      public void finDeTurno(){

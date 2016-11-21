@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class VentRanking extends javax.swing.JFrame implements Observer{
     
     private Juego elJuego;
+    
 
     /**
      * Creates new form VentRanking
@@ -27,6 +28,7 @@ public class VentRanking extends javax.swing.JFrame implements Observer{
          setResizable(false);
         this.elJuego = unJuego;
         this.elJuego.addObserver(this);
+        agregoObserversDeJugadores ();
         ranking();
     }
 
@@ -112,10 +114,15 @@ public class VentRanking extends javax.swing.JFrame implements Observer{
 
     private void ranking(){
        
+        
+//        for (int i =0;i<this.tablaRanking.getRowCount();i++){
+//            this.tablaRanking.getModel()
+//        }
+        
         ArrayList<Jugador> aux = this.elJuego.getRanking();
         Iterator<Jugador> iter = aux.iterator();
         DefaultTableModel modelo=(DefaultTableModel) this.tablaRanking.getModel();
-        
+        modelo.setRowCount(0);
         while (iter.hasNext()){
             Jugador unJugador = iter.next();
             Object [] fila=new Object[5];
@@ -126,10 +133,18 @@ public class VentRanking extends javax.swing.JFrame implements Observer{
             fila[4]=unJugador.getPerdidas();
             modelo.addRow(fila);
         }
+        
         this.tablaRanking.setModel(modelo);
+    }
+    
+    private void agregoObserversDeJugadores (){
+        for (int i =0; i < this.elJuego.getJugadores().size();i++){
+            this.elJuego.getJugadores().get(i).addObserver(this);
+        }
     }
     @Override
     public void update(Observable o, Object arg){
+        agregoObserversDeJugadores ();
         ranking();
     }
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed

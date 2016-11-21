@@ -133,6 +133,12 @@ public class Juego extends Observable implements Serializable{
                 }
                 return cantLeidos;
     }
+//    
+//    public String ganoPartida(){
+//        this.setChanged();
+//        this.notifyObservers();
+//        return this.getPartida().getElGanador();
+//    }
     
     
     

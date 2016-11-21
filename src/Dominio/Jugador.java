@@ -23,11 +23,13 @@ public class Jugador extends Observable implements Comparable<Jugador> , Seriali
     
     public void setNombre(String iNombre){
         this.nombre = iNombre;
-        
+        this.setChanged();
+        this.notifyObservers();
             
     } 
     public String getNombre(){
         return this.nombre;
+        
     }
      public void setAlias(String iAlias){
         this.alias = iAlias;
@@ -63,6 +65,7 @@ public class Jugador extends Observable implements Comparable<Jugador> , Seriali
     }
     
     public Jugador (){
+        
         this.setAlias("Chule");
         this.setNombre("Ruperto");
         this.setEdad(31);
