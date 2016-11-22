@@ -148,6 +148,13 @@ public class VentJugador extends javax.swing.JFrame {
 
     private boolean validarCampos(){
         boolean ret = true;
+        //Limpiamos las lbl´s
+        lbl_errNombre.setText("");
+        lbl_errAlias.setText("");
+        lbl_errEdad.setText("");
+        lblAviso.setText("");
+        
+        //Validamos campos.
         if (this.txtNombre.getText().equals("")) {
             ret = false;
             lbl_errNombre.setText("Debe ingresar un nombre.");
