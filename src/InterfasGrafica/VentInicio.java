@@ -94,18 +94,18 @@ public class VentInicio extends javax.swing.JFrame {
         panelPrincipialLayout.setHorizontalGroup(
             panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipialLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(94, 94, 94)
                 .addGroup(panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRegJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnArchivosJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(107, Short.MAX_VALUE))
+                    .addComponent(btnArchivosJugadores))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         panelPrincipialLayout.setVerticalGroup(
             panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipialLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipialLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(btnRegJugador)
                 .addGap(18, 18, 18)
                 .addComponent(btnJugar)
@@ -113,11 +113,11 @@ public class VentInicio extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(btnArchivosJugadores)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
         );
 
         getContentPane().add(panelPrincipial);
-        panelPrincipial.setBounds(0, 20, 382, 246);
+        panelPrincipial.setBounds(0, 0, 404, 290);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
@@ -134,7 +134,7 @@ public class VentInicio extends javax.swing.JFrame {
             VentTipoTablero vTipoTablero = new VentTipoTablero(elJuego);
             vTipoTablero.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null, "No hay jugadores infresados para comenzar una partida.", "" + "Ingreso de datos", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No hay jugadores ingresados para comenzar una partida.", "" + "Ingreso de datos", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnJugarActionPerformed
 
