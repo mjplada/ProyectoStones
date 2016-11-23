@@ -72,7 +72,7 @@ public class VentPartida extends javax.swing.JFrame {
                     JButton jButton = new JButton();
                     panelJuego.add(jButton);
                     botones[i][j] = jButton;
-                    ImageIcon icon = new ImageIcon("Imagenes\\"+j+".png");
+                    ImageIcon icon = new ImageIcon("src\\Imagenes\\"+j+".png");
                     Icon icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                     botones[i][j].setIcon(icono);
                    
@@ -81,7 +81,7 @@ public class VentPartida extends javax.swing.JFrame {
                         JButton jButton = new JButton();
                         panelJuego.add(jButton);
                         botones[i][j] = jButton;
-                        ImageIcon icon = new ImageIcon("Imagenes\\Letra"+i+".png");
+                        ImageIcon icon = new ImageIcon("src\\Imagenes\\Letra"+i+".png");
                         Icon icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                         botones[i][j].setIcon(icono);
                         botones[i][j].setBorderPainted(true);

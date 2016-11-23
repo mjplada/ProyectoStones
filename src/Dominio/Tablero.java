@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Dominio;
+
 import java.awt.Image;
 import java.util.*;
 import javax.swing.Icon;
@@ -16,7 +17,7 @@ import javax.swing.ImageIcon;
 public class Tablero {
     
     private char[][] tabla;
-    private ImageIcon iconoPiedra = new ImageIcon("Imagenes\\piedra.png");
+    private ImageIcon iconoPiedra = new ImageIcon("src\\Imagenes\\piedra.png");
     
     
     public char[][] getTabla(){
@@ -448,23 +449,23 @@ public char[][] movSacarFicha (int iFila, int iColu){
 //    }
     
     public Icon setColores(char iChar){
-        ImageIcon icon = new ImageIcon("Imagenes\\vacio.png");
+        ImageIcon icon = new ImageIcon("src\\Imagenes\\vacio.png");
         Icon icono = new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                 if(iChar=='a'){
-                    icon = new ImageIcon("Imagenes\\azul.png");
+                    icon = new ImageIcon("src\\Imagenes\\azul.png");
                     icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                    
                 }else{
                     if(iChar=='c'){
-                      icon = new ImageIcon("Imagenes\\celeste.png");
+                      icon = new ImageIcon("src\\Imagenes\\celeste.png");
                       icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                     }else{
                         if(iChar=='v'){
-                            icon = new ImageIcon("Imagenes\\verde.png");
+                            icon = new ImageIcon("src\\Imagenes\\verde.png");
                             icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                         }else{
                             if(iChar=='r'){
-                                 icon = new ImageIcon("Imagenes\\rojo.png");
+                                 icon = new ImageIcon("src\\Imagenes\\rojo.png");
                                 icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
                             }else {
                                 if(iChar=='#'){
