@@ -151,7 +151,6 @@ public class VentTipoTablero extends javax.swing.JFrame  {
         lblAviso.setText("Seleccione un jugdor de la lista ");
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 36)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Stones__.jpg"))); // NOI18N
 
         javax.swing.GroupLayout panelTipoTableroLayout = new javax.swing.GroupLayout(panelTipoTablero);
         panelTipoTablero.setLayout(panelTipoTableroLayout);
