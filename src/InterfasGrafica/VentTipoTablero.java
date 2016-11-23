@@ -57,11 +57,11 @@ public class VentTipoTablero extends javax.swing.JFrame  {
                                      jugador1=unJugador;
                                      cantJugadores++;
                                      modelo.removeRow(fila); 
-                                     lblAviso.setText("Jugador1 : "+alias+". Selleccione al jugador 2");
+                                     lblAviso.setText("Jugador1: "+alias+". Selleccione al jugador 2");
                                  }else{
                                      jugador2=unJugador;
                                       modelo.removeRow(fila);
-                                     lblAviso.setText("Ya se seleccionaron los dos jugdores. Elija el tablero para comenzar la partida");
+                                     lblAviso.setText("¡Elija el tablero para comenzar!");
                                      tablaJugadores.enable(false);
                                  }
                              }
@@ -89,6 +89,7 @@ public class VentTipoTablero extends javax.swing.JFrame  {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaJugadores = new javax.swing.JTable();
         lblAviso = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seleccionar Tablero");
@@ -96,7 +97,7 @@ public class VentTipoTablero extends javax.swing.JFrame  {
         setSize(new java.awt.Dimension(400, 400));
         getContentPane().setLayout(null);
 
-        btnPorDefecto.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        btnPorDefecto.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnPorDefecto.setText("Tablero por Defecto");
         btnPorDefecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +105,7 @@ public class VentTipoTablero extends javax.swing.JFrame  {
             }
         });
 
-        btnRandom.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        btnRandom.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         btnRandom.setText("Tablero Random");
         btnRandom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,37 +147,48 @@ public class VentTipoTablero extends javax.swing.JFrame  {
         jScrollPane1.setViewportView(tablaJugadores);
         tablaJugadores.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        lblAviso.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        lblAviso.setFont(new java.awt.Font("Verdana", 3, 12)); // NOI18N
         lblAviso.setText("Seleccione un jugdor de la lista ");
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 36)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Stones__.jpg"))); // NOI18N
 
         javax.swing.GroupLayout panelTipoTableroLayout = new javax.swing.GroupLayout(panelTipoTablero);
         panelTipoTablero.setLayout(panelTipoTableroLayout);
         panelTipoTableroLayout.setHorizontalGroup(
             panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTipoTableroLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(panelTipoTableroLayout.createSequentialGroup()
-                            .addComponent(btnRandom)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPorDefecto))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblAviso))
+                    .addGroup(panelTipoTableroLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelTipoTableroLayout.createSequentialGroup()
+                                .addComponent(btnRandom)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPorDefecto))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelTipoTableroLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelTipoTableroLayout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(lblAviso)))
                 .addContainerGap(216, Short.MAX_VALUE))
         );
         panelTipoTableroLayout.setVerticalGroup(
             panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTipoTableroLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+            .addGroup(panelTipoTableroLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAviso)
-                .addGap(73, 73, 73)
+                .addComponent(lblAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(panelTipoTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPorDefecto)
                     .addComponent(btnRandom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(89, 89, 89))
+                .addGap(82, 82, 82))
         );
 
         getContentPane().add(panelTipoTablero);
@@ -230,8 +242,7 @@ public class VentTipoTablero extends javax.swing.JFrame  {
     }//GEN-LAST:event_btnRandomActionPerformed
 
     private void tablaJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJugadoresMouseClicked
-        // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_tablaJugadoresMouseClicked
 
     /**
@@ -272,6 +283,7 @@ public class VentTipoTablero extends javax.swing.JFrame  {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPorDefecto;
     private javax.swing.JButton btnRandom;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAviso;
     private javax.swing.JPanel panelTipoTablero;

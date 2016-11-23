@@ -48,6 +48,7 @@ public class VentInicio extends javax.swing.JFrame {
         btnJugar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnArchivosJugadores = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Stones");
@@ -90,23 +91,32 @@ public class VentInicio extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Stones.png"))); // NOI18N
+
         javax.swing.GroupLayout panelPrincipialLayout = new javax.swing.GroupLayout(panelPrincipial);
         panelPrincipial.setLayout(panelPrincipialLayout);
         panelPrincipialLayout.setHorizontalGroup(
             panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipialLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addGroup(panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRegJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnArchivosJugadores))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGroup(panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPrincipialLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRegJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnArchivosJugadores)))
+                    .addGroup(panelPrincipialLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel1)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         panelPrincipialLayout.setVerticalGroup(
             panelPrincipialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipialLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegJugador)
                 .addGap(18, 18, 18)
                 .addComponent(btnJugar)
@@ -114,7 +124,7 @@ public class VentInicio extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(btnArchivosJugadores)
-                .addGap(57, 57, 57))
+                .addGap(26, 26, 26))
         );
 
         getContentPane().add(panelPrincipial);
@@ -218,6 +228,7 @@ public class VentInicio extends javax.swing.JFrame {
     private javax.swing.JButton btnJugar;
     private javax.swing.JButton btnRegJugador;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelPrincipial;
     // End of variables declaration//GEN-END:variables
 }
