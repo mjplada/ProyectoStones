@@ -46,12 +46,14 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Regitro Jugador"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/registro.png"/>
+        </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="122" y="28" width="230" height="47"/>
+          <AbsoluteConstraints x="50" y="30" width="310" height="47"/>
         </Constraint>
       </Constraints>
     </Component>

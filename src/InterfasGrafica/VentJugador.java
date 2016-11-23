@@ -61,10 +61,10 @@ public class VentJugador extends javax.swing.JFrame {
         txtNombre.setBounds(70, 110, 164, 22);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
-        jLabel1.setText("Regitro Jugador");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registro.png"))); // NOI18N
         jLabel1.setToolTipText("");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(122, 28, 230, 47);
+        jLabel1.setBounds(50, 30, 310, 47);
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
