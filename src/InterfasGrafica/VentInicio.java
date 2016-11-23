@@ -50,6 +50,7 @@ public class VentInicio extends javax.swing.JFrame {
         btnArchivosJugadores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Stones");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("VentanaInicio"); // NOI18N
         setSize(new java.awt.Dimension(300, 300));
@@ -155,8 +156,13 @@ public class VentInicio extends javax.swing.JFrame {
         resultado = ventana.jfcCargarArchivos.showOpenDialog(null);
         if (JFileChooser.APPROVE_OPTION == resultado) {
             fichero = ventana.jfcCargarArchivos.getSelectedFile();
+            if(fichero.toString().contains(".txt")){
             int [] cantLeidos = this.elJuego.cargarArchivoJugadores(fichero.toString());
-            JOptionPane.showMessageDialog(null, "Se cargaron "+cantLeidos[0]+" Jugadores \n Cantidad de lines con error: "+cantLeidos[1]);
+            JOptionPane.showMessageDialog(null, "Se cargaron "+cantLeidos[0]+" Jugadores \n Cantidad de lines con error: "+cantLeidos[1],"Archivo aceptado",1);       
+            }
+            else{
+             JOptionPane.showMessageDialog(null, "Solamente se aceptan archivos txt.\n Cada linea con el siguiente formato: Nombre#edad#alias","Error al cargr archivo",0);
+            }
         }
         
     }//GEN-LAST:event_btnArchivosJugadoresActionPerformed

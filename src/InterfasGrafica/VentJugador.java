@@ -143,11 +143,18 @@ public class VentJugador extends javax.swing.JFrame {
             }
             this.lblAviso.setText("Jugador: "+this.txtAlias.getText()+" .Ingresado correctamente.");
             this.limpiarCampos();
-        }
+        } 
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private boolean validarCampos(){
         boolean ret = true;
+        //Limpiamos las lbl´s
+        lbl_errNombre.setText("");
+        lbl_errAlias.setText("");
+        lbl_errEdad.setText("");
+        lblAviso.setText("");
+        
+        //Validamos campos.
         if (this.txtNombre.getText().equals("")) {
             ret = false;
             lbl_errNombre.setText("Debe ingresar un nombre.");
@@ -159,6 +166,10 @@ public class VentJugador extends javax.swing.JFrame {
         if (this.txtEdad.getText().equals("")){
             ret = false;
             lbl_errEdad.setText("Debe ingresar una edad.");
+        }
+        if (Integer.parseInt(this.txtEdad.getText())< 1 ||  Integer.parseInt(this.txtEdad.getText())> 150) {
+            ret = false;
+            lbl_errEdad.setText("Debe ingresar una edad coherente");
         }
         return ret;
     }
