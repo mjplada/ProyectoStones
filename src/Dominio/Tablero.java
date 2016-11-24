@@ -201,7 +201,7 @@ public char[][] movSacarFicha (int iFila, int iColu){
                             if (tipo.equals("PDS")||tipo.equals("PDC")) {
                                 linea = linea + " color" + this.colorAPalabra(color.substring(0, 1));
                             } else if (tipo.equals("PDD")&&color.length()>=2){
-                                linea = linea + " color" + this.colorAPalabra(color.substring(0, 1));
+                                linea = linea + " color" + this.colorAPalabra(color.substring(0, 2));
                             }
                             ret.add(linea);
                         }
