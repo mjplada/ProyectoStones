@@ -522,7 +522,13 @@ public class Partida{
                         con2+=colores.charAt(i);
                     }
                 }
+                if(con3.length()>0 && con2.length()>0){
+                //si hay por lo menos un color con mas de 3 y otro color diferente con más de 2 fichas
+                //pruebo los colores disponibles. de lo contrario devuelvo "".
                 ret = con3+con2;
+                }else{
+                    ret="";
+                }
 //                 for (int i=0;(i<colores.length())&&(ret.equals(""));i++){
 //                     if (this.fichasXColor(colores.charAt(i),3)){
 //                        char colorUsado=colores.charAt(i);

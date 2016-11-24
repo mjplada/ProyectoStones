@@ -953,7 +953,9 @@ public class VentPartida extends javax.swing.JFrame {
      private void patronesSimilares(String codMov){
          //para pds, pdc,pdd
          String coloresDisponibles = this.elJuego.getPartida().colorDeMov(codMov);
+         
          if (!coloresDisponibles.equals("")){
+             
             this.habilitarColores(coloresDisponibles);
             this.movimiento= codMov+" "+this.getCoordenadasDelTablero();
          }else{
