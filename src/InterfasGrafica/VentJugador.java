@@ -133,13 +133,16 @@ public class VentJugador extends javax.swing.JFrame {
                 this.elJuego.setJugador(unJugador);
             }else{
                 Iterator<Jugador> iter = this.elJuego.getJugadores().iterator();
-                while( (iter.hasNext())){
+                boolean cambio = false;
+                while( (iter.hasNext())&& !cambio ){
                     Jugador aux = iter.next();
                     if (aux.equals(unJugador)) {
                         aux.setEdad(edad);
                         aux.setNombre(nombre);
+                        cambio =true;
                     }
                 }
+              
             }
             this.lblAviso.setText("Jugador: "+this.txtAlias.getText()+" .Ingresado correctamente.");
             this.limpiarCampos();
