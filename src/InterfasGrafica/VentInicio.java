@@ -164,9 +164,10 @@ public class VentInicio extends javax.swing.JFrame {
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("solo archivos de texto","txt");
         ventana.jfcCargarArchivos.setFileFilter(filtro);
         resultado = ventana.jfcCargarArchivos.showOpenDialog(null);
+        
         if (JFileChooser.APPROVE_OPTION == resultado) {
             fichero = ventana.jfcCargarArchivos.getSelectedFile();
-            if(fichero.toString().contains(".txt")){
+            if((fichero.toString().contains(".txt")) || (fichero.toString().contains(".TXT"))){
             int [] cantLeidos = this.elJuego.cargarArchivoJugadores(fichero.toString());
             JOptionPane.showMessageDialog(null, "Se cargaron "+cantLeidos[0]+" Jugadores \n Cantidad de lines con error: "+cantLeidos[1],"Archivo aceptado",1);       
             }

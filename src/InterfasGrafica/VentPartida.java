@@ -664,12 +664,16 @@ public class VentPartida extends javax.swing.JFrame {
         int resultado;
         File fichero;
         VentBrowser ventana = new VentBrowser();
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG", "jpg", "png");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG o PNG", "jpg", "png");
         ventana.jfcCargarArchivos.setFileFilter(filtro);
         resultado = ventana.jfcCargarArchivos.showOpenDialog(null);
 
         if (JFileChooser.APPROVE_OPTION == resultado) {
             fichero = ventana.jfcCargarArchivos.getSelectedFile();
+            
+            if( (fichero.toString().contains(".jpg")) || (fichero.toString().contains(".png")) ||
+                 (fichero.toString().contains(".JPG")) || (fichero.toString().contains(".PNG"))){
+                
                 this.elJuego.getPartida().getTablero().setIconoPiedra(new ImageIcon(fichero.toString()));
                 ImageIcon icon = this.elJuego.getPartida().getTablero().getIconoPiedra();
                 Icon icono = new ImageIcon(icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT));
@@ -685,6 +689,9 @@ public class VentPartida extends javax.swing.JFrame {
                 for (int i =0;i<auxPiedras;i++){
                      this.piedras[i].setIcon(icono);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Solamente se aceptan archivos \"jpg\" o \"png\".","Error al cargr archivo",0);
+            }   
         }
         
     }//GEN-LAST:event_btnCargarImgActionPerformed
