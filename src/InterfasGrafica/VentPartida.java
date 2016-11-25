@@ -13,6 +13,7 @@ import javax.swing.*;
 import java.util.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import Dominio.Juego;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -72,18 +73,30 @@ public class VentPartida extends javax.swing.JFrame {
                     JButton jButton = new JButton();
                     panelJuego.add(jButton);
                     botones[i][j] = jButton;
-                    ImageIcon icon = new ImageIcon("src\\Imagenes\\"+j+".png");
-                    Icon icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
-                    botones[i][j].setIcon(icono);
+//                    ImageIcon icon = new ImageIcon("src\\Imagenes\\"+j+".png");
+//                    Icon icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+                    try {
+                        Image img=ImageIO.read(getClass().getResource("/"+j+".png"));
+                        botones[i][j].setIcon(new ImageIcon(img.getScaledInstance(30,30, Image.SCALE_DEFAULT)));
+                    } catch (IOException e) {
+                        System.out.println("InterfasGrafica.VentPartida.<init>()");
+                    }
+                    //botones[i][j].setIcon(icono);
                    
                 }else{
                     if (j==0 && i>0){
                         JButton jButton = new JButton();
                         panelJuego.add(jButton);
                         botones[i][j] = jButton;
-                        ImageIcon icon = new ImageIcon("src\\Imagenes\\Letra"+i+".png");
-                        Icon icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
-                        botones[i][j].setIcon(icono);
+                        //ImageIcon icon = new ImageIcon("src\\Imagenes\\Letra"+i+".png");
+                        //Icon icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+                        try {
+                            Image img=ImageIO.read(getClass().getResource("/Letra"+i+".png"));
+                            botones[i][j].setIcon(new ImageIcon(img.getScaledInstance(30,30, Image.SCALE_DEFAULT)));
+                        } catch (IOException e) {
+                            lblAvisos.setText("Problema al cargar algunas imagenee.");
+                        }
+                        //botones[i][j].setIcon(icono);
                         botones[i][j].setBorderPainted(true);
                         
                     }else{
@@ -172,6 +185,7 @@ public class VentPartida extends javax.swing.JFrame {
                     if (tablero[i-1][j-1] != ' '){
                         botones[i][j].setName(String.valueOf(tablero[i-1][j-1]));
                         botones[i][j].setIcon(this.elJuego.getPartida().getTablero().setColores(tablero[i-1][j-1]));
+                        //botones[i][j].setRolloverIcon(this.elJuego.getPartida().getTablero().setColores(tablero[i-1][j-1]));
                     } else {
                         botones[i][j].setName(" ");
                         botones[i][j].setIcon(null);

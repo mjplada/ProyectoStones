@@ -6,6 +6,7 @@
 package Dominio;
 
 import Auxiliar.ArchivoLectura;
+import java.io.IOException;
 import java.util.*;
 import java.io.Serializable;
 
@@ -51,7 +52,7 @@ public class Juego extends Observable implements Serializable{
         return rank;
     }
     
-    public void iniciarPartida(Jugador iJugador1, Jugador iJugador2, boolean iAleatoria){
+    public void iniciarPartida(Jugador iJugador1, Jugador iJugador2, boolean iAleatoria) throws IOException{
         this.setPartida(new Partida(iJugador1,iJugador2,iAleatoria));
     }
    

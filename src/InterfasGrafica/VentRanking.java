@@ -83,7 +83,7 @@ public class VentRanking extends javax.swing.JFrame implements Observer{
         tablaRanking.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaRanking);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ranking.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ranking.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRankingLayout = new javax.swing.GroupLayout(panelRanking);
         panelRanking.setLayout(panelRankingLayout);

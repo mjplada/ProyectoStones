@@ -91,7 +91,7 @@ public class VentInicio extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Stones.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Stones.png"))); // NOI18N
 
         javax.swing.GroupLayout panelPrincipialLayout = new javax.swing.GroupLayout(panelPrincipial);
         panelPrincipial.setLayout(panelPrincipialLayout);
