@@ -18,7 +18,7 @@ public class ArchivoLectura {
     public ArchivoLectura(String sNombre){
         try {
             this.in = new BufferedReader(new FileReader(sNombre));
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
         }
     }
     

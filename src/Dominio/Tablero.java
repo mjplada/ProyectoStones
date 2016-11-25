@@ -428,7 +428,9 @@ public char[][] movSacarFicha (int iFila, int iColu){
                 break;
             }
             case "PDC":{
-                if ((iFila1 == (iFila2-2))&&((iColu1 == (iColu2-1))||(iColu1 == (iColu2+1)))||(iFila1 == (iFila2+2))&&((iColu1 == (iColu2-1))||(iColu1 == (iColu2+1)))||(iColu1 == (iColu2-2))&&((iFila1 == (iFila2-1))||(iFila1 == (iFila2+1)))||(iColu1 == (iColu2+2))&&((iFila1 == (iFila2-1))||(iFila1 == (iFila2+1)))) {
+                if ((iFila1 == (iFila2 - 2))&&((iColu1 == (iColu2-1))||(iColu1 == (iColu2+1)))||(iFila1 == (iFila2+2))&&((iColu1 == (iColu2-1))||(iColu1 == (iColu2+1)))||(iColu1 == (iColu2-2))&&((iFila1 == (iFila2-1))||(iFila1 == (iFila2+1)))||(iColu1 == (iColu2+2))&&((iFila1 == (iFila2-1))||(iFila1 == (iFila2+1)))) {
+                    
+                    
                     correcto = true;
                 }
                 break;

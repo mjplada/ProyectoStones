@@ -118,7 +118,6 @@ public class Partida{
         descartar las fichas necesarios segun el movimiento
         */
         boolean ret = false;
-        try {
             String[] mov = this.desglozarMovimiento(iMov.toUpperCase());
                 //mov [codMov][filcol][filcol][col1col2]
                String codigoDeJugada= mov[0];
@@ -299,9 +298,7 @@ public class Partida{
                        break;
                    }
         }
-        } catch (Exception e) {
-            ret = false;
-        }
+
         
         
         //Controlo que el jugador activo se quede sin fichas
@@ -522,8 +519,9 @@ public class Partida{
                         con2+=colores.charAt(i);
                     }
                 }
-                if(con3.length()>0 && con2.length()>0){
+                if(( con3.length()>0 && con2.length()>0 )||( con3.length() >= 2 )){
                 //si hay por lo menos un color con mas de 3 y otro color diferente con más de 2 fichas
+                // o si hay al menos dos colores con más de 3
                 //pruebo los colores disponibles. de lo contrario devuelvo "".
                 ret = con3+con2;
                 }else{

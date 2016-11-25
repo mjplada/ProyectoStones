@@ -34,57 +34,67 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelImagenes" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAvisos" min="-2" pref="492" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblJugador2" alignment="0" min="-2" pref="364" max="-2" attributes="0"/>
-                                  <Component id="panelFichasJ2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPiedras" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="panelPiedras" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblJugador1" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
-                                  <Component id="panelFichasJ1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAvisos" min="-2" pref="492" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblJugador2" alignment="0" min="-2" pref="364" max="-2" attributes="0"/>
+                                          <Component id="panelFichasJ2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblPiedras" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="panelPiedras" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblJugador1" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
+                                          <Component id="panelFichasJ1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="panelJuego" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTurno" min="-2" pref="209" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="btnPH" max="32767" attributes="0"/>
+                                          <Component id="btnPD" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnPDS" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnPDJ" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnPDD" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnPDC" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnDescartar" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnSF" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblColores" pref="309" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAyuda" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="panelColores" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="panelJuego" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTurno" min="-2" pref="209" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnPH" max="32767" attributes="0"/>
-                                  <Component id="btnPD" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnPDS" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnPDJ" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnPDD" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnPDC" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnDescartar" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnSF" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblColores" pref="309" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAyuda" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="panelColores" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="panelImagenes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnAbandonar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -144,9 +154,12 @@
                   </Group>
                   <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Component id="panelImagenes" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="panelImagenes" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAbandonar" min="-2" pref="77" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -179,7 +192,7 @@
                   <Component id="btnBuscarGoogle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtBuscarGoogle" min="-2" pref="220" max="-2" attributes="0"/>
-                  <EmptySpace pref="79" max="32767" attributes="0"/>
+                  <EmptySpace pref="43" max="32767" attributes="0"/>
                   <Component id="btnCargarImg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -479,7 +492,7 @@
                   <Component id="lblAyuda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="341" max="-2" attributes="0"/>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -526,5 +539,19 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="btnAbandonar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="14" style="3"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Abandonar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbandonarActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
