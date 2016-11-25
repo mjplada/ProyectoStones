@@ -6,6 +6,7 @@
 package Dominio;
 
 
+import java.io.IOException;
 import java.util.*;
 
 
@@ -99,10 +100,12 @@ public class Partida{
         return this.elGanador;
     }
     
-    public Partida(Jugador iJugador1,Jugador iJugador2,boolean esGenerico){
+    public Partida(Jugador iJugador1,Jugador iJugador2,boolean esGenerico) throws IOException{
         this.setJugador1(iJugador1);
         this.setJugador2(iJugador2);
-        this.setTablero(new Tablero(esGenerico));
+        Tablero tab = new Tablero(esGenerico);
+        
+        this.setTablero(tab);
         this.j1Fichas = new ArrayList<Character>();
         this.j2Fichas = new ArrayList<Character>();
         this.setPiedrasNegras(10);

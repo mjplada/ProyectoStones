@@ -6,7 +6,9 @@
 package Dominio;
 
 import java.awt.Image;
+import java.io.IOException;
 import java.util.*;
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -17,7 +19,7 @@ import javax.swing.ImageIcon;
 public class Tablero {
     
     private char[][] tabla;
-    private ImageIcon iconoPiedra = new ImageIcon("src\\Imagenes\\piedra.png");
+    private ImageIcon iconoPiedra; 
     
     
     public char[][] getTabla(){
@@ -35,11 +37,20 @@ public class Tablero {
     }
     
     public Tablero(){
+
+        
         this.setTabla(this.generarTabla(true));
+        
     }
     
-    public Tablero(boolean esGenerico){
-     
+    public Tablero(boolean esGenerico) throws IOException{
+        try {
+            Image img = ImageIO.read(getClass().getResource("/piedra.png"));
+            ImageIcon icon = new ImageIcon(img);
+            this.setIconoPiedra(icon);
+        } catch (IOException e) {
+            throw e;
+        }
           this.setTabla(this.generarTabla(esGenerico));
         
     }
@@ -450,39 +461,82 @@ public char[][] movSacarFicha (int iFila, int iColu){
 //        return ret;
 //    }
     
-    public Icon setColores(char iChar){
-        ImageIcon icon = new ImageIcon("src\\Imagenes\\vacio.png");
-        Icon icono = new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
-                if(iChar=='a'){
-                    icon = new ImageIcon("src\\Imagenes\\azul.png");
-                    icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
-                   
-                }else{
-                    if(iChar=='c'){
-                      icon = new ImageIcon("src\\Imagenes\\celeste.png");
-                      icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
-                    }else{
-                        if(iChar=='v'){
-                            icon = new ImageIcon("src\\Imagenes\\verde.png");
-                            icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
-                        }else{
-                            if(iChar=='r'){
-                                 icon = new ImageIcon("src\\Imagenes\\rojo.png");
-                                icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
-                            }else {
-                                if(iChar=='#'){
-                                     icono= new ImageIcon(this.getIconoPiedra().getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
-
-                                }
-     
-                            }
-                            
-                        }
-                        
-                    }
+//    public Icon setColores(char iChar){
+//        ImageIcon icon = new ImageIcon("src\\Imagenes\\vacio.png");
+//        Icon icono = new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                if(iChar=='a'){
+//                    icon = new ImageIcon("src\\Imagenes\\azul.png");
+//                    icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                   
+//                }else{
+//                    if(iChar=='c'){
+//                      icon = new ImageIcon("src\\Imagenes\\celeste.png");
+//                      icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                    }else{
+//                        if(iChar=='v'){
+//                            icon = new ImageIcon("src\\Imagenes\\verde.png");
+//                            icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                        }else{
+//                            if(iChar=='r'){
+//                                 icon = new ImageIcon("src\\Imagenes\\rojo.png");
+//                                icono= new ImageIcon(icon.getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//                            }else {
+//                                if(iChar=='#'){
+//                                     icono= new ImageIcon(this.getIconoPiedra().getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+//
+//                                }
+//     
+//                            }
+//                            
+//                        }
+//                        
+//                    }
+//                }
+//                        
+//        return icono;
+//    }
+    
+    public ImageIcon setColores(char iChar){
+        String ruta = "/vacio.png";
+        Image img = null;
+        ImageIcon ret = null;
+        if (iChar != '#') {
+                switch (iChar) {
+                case 'a':{
+                    ruta = "/azul.png";
+                    break;
                 }
-                        
-        return icono;
+                case 'c':{
+                    ruta = "/celeste.png";
+                    break;
+                }
+                case 'v':{
+                    ruta = "/verde.png";
+                    break;
+                }
+                case 'r':{
+                    ruta = "/rojo.png";
+                    break;
+                }
+                case '#':{
+                    ruta = "/piedra.png";
+                    break;
+                }
+
+            }
+            try {
+                img=ImageIO.read(getClass().getResource(ruta));
+                //botones[i][j].setIcon(new ImageIcon(img.getScaledInstance(30,30, Image.SCALE_DEFAULT)));
+            } catch (Exception e) {
+            }
+            //ImageIcon img = new ImageIcon(getClass().getResource(ruta));
+            //ImageIcon imgIcon = 
+            ret = new ImageIcon(img.getScaledInstance(30,30, Image.SCALE_DEFAULT));
+        } else {
+            ret = new ImageIcon(this.getIconoPiedra().getImage().getScaledInstance(30,30, Image.SCALE_DEFAULT));
+        }
+        
+        return ret;
     }
     
     

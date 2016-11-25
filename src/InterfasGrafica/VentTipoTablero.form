@@ -168,7 +168,7 @@
               <Font name="Yu Gothic UI Semilight" size="36" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/Stones.png"/>
+              <Image iconType="3" name="/Stones.png"/>
             </Property>
           </Properties>
         </Component>

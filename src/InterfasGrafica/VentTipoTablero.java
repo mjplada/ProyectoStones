@@ -8,6 +8,7 @@ package InterfasGrafica;
 import java.awt.Dimension;
 import Dominio.Juego;
 import Dominio.Jugador;
+import java.io.IOException;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -151,7 +152,7 @@ public class VentTipoTablero extends javax.swing.JFrame  {
         lblAviso.setText("Seleccione un jugdor de la lista ");
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 36)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Stones.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Stones.png"))); // NOI18N
 
         javax.swing.GroupLayout panelTipoTableroLayout = new javax.swing.GroupLayout(panelTipoTablero);
         panelTipoTablero.setLayout(panelTipoTableroLayout);
@@ -215,29 +216,39 @@ public class VentTipoTablero extends javax.swing.JFrame  {
     
     private void btnPorDefectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorDefectoActionPerformed
         // TODO add your handling code here:
-       if(this.jugador2!=null){
-            this.miJuego.setEsGenerico(true);
-            miJuego.iniciarPartida(jugador1,jugador2,miJuego.getEsGenerico());
-            vPartida = new VentPartida(miJuego);
-            this.vPartida.setVisible(true);
-            this.dispose();
-       }else{
-           this.lblAviso.setText("Debe seleccionar jugadores");
-       }
+        try {
+            if(this.jugador2!=null){
+                this.miJuego.setEsGenerico(true);
+                miJuego.iniciarPartida(jugador1,jugador2,miJuego.getEsGenerico());
+                vPartida = new VentPartida(miJuego);
+                this.vPartida.setVisible(true);
+                this.dispose();
+           }else{
+               this.lblAviso.setText("Debe seleccionar jugadores");
+           }
+        } catch (IOException e) {
+            
+        }
+       
     }//GEN-LAST:event_btnPorDefectoActionPerformed
 
     
     private void btnRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRandomActionPerformed
         // TODO add your handling code here:
-        if(this.jugador2!=null){
-            this.miJuego.setEsGenerico(false);
-            miJuego.iniciarPartida(jugador1,jugador2,miJuego.getEsGenerico());
-            vPartida = new VentPartida(miJuego);
-            this.vPartida.setVisible(true);
-            this.dispose();
-        }else{
-           this.lblAviso.setText("Debe seleccionar jugadores");
-       }
+        try {
+            if(this.jugador2!=null){
+                this.miJuego.setEsGenerico(false);
+                miJuego.iniciarPartida(jugador1,jugador2,miJuego.getEsGenerico());
+                vPartida = new VentPartida(miJuego);
+                this.vPartida.setVisible(true);
+                this.dispose();
+            }else{
+               this.lblAviso.setText("Debe seleccionar jugadores");
+           }
+        } catch (IOException e) {
+            lblAviso.setText("Error al cargar las imagenes.");
+        }
+        
     }//GEN-LAST:event_btnRandomActionPerformed
 
     private void tablaJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJugadoresMouseClicked
