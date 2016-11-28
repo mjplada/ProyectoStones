@@ -140,11 +140,6 @@ public class VentTipoTablero extends javax.swing.JFrame  {
         tablaJugadores.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         tablaJugadores.setColumnSelectionAllowed(true);
         tablaJugadores.getTableHeader().setReorderingAllowed(false);
-        tablaJugadores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaJugadoresMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tablaJugadores);
         tablaJugadores.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -250,10 +245,6 @@ public class VentTipoTablero extends javax.swing.JFrame  {
         }
         
     }//GEN-LAST:event_btnRandomActionPerformed
-
-    private void tablaJugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJugadoresMouseClicked
-
-    }//GEN-LAST:event_tablaJugadoresMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPorDefecto;

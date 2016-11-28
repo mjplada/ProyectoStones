@@ -310,7 +310,7 @@ public class VentPartida extends javax.swing.JFrame {
         lblAyuda = new javax.swing.JLabel();
         btnAbandonar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setSize(new java.awt.Dimension(600, 400));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -779,12 +779,6 @@ public class VentPartida extends javax.swing.JFrame {
          this.enviarMov(movimiento);
     }//GEN-LAST:event_btnDescartarActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        elJuego.getPartida().ejecutarMovimiento("X");
-        JOptionPane.showMessageDialog(null, "Ganador " +elJuego.getPartida().getElGanador(), "" + "Fin de partida", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_formWindowClosing
-
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
         // TODO add your handling code here:
         ArrayList<String> ayuda =  elJuego.getPartida().mostrarAyuda();
@@ -806,14 +800,14 @@ public class VentPartida extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnAbandonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbandonarActionPerformed
-        // TODO add your handling code here:
-        if ((JOptionPane.showConfirmDialog(null,"¿Quiere abandonar la partida?","Confirmación",2))==0){
-             elJuego.getPartida().ejecutarMovimiento("X");
-            JOptionPane.showMessageDialog(null, "Ganador " +elJuego.getPartida().getElGanador(), "" + "Fin de partida", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        
-        }
+       // TODO add your handling code here:
+       abandonarPartida();
     }//GEN-LAST:event_btnAbandonarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.abandonarPartida();
+    }//GEN-LAST:event_formWindowClosing
 
     private class ListenerBoton implements ActionListener {
 
@@ -995,6 +989,14 @@ public class VentPartida extends javax.swing.JFrame {
              lblAvisos.setText("No tiene las fichas necesarias para realizar el movimiento");
              lblAvisos.setVisible(true);
          }
+     }
+     
+     private void abandonarPartida(){
+          if ((JOptionPane.showConfirmDialog(null,"¿Quiere abandonar la partida?","Confirmación",2))==0){
+             elJuego.getPartida().ejecutarMovimiento("X");
+            JOptionPane.showMessageDialog(null, "Ganador " +elJuego.getPartida().getElGanador(), "" + "Fin de partida", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }
      }
      
      private void matrizEnable(JButton[][] matriz,boolean habilitar){
